@@ -1,7 +1,7 @@
 ---
 stand_alone: true
 ipr: trust200902
-docname: draft-ietf-sedate-datetime-extended-00
+docname: draft-ietf-sedate-datetime-extended-latest
 cat: std
 consensus: true
 submissiontype: IETF
