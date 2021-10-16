@@ -100,8 +100,8 @@ like DST transitions.
 Most of these applications attach the timezone to the timestamp in a
 non-standard format, at least one of which is fairly well-adopted {{JAVAZDT}}.
 Furthermore, applications might want to attach even more information to the
-timestamp, including but not limited to the calendar system it must be
-represented in.
+timestamp, including but not limited to the calendar system it needs
+to be represented in.
 
 This document defines an extension syntax for timestamps as specified
 in {{RFC3339}} that has the following properties:
@@ -109,10 +109,10 @@ in {{RFC3339}} that has the following properties:
 * The extension suffix is completely optional, making existing
   {{RFC3339}} timestamps compatible with this format.
 
-* The format is compatible to the pre-existing popular syntax for attaching
+* The format is compatible with the pre-existing popular syntax for attaching
   time zone names to timestamps ({{JAVAZDT}}).
 
-* The format provides generalized way to attach any additional
+* The format provides a generalized way to attach any additional
   information to the timestamp.
 
 # Definitions {#defintions}
@@ -120,8 +120,8 @@ in {{RFC3339}} that has the following properties:
 {::boilerplate bcp14-tagged}
 
 
-: Coordinated Universal Time as maintained since 1988 by the Bureau
 UTC:
+: Coordinated Universal Time, as maintained since 1988 by the Bureau
   International des Poids et Mesures (BIPM) in conjunction with leap
   seconds as announced by the International Earth Rotation and
   Reference Frames Service {{IERS}}.
