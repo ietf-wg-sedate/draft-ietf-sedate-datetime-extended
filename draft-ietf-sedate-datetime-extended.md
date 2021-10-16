@@ -35,8 +35,6 @@ author:
     email: cabo@tzi.org
 
 normative:
-  # obsolete, but needed for its Appendix E:
-  RFC1305: ntp-old
   RFC2026:
   RFC2028:
   RFC3339:
@@ -45,6 +43,8 @@ normative:
   RFC8126:
   BCP47:
 informative:
+  # obsolete, but needed for its Appendix E:
+  RFC1305: ntp-old
   ISO8601:
     target: https://www.iso.org/standard/15903.html
     title: >
