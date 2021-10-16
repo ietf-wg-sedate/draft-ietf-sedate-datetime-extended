@@ -89,8 +89,8 @@ scheduling.
 Each distinct instant in time can be represented in a descriptive text
 format using a timestamp, and {{ISO8601}} standardizes a widely-adopted
 timestamp format, which forms the basis of {{RFC3339}}.
-However, this format doesn't allow timestamps to contain any
-additional relevant information, which means that any contextual
+However, this format only allows timestamps to contain very little
+additional relevant information, which means that, beyond that, any contextual
 information related to a given timestamp needs to be either handled
 separately or attached to it in a non-standard manner.
 
