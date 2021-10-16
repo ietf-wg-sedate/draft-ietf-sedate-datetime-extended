@@ -120,8 +120,8 @@ in {{RFC3339}} that has the following properties:
 {::boilerplate bcp14-tagged}
 
 
-UTC
 : Coordinated Universal Time as maintained since 1988 by the Bureau
+UTC:
   International des Poids et Mesures (BIPM) in conjunction with leap
   seconds as announced by the International Earth Rotation and
   Reference Frames Service {{IERS}}.
@@ -132,23 +132,23 @@ UTC
   for attempting to follow Universal Time based on measuring the
   rotation of the earth.
 
-ABNF
+ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
   strings in a protocol or language, as defined in {{RFC5234}}.
 
-Internet Date/Time Format
+Internet Date/Time Format:
 : The date/time format defined in section 3 of this document.
 
-Timestamp
+Timestamp:
 : This term is used in this document to refer to an unambiguous
   representation of some instant in time.
 
-Z
+Z:
 : A suffix which, when applied to a time, denotes a UTC offset of
   00:00; often spoken "Zulu" from the ICAO phonetic alphabet
   representation of the letter "Z".
 
-Time Zone
+Time Zone:
 : A time zone that is a included in the Time Zone Database (often
   called `tz` or `zoneinfo`) maintained by IANA.
 
