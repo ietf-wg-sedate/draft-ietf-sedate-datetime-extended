@@ -172,7 +172,7 @@ CLDR:
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
 {{ITU-R-TF.460-6}}.
 
-# Extended Date and Time format {#date-time-format}
+# Extended Date/Time format {#date-time-format}
 
 This section discusses desirable qualities of formats for the
 timestamp extension suffix and defines such a format that extends
@@ -364,6 +364,7 @@ alphanum          = ALPHA / DIGIT
 ## Examples {#date-time-examples}
 
 Here are some examples of Internet extended date/time format.
+<!-- We need to agree a name for the baby. -->
 
 ~~~~
 1996-12-19T16:39:57-08:00
