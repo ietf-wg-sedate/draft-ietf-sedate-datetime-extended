@@ -182,17 +182,18 @@ timestamp extension suffix and defines such a format that extends
 
 The format should allow implementations to specify additional
 important information in addition to the bare timestamp.
-This is done by allowing implementations to include an informative
-suffix at the end with as many tags as required, each with a key and
-value separated by an equals sign.
-The value can be a hyphen delimited list of multiple values.
+This is done by defining *tags*, each with a *key* and
+a *value* separated by an equals sign, and
+allowing implementations to include an informative
+*suffix* at the end with as many tags as required.
+The value of a tag can be a hyphen delimited list of multiple values.
 
 In case a key is repeated or conflicted, implementations MUST give
 precedence to whichever value is positioned first.
 
 ## Namespaced
 
-Since the suffix can include all sorts of additional information,
+Since tags can include all sorts of additional information,
 different standards bodies/organizations need a way to identify which
 part adheres to their standards.
 For this, all information needs to be namespaced.
