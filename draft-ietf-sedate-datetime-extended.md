@@ -232,7 +232,7 @@ the RFC registering a namespace and the principles of its evolution.)
 The maintaining or registering authority, including name, contact
 email, discussion list email, and URL location of the registry, MUST
 be indicated clearly in the RFC.
-The RFC MUST specify or include each of the following:
+The RFC MUST specify each of the following (directly or included by reference):
 
 * The specification MUST reference the specific version or revision of
   this document that governs its creation and MUST reference this
