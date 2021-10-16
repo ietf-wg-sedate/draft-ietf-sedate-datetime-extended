@@ -132,6 +132,9 @@ UTC:
   for attempting to follow Universal Time based on measuring the
   rotation of the earth.
 
+  UTC is often mistakenly referred to as GMT, an earlier time scale
+  UTC was designed to be a useful successor for.
+
 ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
   strings in a protocol or language, as defined in {{RFC5234}}.
