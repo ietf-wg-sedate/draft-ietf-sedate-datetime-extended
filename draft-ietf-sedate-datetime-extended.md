@@ -219,11 +219,16 @@ For these namespaces:
 ## Multi-character Namespaces {#multi-char}
 
 Multi-character namespaces can be registered specifically for use in
-this format.
-They are assigned by IANA using the "IETF Review" policy
-defined by {{RFC8126}}.
-This policy requires the development of an RFC, which SHALL define the
-name, purpose, processes, and procedures for maintaining the subtags.
+this format, see {{iana-cons}}.
+The registration policy requires the development of an RFC,
+which SHALL define the
+name, purpose, processes, and procedures for maintaining the tags
+using the namespace registered.
+
+(This subsection uses BCP 14 language to describe the requirements on
+the information interchanged indirectly by providing requirements on
+the RFC registering a namespace and the principles of its evolution.)
+
 The maintaining or registering authority, including name, contact
 email, discussion list email, and URL location of the registry, MUST
 be indicated clearly in the RFC.
@@ -295,7 +300,7 @@ Mailing_List:
 URL:
 %%
 ~~~~
-{: }
+{: #record title="Registration record for a multi-character namespace"}
 
 'Identifier' contains the multi-character sequence assigned to the
 namespace.
