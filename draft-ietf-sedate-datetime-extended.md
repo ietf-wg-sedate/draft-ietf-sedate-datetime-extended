@@ -375,18 +375,18 @@ Here are some examples of Internet extended date/time format.
 ~~~~
 1996-12-19T16:39:57-08:00
 ~~~~
-{: }
+{: #rfc3339-datetime title="RFC 3339 date-time with timezone offset"}
 
-This represents 39 minutes and 57 seconds after the 16th hour of
+{{rfc3339-datetime}} represents 39 minutes and 57 seconds after the 16th hour of
 December 19th, 1996 with an offset of -08:00 from UTC.
-Note that this is equivalent to 1996-12-20T00:39:57Z in UTC.
+Note that this is the same instant in time as `1996-12-20T00:39:57Z`, expressed in UTC.
 
 ~~~~
 1996-12-19T16:39:57-08:00[America/Los_Angeles]
 ~~~~
-{: }
+{: #datetime-tzname title="Adding a timezone name"}
 
-This represents the exact same instant as the previous example but
+{{datetime-tzname}} represents the exact same instant as the previous example but
 additionally specifies the human time zone associated with it
 ("Pacific Time") for time-zone-aware implementations to take into
 account.
@@ -394,17 +394,17 @@ account.
 ~~~~
 1996-12-19T16:39:57-08:00[America/Los_Angeles][u-ca=hebrew]
 ~~~~
-{: }
+{: #date-time-hebrew title="Projecting to the Hebrew calendar"}
 
-This represents the exact same instant but it informs calendar-aware
+{{date-time-hebrew}} represents the exact same instant but it informs calendar-aware
 implementations that they should project it to the Hebrew calendar.
 
 ~~~~
 1996-12-19T16:39:57-08:00[x-foo=bar][x-baz=bat]
 ~~~~
-{: }
+{: #date-time-private title="Adding tags in private use namespaces"}
 
-This timestamp utilizes the private use namespace to declare two
+{{date-time-private}}, based on {{rfc3339-datetime}}, utilizes the private use namespace to declare two
 additional pieces of information in the suffix that can be interpreted
 by any compatible implementations and ignored otherwise.
 
