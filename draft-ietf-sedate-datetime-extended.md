@@ -39,6 +39,7 @@ normative:
   RFC2026:
   RFC2028:
   RFC2234:
+  RFC3339:
   RFC5646:
   RFC8126:
 informative:
@@ -53,7 +54,6 @@ informative:
     seriesinfo:
       ISO: '8601:1988'
     date: 1988-06
-  RFC3339:
   ITURTF460-6:
     title: ITU-R TF.460-6. Standard-frequency and time-signal emissions
     author:
