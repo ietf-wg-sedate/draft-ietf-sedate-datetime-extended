@@ -145,6 +145,7 @@ UTC:
 ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
   strings in a protocol or language, as defined in {{RFC5234}}.
+  The rules defined in {{Appendix B of RFC5234}} are imported implictly.
 
 Internet Date/Time Format:
 : The date/time format defined in section 3 of this document.
@@ -333,24 +334,29 @@ process associated with the RFC process.
 ## Syntax Extensions to RFC 3339
 
 The following rules extend the ABNF syntax defined in {{RFC3339}} in
-order to allow the inclusion of an optional suffix.
+order to allow the inclusion of an optional suffix: the extended
+date/time format is described by the rule `date-time-ext`.
 
 ~~~~
-time-zone-char = ALPHA / "." / "_"
-time-zone-part = time-zone-char *13(time-zone-char / DIGIT / "-" / "+") ; but not "." or ".."
-time-zone-name = time-zone-part *("/" time-zone-part)
-time-zone      = "[" time-zone-name "]"
+time-zone-initial = ALPHA / "." / "_"
+time-zone-char    = time-zone-initial / DIGIT / "-" / "+"
+time-zone-part    = time-zone-initial *13(time-zone-char)
+                    ; but not "." or ".."
+time-zone-name    = time-zone-part *("/" time-zone-part)
+time-zone         = "[" time-zone-name "]"
 
-namespace      = 1*alphanum
-namespace-key  = 1*alphanum
-suffix-key     = namespace ["-" namespace-key]
+namespace         = 1*alphanum
+namespace-key     = 1*alphanum
+suffix-key        = namespace ["-" namespace-key]
 
-suffix-value   = 1*alphanum
-suffix-values  = suffix-value *("-" suffix-value)
-suffix-tag     = "[" suffix-key "=" suffix-values "]"
-suffix         = [time-zone] *suffix-tag
+suffix-value      = 1*alphanum
+suffix-values     = suffix-value *("-" suffix-value)
+suffix-tag        = "[" suffix-key "=" suffix-values "]"
+suffix            = [time-zone] *suffix-tag
 
-date-time-ext  = date-time suffix
+date-time-ext     = date-time suffix
+
+alphanum          = ALPHA / DIGIT
 ~~~~
 {: #grammar title="ABNF grammar of extensions to RFC 3339"}
 
