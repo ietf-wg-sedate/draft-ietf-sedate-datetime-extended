@@ -158,6 +158,7 @@ Z:
 : A suffix which, when applied to a time, denotes a UTC offset of
   00:00; often spoken "Zulu" from the ICAO phonetic alphabet
   representation of the letter "Z".
+  <!-- Shouldn't we just import this term from RFC 3339? -->
 
 Time Zone:
 : A time zone that is a included in the Time Zone Database (often
@@ -190,6 +191,7 @@ The value of a tag can be a hyphen delimited list of multiple values.
 
 In case a key is repeated or conflicted, implementations MUST give
 precedence to whichever value is positioned first.
+<!-- needs example and/or defn of "conflicted" -->
 
 ## Namespaced
 
@@ -204,14 +206,19 @@ be included as `u-ca=<value>`.
 
 All single-character namespaces are reserved for {{BCP47}} extensions
 recorded in the BCP47 extensions registry.
+<!-- What is "the BCP47 extensions registry"? -->
 For these namespaces:
+<!-- Which of these are just for one-alnum namespaces, which are more general? -->
 
 * Case differences are ignored.
+  <!-- everywhere?  Use "case-insensitive" as a term.  -->
 
 * The namespace is restricted to single alphanum, corresponding to
   extension singletons ('x' can be used for a private use extension).
+  <!-- need to explain that we are using ABNF terms in plain text -->
 
 * In addition, for CLDR extensions:
+  <!-- What does CLDR extension mean? -->
   * There must be a `namespace-key` and it is restricted to 2
     `alphanum` characters.
   * A `suffix-value` is limited to `3*8alphanum`.
@@ -232,6 +239,7 @@ the RFC registering a namespace and the principles of its evolution.)
 The maintaining or registering authority, including name, contact
 email, discussion list email, and URL location of the registry, MUST
 be indicated clearly in the RFC.
+<!-- Can we mandate a "discussion list email"? -->
 The RFC MUST specify each of the following (directly or included by reference):
 
 * The specification MUST reference the specific version or revision of
@@ -241,20 +249,30 @@ The RFC MUST specify each of the following (directly or included by reference):
 * The specification and all keys defined by the specification MUST
   follow the ABNF and other rules for the formation of keys as defined
   in this document.
+  <!-- I hope, not just the keys, but also the values -->
   In particular, it MUST specify that case is not significant and that
   keys MUST NOT exceed eight characters in length.
 
 * The specification MUST specify a canonical representation.
+  <!-- What does that mean?  -->
 
 * The specification of valid keys MUST be available over the Internet
   and at no cost.
+  <!-- There is no such thing as "no cost".  More importantly, also
+  access to the specification cannot require agreeing to onerous legal
+  requirements such as an NDA. -->
 
 * The specification MUST be in the public domain or available via a
   royalty-free license acceptable to the IETF and specified in the
   RFC.
+  <!-- Public domain is not a concept available to an international
+  organization.  How is "acceptable to the IETF" defined?  I believe
+  that this item talks about copyright, not other forms of licensing
+  such as trademark or patent licensing.  -->
 
 * The specification MUST be versioned, and each version of the
   specification MUST be numbered, dated, and stable.
+  <!-- Do we have any opinion what that version is being used for? -->
 
 * The specification MUST be stable.
   That is, namespace keys, once defined by a specification, MUST NOT
@@ -263,17 +281,25 @@ The RFC MUST specify each of the following (directly or included by reference):
 * The specification MUST include, in a separate section, the
   registration form reproduced in this section (below) to be used in
   registering the namespace upon publication as an RFC.
+  <!-- Do you mean the IANA registration template? -->
 
 * IANA MUST be informed of changes to the contact information and URL
   for the specification.
+  <!-- That is not even a requirement on the RFC. -->
+
+<!-- The following also aren't requirements on the RFC. -->
 
 IANA will maintain a registry of allocated multi-character namespaces.
 This registry MUST use the record-jar format described by the ABNF in
 {{BCP47}}.
+<!-- explain what that means -->
+<!-- The MUST appears to be a requirement on IANA, which is not the -->
+<!-- way this works... -->
 Upon publication of a namespace as an RFC, the maintaining authority
 defined in the RFC MUST forward this registration form to
 \<[](mailto:iesg@ietf.org)>, who MUST forward the request to
 \<[](mailto:iana@iana.org)>.
+<!-- wait, didn't we just publish an RFC - - why not put the form in there? -->
 The maintaining authority of the namespace MUST maintain the accuracy
 of the record by sending an updated full copy of the record to
 \<[](mailto:iana@iana.org)> with the subject line "TIMESTAMP FORMAT
@@ -307,16 +333,20 @@ namespace.
 The Internet-Draft submitted to define the namespace SHOULD specify
 which sequence to use, although the IESG MAY change the assignment
 when approving the RFC.
+<!-- This is way too specific.  Obviously, the IESG has final control -->
+<!-- over that name. -->
 
 'Description' contains the name and description of the namespace.
 
 'Comments' is an OPTIONAL field and MAY contain a broader description
 of the namespace.
+<!-- Is the field optional or its contents? -->
 
 'Added' contains the date the namespace's RFC was published in the
 "date-full" format specified in {{grammar}}.
 For example: 2004-06-28 represents June 28, 2004, in the Gregorian
 calendar.
+<!-- That information is redundant with the RFC -->
 
 'RFC' contains the RFC number assigned to the namespace.
 
@@ -335,7 +365,7 @@ The determination of whether an Internet-Draft meets the above
 conditions and the decision to grant or withhold such authority rests
 solely with the IESG and is subject to the normal review and appeals
 process associated with the RFC process.
-
+<!-- Again, we shouldn't second-guess RFC 2026. -->
 
 ## Syntax Extensions to RFC 3339
 
