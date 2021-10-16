@@ -164,11 +164,11 @@ Time Zone:
   called `tz` or `zoneinfo`) maintained by IANA.
   <!-- ref needed -->
 
-For more information about time scales, see Appendix E of {{RFC1305}},
 CLDR:
 : Common locale data repository {{CLDR}}, a project of the Unicode
   Consortium to provide locale data to applications.
 
+For more information about time scales, see {{Appendix E of RFC1305}},
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
 {{ITU-R-TF.460-6}}.
 
@@ -201,7 +201,7 @@ namespace and the key.
 For example, the calendar as defined by the Unicode consortium could
 be included as `u-ca=<value>`.
 
-All single-character namespaces are reserved for BCP47 extensions
+All single-character namespaces are reserved for {{BCP47}} extensions
 recorded in the BCP47 extensions registry.
 For these namespaces:
 
