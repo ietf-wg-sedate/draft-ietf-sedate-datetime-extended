@@ -38,8 +38,8 @@ normative:
   RFC1305:
   RFC2026:
   RFC2028:
-  RFC2234:
   RFC3339:
+  RFC5234: abnf
   RFC5646:
   RFC8126:
 informative:
@@ -133,7 +133,7 @@ UTC
 
 ABNF
 : Augmented Backus-Naur Form, a format used to represent permissible
-  strings in a protocol or language, as defined in {{RFC2234}}.
+  strings in a protocol or language, as defined in {{RFC5234}}.
 
 Internet Date/Time Format
 : The date/time format defined in section 3 of this document.
