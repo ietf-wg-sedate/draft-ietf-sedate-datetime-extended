@@ -35,13 +35,15 @@ author:
     email: cabo@tzi.org
 
 normative:
-  RFC1305:
+  # obsolete, but needed for its Appendix E:
+  RFC1305: ntp-old
   RFC2026:
   RFC2028:
   RFC3339:
   RFC5234: abnf
-  RFC5646:
+#  RFC5646: # in BCP47
   RFC8126:
+  BCP47:
 informative:
   ISO8601:
     target: https://www.iso.org/standard/15903.html
@@ -70,12 +72,17 @@ informative:
       Java SE 8, java.time.format, DateTimeFormatter: ISO_ZONED_DATE_TIME
     author:
     date: false
+  CLDR:
+    target: https://cldr.unicode.org
+    title: Unicode CLDR Project
+    date: false
+    author:
 
 --- abstract
 
 
 This document defines an extension to the timestamp format defined in
-{{RFC3339}} for representing additional information including a time
+RFC3339 for representing additional information including a time
 zone.
 
 --- middle
@@ -154,8 +161,13 @@ Z:
 Time Zone:
 : A time zone that is a included in the Time Zone Database (often
   called `tz` or `zoneinfo`) maintained by IANA.
+  <!-- ref needed -->
 
 For more information about time scales, see Appendix E of {{RFC1305}},
+CLDR:
+: Common locale data repository {{CLDR}}, a project of the Unicode
+  Consortium to provide locale data to applications.
+
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
 {{ITU-R-TF.460-6}}.
 
@@ -201,6 +213,8 @@ For these namespaces:
   * There must be a `namespace-key` and it is restricted to 2
     `alphanum` characters.
   * A `suffix-value` is limited to `3*8alphanum`.
+
+## Multi-character Namespaces {#multi-char}
 
 Multi-character namespaces can be registered specifically for use in
 this format.
@@ -248,7 +262,7 @@ The RFC MUST specify or include each of the following:
 
 IANA will maintain a registry of allocated multi-character namespaces.
 This registry MUST use the record-jar format described by the ABNF in
-{{RFC5646}}.
+{{BCP47}}.
 Upon publication of a namespace as an RFC, the maintaining authority
 defined in the RFC MUST forward this registration form to
 \<[](mailto:iesg@ietf.org)>, who MUST forward the request to
@@ -381,4 +395,18 @@ This timestamp utilizes the private use namespace to declare two
 additional pieces of information in the suffix that can be interpreted
 by any compatible implementations and ignored otherwise.
 
+# IANA Considerations {#iana-cons}
+
+Multi-character namespaces are assigned by IANA using the "IETF
+Review" policy defined by {{RFC8126}}; the IETF review process needs to
+be based on the requirements laid out in {{multi-char}}.
+
+# Security Considerations
+
+TBD
+
 --- back
+
+# Acknowledgements
+
+TBD
