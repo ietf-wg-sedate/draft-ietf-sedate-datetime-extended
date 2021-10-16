@@ -54,10 +54,11 @@ informative:
     seriesinfo:
       ISO: '8601:1988'
     date: 1988-06
-  ITURTF460-6:
+  ITU-R-TF.460-6:
     title: ITU-R TF.460-6. Standard-frequency and time-signal emissions
     author:
     date: 2002-02
+    target: https://www.itu.int/rec/R-REC-TF.460/en
   IERS:
     target: https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html
     title: International Earth Rotation Service Bulletins
@@ -153,7 +154,7 @@ Time Zone
 
 For more information about time scales, see Appendix E of {{RFC1305}},
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
-{{ITURTF460-6}}.
+{{ITU-R-TF.460-6}}.
 
 # Extended Date and Time format {#date-time-format}
 
