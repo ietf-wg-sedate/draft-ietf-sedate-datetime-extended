@@ -161,7 +161,7 @@ Z:
   <!-- Shouldn't we just import this term from RFC 3339? -->
 
 Time Zone:
-: A time zone that is a included in the Time Zone Database (often
+: A time zone that is included in the Time Zone Database (often
   called `tz` or `zoneinfo`) maintained by IANA.
   <!-- ref needed -->
 
