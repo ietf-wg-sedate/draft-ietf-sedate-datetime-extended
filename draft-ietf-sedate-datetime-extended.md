@@ -116,6 +116,8 @@ Furthermore, applications might want to attach even more information to the
 timestamp, including but not limited to the calendar system it needs
 to be represented in.
 
+## Scope
+
 This document defines an extension syntax for timestamps as specified
 in {{RFC3339}} that has the following properties:
 
@@ -128,7 +130,43 @@ in {{RFC3339}} that has the following properties:
 * The format provides a generalized way to attach any additional
   information to the timestamp.
 
-# Definitions {#defintions}
+
+This document does not address extensions to the format where the
+semantic result no longer is a fixed timestamp that is referenced to a
+(past or future) UTC time.
+For instance, it does not address:
+
+* Future time given as a local time in some specified time zone, where
+  changes to the definition of that time zone (e.g., a political
+  decision to enact or rescind daylight savings time) changes the
+  actual time in UTC time.
+* Time given as a "floating time", i.e., a local time without
+  information as to which time zone this local time refers to.
+* The use of time scales different from UTC, such as TAI.
+
+However, the additional information provided that augments a fixed
+timestamp may be sufficient to detect an inconsistency between
+intention and the actual information given in the timestamp, e.g.,
+between the additional timezone information given and the timezone
+offset recorded in the timestamp.
+For instance, such an inconsistency might arise because of:
+
+* Political decisions as discussed above, or
+* errors in the applications producing and consuming such a timestamp.
+
+While the information available is not generally sufficient to resolve
+the inconsistency, it may be used to initiate some out of band
+processing to obtain sufficient information for such a resolution.
+
+
+In order to address some of the requirements implied here, future
+related specifications might define syntax and semantics of strings
+similar to {{RFC3339}}.
+Note that the extension syntax defined in the present document is
+designed in such a way that it can be useful for such specifications
+as well.
+
+## Definitions {#definitions}
 
 {::boilerplate bcp14-tagged}
 
