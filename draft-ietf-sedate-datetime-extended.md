@@ -17,6 +17,12 @@ title: >
   Date and Time on the Internet: Timestamps with additional information
 abbrev: Timestamps Extended
 wg: Serialising Extended Data About Times and Events
+
+venue:
+  group: Serialising Extended Data About Times and Events (SEDATE)
+  mail: sedate@ietf.org
+  github: ietf-wg-sedate/draft-ietf-sedate-datetime-extended
+
 author:
 - name: Ujjwal Sharma
   org: Igalia, S.L.
