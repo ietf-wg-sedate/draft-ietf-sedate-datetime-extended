@@ -145,13 +145,13 @@ UTC:
   for attempting to follow Universal Time based on measuring the
   rotation of the earth.
 
-  UTC is often mistakenly referred to as GMT, an earlier time scale
+  UTC is often mistakenly referred to as GMT, an earlier timescale
   UTC was designed to be a useful successor for.
 
 ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
   strings in a protocol or language, as defined in {{RFC5234}}.
-  The rules defined in {{Appendix B of RFC5234}} are imported implictly.
+  The rules defined in {{Appendix B of RFC5234}} are imported implicitly.
 
 Internet Date/Time Format:
 : The date/time format defined in section 3 of this document.
@@ -432,7 +432,7 @@ account.
 ~~~~
 {: #date-time-hebrew title="Projecting to the Hebrew calendar"}
 
-{{date-time-hebrew}} represents the exact same instant but it informs calendar-aware
+{{date-time-hebrew}} represents the exact same instant, but it informs calendar-aware
 implementations that they should project it to the Hebrew calendar.
 
 ~~~~
