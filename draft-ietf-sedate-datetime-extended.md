@@ -203,7 +203,9 @@ In case a suffix repeats a key or otherwise contains conflicting tags,
 implementations MUST give precedence to whichever value is positioned
 first. [^interop1]
 
-[^interop1]:  I'd rather place a MU⁠ST NOT for this case, first.
+[^interop1]:  I'd rather place a MU⁠ST NOT for this case, first.  This
+     definitely needs to be expanded into some general text about
+     error handling.
 {: source="--- cabo"}
 
 ## Namespaced
