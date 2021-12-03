@@ -290,9 +290,15 @@ mailing list used by the maintaining authority.
 
 # Syntax Extensions to RFC 3339
 
+## ABNF
+
 The following rules extend the ABNF syntax defined in {{RFC3339}} in
-order to allow the inclusion of an optional suffix: the extended
-date/time format is described by the rule `date-time-ext`.
+order to allow the inclusion of an optional suffix.
+
+The extended date/time format is described by the rule
+`date-time-ext`.
+`date-time` is imported from {{Section 5.6 of RFC3339}}, `ALPHA` and
+`DIGIT` from {{Section B.1 of RFC5234}}.
 
 ~~~~ abnf
 time-zone-initial = ALPHA / "." / "_"
