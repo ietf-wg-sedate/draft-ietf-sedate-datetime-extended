@@ -191,7 +191,9 @@ The format should allow implementations to specify additional
 important information in addition to the bare timestamp.
 This is done by defining *tags*, each with a *key* and
 a *value* separated by an equals sign.
-The key of a tag can be split by including a hyphen/minus sign "`-`".
+The key of a tag can be split into two parts by including a
+hyphen/minus sign "`-`"; the first part (including the "`-`") can then
+be used as a namespace.
 The value of a tag can be a hyphen/minus delimited list of multiple values.
 
 Out of these tags, applications can build an informative
