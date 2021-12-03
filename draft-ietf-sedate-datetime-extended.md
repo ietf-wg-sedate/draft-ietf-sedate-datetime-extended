@@ -41,13 +41,13 @@ author:
     email: cabo@tzi.org
 
 normative:
-  RFC2026:
-  RFC2028:
+#  RFC2026:
+#  RFC2028:
   RFC3339:
   RFC5234: abnf
 #  RFC5646: # in BCP47
   RFC8126:
-  BCP47:
+#  BCP47:
 informative:
   # obsolete, but needed for its Appendix E:
   RFC1305: ntp-old
@@ -370,6 +370,7 @@ Actual keys do not.
 See {{registered}} for the detailed information (to be edited).
 
 The policy is "RFC required", "Specification Required", ???[^policy]
+{{RFC8126}}.
 
 [^policy]: We need to define the policy for both namespaces and full keys.
 {: source="--- cabo"}
