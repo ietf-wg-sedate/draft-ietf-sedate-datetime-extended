@@ -132,8 +132,8 @@ in {{RFC3339}} that has the following properties:
 
 
 This document does not address extensions to the format where the
-semantic result no longer is a fixed timestamp that is referenced to a
-(past or future) UTC time.
+semantic result is no longer an unambiguous instant in time (past or
+future).
 For instance, it does not address:
 
 * Future time given as a local time in some specified time zone, where
@@ -183,7 +183,7 @@ UTC:
   rotation of the earth.
 
   UTC is often mistakenly referred to as GMT, an earlier timescale
-  UTC was designed to be a useful successor for.
+  that UTC was designed to supersede.
 
 ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
@@ -259,7 +259,7 @@ calendar as defined by that organization could be included as
 
 An IANA registry for namespaces can be used to allocate namespaces for
 specific applications, as defined in {{iana-cons}}.  Two namespaces are
-allocated by the present document:
+allocated by this document:
 
 * "u-" for keys defined by the Unicode Consortium.
 * "x-" for keys used within experiments.
