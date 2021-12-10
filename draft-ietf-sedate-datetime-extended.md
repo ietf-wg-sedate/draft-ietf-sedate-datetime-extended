@@ -139,7 +139,7 @@ For instance, it does not address:
 * Future time given as a local time in some specified time zone, where
   changes to the definition of that time zone (e.g., a political
   decision to enact or rescind daylight saving time) affect the
-  instant in time corresponding with the timestamp.
+  instant in UTC time corresponding with the timestamp.
 * "Floating time", i.e., a local time without information describing
   the UTC offset or time zone in which it should be interpreted.
 * The use of time scales different from UTC, such as TAI.
