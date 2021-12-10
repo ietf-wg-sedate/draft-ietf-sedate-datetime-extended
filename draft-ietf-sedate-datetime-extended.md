@@ -182,7 +182,7 @@ UTC:
   for attempting to follow Universal Time based on measuring the
   rotation of the earth.
 
-  UTC is often mistakenly referred to as GMT, an earlier timescale
+  UTC is often mistakenly referred to as GMT, an earlier time scale
   that UTC was designed to supersede.
 
 ABNF:
