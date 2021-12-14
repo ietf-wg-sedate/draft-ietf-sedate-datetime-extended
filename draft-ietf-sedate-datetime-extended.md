@@ -257,9 +257,8 @@ For example, if "`u-`" is a namespace for the Unicode Consortium, a
 calendar as defined by that organization could be included as
 `u-ca=<value>`.
 
-An IANA registry for namespaces can be used to allocate namespaces for
-specific applications, as defined in {{iana-cons}}.  Two namespaces are
-allocated by this document:
+This document defines two namespaces for the registry described in
+{{iana-cons}}:
 
 * "u-" for keys defined by the Unicode Consortium.
 * "x-" for keys used within experiments.
@@ -301,6 +300,8 @@ URL:
 {: #record title="Registration record for a tag key"}
 
 'Identifier' contains the key name.
+A key name ending with a hyphen/minus sign "`-`" is a namespace
+that covers all timestamp tag keys beginning with that prefix.
 
 'Description' contains the name and description of the namespace.
 
@@ -410,10 +411,9 @@ by any compatible implementations and ignored otherwise.
 
 # IANA Considerations {#iana-cons}
 
-Define a registry that can contain both namespaces and keys.
-Namespaces can be recognized by ending with a hyphen/minus.
-Actual keys do not.
-See {{registered}} for the detailed information (to be edited).
+IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
+Each entry in the registry shall consist of the information described in {{registered}}.
+Initial contents of the registry are specified in {{namespaced}}.
 
 The policy is "RFC required", "Specification Required", ???[^policy]
 {{RFC8126}}.
