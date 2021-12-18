@@ -109,12 +109,12 @@ separately or attached to it in a non-standard manner.
 
 This is already a pressing issue for applications that handle each
 instant with an associated time zone name, to take into account things
-like DST transitions.
-Most of these applications attach the timezone to the timestamp in a
+like daylight saving time transitions.
+Most of these applications attach the time zone to the timestamp in a
 non-standard format, at least one of which is fairly well-adopted {{JAVAZDT}}.
 Furthermore, applications might want to attach even more information to the
-timestamp, including but not limited to the calendar system it needs
-to be represented in.
+timestamp, including but not limited to the calendar system in which
+it should be represented.
 
 ## Scope
 
@@ -138,17 +138,16 @@ For instance, it does not address:
 
 * Future time given as a local time in some specified time zone, where
   changes to the definition of that time zone (e.g., a political
-  decision to enact or rescind daylight savings time) changes the
-  actual time in UTC time.
-* Time given as a "floating time", i.e., a local time without
-  information as to which time zone this local time refers to.
+  decision to enact or rescind daylight saving time) affect the
+  instant in time corresponding with the timestamp.
+* "Floating time", i.e., a local time without information describing
+  the UTC offset or time zone in which it should be interpreted.
 * The use of time scales different from UTC, such as TAI.
 
-However, the additional information provided that augments a fixed
-timestamp may be sufficient to detect an inconsistency between
-intention and the actual information given in the timestamp, e.g.,
-between the additional timezone information given and the timezone
-offset recorded in the timestamp.
+However, additional information augmenting a fixed timestamp may be
+sufficient to detect an inconsistency between intention and the actual
+information in the timestamp, e.g., between the UTC offset and time zone
+name in the timestamp.
 For instance, such an inconsistency might arise because of:
 
 * Political decisions as discussed above, or
@@ -176,9 +175,9 @@ UTC:
   International des Poids et Mesures (BIPM) in conjunction with leap
   seconds as announced by the International Earth Rotation and
   Reference Frames Service {{IERS}}.
-  From 1972 through 1987 UTC was maintained entirely by Bureau
+  From 1972 through 1987, UTC was maintained entirely by Bureau
   International de l'Heure (BIH).
-  Before 1972 UTC was not generally recognized and civil time was
+  Before 1972, UTC was not generally recognized and civil time was
   determined by individual jurisdictions using different techniques
   for attempting to follow Universal Time based on measuring the
   rotation of the earth.
@@ -195,8 +194,7 @@ Internet Date/Time Format:
 : The date/time format defined in section 3 of this document.
 
 Timestamp:
-: This term is used in this document to refer to an unambiguous
-  representation of some instant in time.
+: An unambiguous representation of some instant in time.
 
 Z:
 : A suffix which, when applied to a time, denotes a UTC offset of
@@ -232,14 +230,14 @@ a *value* separated by an equals sign.
 The key of a tag can be split into two parts by including a
 hyphen/minus sign "`-`"; the first part (including the "`-`") can then
 be used as a namespace.
-The value of a tag can be a hyphen/minus delimited list of multiple values.
+The value of a tag can be one or more items delimited by hyphen/minus signs.
 
-Out of these tags, applications can build an informative
-*suffix* at the end with as many tags as required.
+Applications can build an informative timestamp *suffix* using any number of
+these tags.
 
 Keys are case-sensitive.  Values are case-sensitive unless otherwise specified.
 
-In case a suffix repeats a key or otherwise contains conflicting tags,
+When a suffix contains a repeated key or otherwise conflicting tags,
 implementations MUST give precedence to whichever value is positioned
 first. [^interop1]
 
@@ -255,15 +253,15 @@ By including a hyphen/minus sign "`-`", the namespace can be separated
 from the rest of the key; if no hyphen/minus sign is included, the
 whole key is the namespace.
 
-For example, if "`u-`" is a namespace for the Unicode consortium, a
-calendar as defined by that consortium could be included as
+For example, if "`u-`" is a namespace for the Unicode Consortium, a
+calendar as defined by that organization could be included as
 `u-ca=<value>`.
 
 An IANA registry for namespaces can be used to allocate namespaces for
 specific applications, as defined in {{iana-cons}}.  Two namespaces are
 allocated by the present document:
 
-* "u-" for keys defined by the Unicode consortium.
+* "u-" for keys defined by the Unicode Consortium.
 * "x-" for keys used within experiments.
   Such keys are not for general interchange and MUST be rejected by a
   recipient unless that is specifically enabled for an experiment.
@@ -366,8 +364,8 @@ alphanum          = ALPHA / DIGIT
 {: #grammar title="ABNF grammar of extensions to RFC 3339"}
 
 Note that a `time-zone` is syntactically similar to a `suffix-tag`,
-but does not use a `suffix-key` and an equals sign.
-This special case is only available for timezone tags.
+but does not include an equals sign.
+This special case is only available for time zone tags.
 
 ## Examples {#date-time-examples}
 
@@ -377,7 +375,7 @@ Here are some examples of Internet extended date/time format.
 ~~~~
 1996-12-19T16:39:57-08:00
 ~~~~
-{: #rfc3339-datetime title="RFC 3339 date-time with timezone offset"}
+{: #rfc3339-datetime title="RFC 3339 date-time with time zone offset"}
 
 {{rfc3339-datetime}} represents 39 minutes and 57 seconds after the 16th hour of
 December 19th, 1996 with an offset of -08:00 from UTC.
@@ -386,7 +384,7 @@ Note that this is the same instant in time as `1996-12-20T00:39:57Z`, expressed 
 ~~~~
 1996-12-19T16:39:57-08:00[America/Los_Angeles]
 ~~~~
-{: #datetime-tzname title="Adding a timezone name"}
+{: #datetime-tzname title="Adding a time zone name"}
 
 {{datetime-tzname}} represents the exact same instant as the previous example but
 additionally specifies the human time zone associated with it
