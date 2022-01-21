@@ -132,7 +132,7 @@ in {{RFC3339}} that has the following properties:
 
 
 This document does not address extensions to the format where the
-semantic result no longer is a fixed timestamp that is referenced to a
+semantic result is no longer a fixed timestamp that is referenced to a
 (past or future) UTC time.
 For instance, it does not address:
 
