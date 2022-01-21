@@ -132,14 +132,14 @@ in {{RFC3339}} that has the following properties:
 
 
 This document does not address extensions to the format where the
-semantic result is no longer an unambiguous instant in time (past or
-future).
+semantic result no longer is a fixed timestamp that is referenced to a
+(past or future) UTC time.
 For instance, it does not address:
 
 * Future time given as a local time in some specified time zone, where
   changes to the definition of that time zone (e.g., a political
   decision to enact or rescind daylight saving time) affect the
-  instant in UTC time corresponding with the timestamp.
+  instant in time corresponding with the timestamp.
 * "Floating time", i.e., a local time without information describing
   the UTC offset or time zone in which it should be interpreted.
 * The use of time scales different from UTC, such as TAI.
@@ -183,7 +183,7 @@ UTC:
   rotation of the earth.
 
   UTC is often mistakenly referred to as GMT, an earlier time scale
-  that UTC was designed to supersede.
+  UTC was designed to be a useful successor for.
 
 ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
@@ -257,8 +257,9 @@ For example, if "`u-`" is a namespace for the Unicode Consortium, a
 calendar as defined by that organization could be included as
 `u-ca=<value>`.
 
-This document defines two namespaces for the registry described in
-{{iana-cons}}:
+An IANA registry for namespaces can be used to allocate namespaces for
+specific applications, as defined in {{iana-cons}}.  Two namespaces are
+allocated by the present document:
 
 * "u-" for keys defined by the Unicode Consortium.
 * "x-" for keys used within experiments.
