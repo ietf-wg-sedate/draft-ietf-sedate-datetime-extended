@@ -366,7 +366,9 @@ that take part in the controlled experiment making use of these tag keys.
 
 IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
 Each entry in the registry shall consist of the information described in {{registered}}.
-Initial contents of the registry are specified in {{registered}}.
+Initial contents of the registry are specified in {{registered}}. [^todo1]
+
+[^todo1]: We need to actually do this; see github issue #4.
 
 The registration policy {{RFC8126}} is "Specification Required" for
 permanent entries, and "Expert Review" for provisional ones.
