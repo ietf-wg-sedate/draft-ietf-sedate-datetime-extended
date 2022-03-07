@@ -108,8 +108,8 @@ information related to a given timestamp needs to be either handled
 separately or attached to it in a non-standard manner.
 
 This is already a pressing issue for applications that handle each
-instant with an associated time zone name, to take into account things
-like daylight saving time transitions.
+instant with an associated time zone name, to take into account events
+such as daylight saving time transitions.
 Most of these applications attach the time zone to the timestamp in a
 non-standard format, at least one of which is fairly well-adopted {{JAVAZDT}}.
 Furthermore, applications might want to attach even more information to the
@@ -199,8 +199,7 @@ Timestamp:
 Z:
 : A suffix which, when applied to a time, denotes a UTC offset of
   00:00; often spoken "Zulu" from the ICAO phonetic alphabet
-  representation of the letter "Z".
-  <!-- Shouldn't we just import this term from RFC 3339? -->
+  representation of the letter "Z" (from {{Section 2 of RFC3339}}).
 
 Time Zone:
 : A time zone that is included in the Time Zone Database (often
