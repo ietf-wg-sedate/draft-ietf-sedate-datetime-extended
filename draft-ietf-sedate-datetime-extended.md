@@ -277,7 +277,7 @@ Reference:
 Key names that start with an underscore are intended for experiments
 in controlled environments and cannot be registered; such keys MUST
 NOT be used for interchange and MUST be rejected by implementations
-not specifically configured to take post in such an experiment.
+not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
