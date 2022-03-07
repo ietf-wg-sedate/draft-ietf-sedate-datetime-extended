@@ -430,5 +430,7 @@ TBD
 --- back
 
 # Acknowledgements
+{:unnumbered}
 
-TBD
+Richard Gibson provided some editorial improvements.
+
