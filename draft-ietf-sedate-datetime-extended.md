@@ -46,8 +46,10 @@ normative:
   RFC3339:
   RFC5234: abnf
 #  RFC5646: # in BCP47
+  RFC6838: media-types
   RFC8126:
 #  BCP47:
+  BCP178:
 informative:
   # obsolete, but needed for its Appendix E:
   RFC1305: ntp-old
@@ -222,13 +224,11 @@ timestamp extension suffix and defines such a format that extends
 
 ## Informative
 
-The format should allow implementations to specify additional
+The format is intended to allow implementations to specify additional
 important information in addition to the bare timestamp.
+
 This is done by defining *tags*, each with a *key* and
 a *value* separated by an equals sign.
-The key of a tag can be split into two parts by including a
-hyphen/minus sign "`-`"; the first part (including the "`-`") can then
-be used as a namespace.
 The value of a tag can be one or more items delimited by hyphen/minus signs.
 
 Applications can build an informative timestamp *suffix* using any number of
@@ -245,89 +245,41 @@ first. [^interop1]
      error handling.
 {: source="--- cabo"}
 
-## Namespaced
-
-Suffix keys identify a *namespace*.
-By including a hyphen/minus sign "`-`", the namespace can be separated
-from the rest of the key; if no hyphen/minus sign is included, the
-whole key is the namespace.
-
-For example, if "`u-`" is a namespace for the Unicode Consortium, a
-calendar as defined by that organization could be included as
-`u-ca=<value>`.
-
-An IANA registry for namespaces can be used to allocate namespaces for
-specific applications, as defined in {{iana-cons}}.  Two namespaces are
-allocated by the present document:
-
-* "u-" for keys defined by the Unicode Consortium.
-* "x-" for keys used within experiments.
-  Such keys are not for general interchange and MUST be rejected by a
-  recipient unless that is specifically enabled for an experiment.
-  See {{?RFC6648}} for additional considerations about "x-" namespaces.
-
-* In addition, for CLDR extensions: [^CLDRfn]
-  <!-- What does CLDR extension mean? -->
-  * There must be a `namespace-key` and it is restricted to 2
-    `alphanum` characters.
-  * A `suffix-value` is limited to `3*8alphanum`.
-
-[^CLDRfn]: I don't know how this would be used, so I can't edit this text.
-{: source="--- cabo"}
-
-Additional namespaces can be registered under an Expert review policy,
-providing a description for the intended use.  This may be a general
-concept, or a specific organization that is intended to register keys
-within this namespace.
-
 ## Registered
 
-Actual keys are registered by supplying the information in {{record}}:
+Actual suffix tag keys are registered by supplying the information
+specified in this section.  This information is modeled after that
+specified for the media type registry {{RFC6838}}; if in doubt, the
+provisions of this registry should be applied analogously.
 
-~~~~
-%%
-Identifier:
+Key Identifier:
+: The key.
+
+Registration status:
+: "Provisional" or "Permanent"
+
 Description:
-Comments:
-Added:
-RFC:
-Authority:
-Contact_Email:
-Mailing_List:
-URL:
-%%
-~~~~
-{: #record title="Registration record for a tag key"}
+: A very brief description of the key.
 
-'Identifier' contains the key name.
-A key name ending with a hyphen/minus sign "`-`" is a namespace
-that covers all timestamp tag keys beginning with that prefix.
+Change controller:
+: Who is in control of evolving the specification governing values for
+  this key.  This information can include email addresses of contact
+  points and discussion lists, and references to relevant web pages (URLs).
 
-'Description' contains the name and description of the namespace.
+Reference:
+: A reference.
+  For permanent tag keys, this includes a full specification.
+  For provisional tag keys, there is an expectation that some
+  information is available even if that does not amount to a full
+  specification; in this case, the registrant is expected to improve this
+  information over time.
 
-'Comments' is an OPTIONAL field and MAY contain a broader description
-of the namespace.
-<!-- Is the field optional or its contents? -->
-
-'Added' contains the date the key's definition was published in the
-"date-full" format specified in {{grammar}}.
-For example: 2004-06-28 represents June 28, 2004, in the Gregorian
-calendar.
-<!-- That information is redundant with the RFC -->
-
-'RFC' contains the RFC number assigned to the namespace.
-
-'Authority' contains the name of the maintaining authority for the
-namespace.
-
-'Contact_Email' contains the email address used to contact the
-maintaining authority.
-
-'Mailing_List' contains the URL or subscription email address of the
-mailing list used by the maintaining authority.
-
-'URL' contains the URL of the registry for this namespace.
-
+Key names that start with an underscore are intended for experiments
+in controlled environments and cannot be registered; such keys MUST
+NOT be used for interchange and MUST be rejected by implementations
+not specifically configured to take part in such an experiment.
+See {{BCP178}} for a discussion about the danger of experimental keys
+leaking out to general production and why that MUST be prevented.
 
 # Syntax Extensions to RFC 3339
 
@@ -349,9 +301,9 @@ time-zone-part    = time-zone-initial *13(time-zone-char)
 time-zone-name    = time-zone-part *("/" time-zone-part)
 time-zone         = "[" time-zone-name "]"
 
-namespace         = 1*alphanum
-namespace-key     = 1*alphanum
-suffix-key        = namespace ["-" namespace-key]
+key-initial       = ALPHA / "_"
+key-char          = key-initial / DIGIT / "-"
+suffix-key        = key-initial *key-char
 
 suffix-value      = 1*alphanum
 suffix-values     = suffix-value *("-" suffix-value)
@@ -401,27 +353,27 @@ account.
 implementations that they should project it to the Hebrew calendar.
 
 ~~~~
-1996-12-19T16:39:57-08:00[x-foo=bar][x-baz=bat]
+1996-12-19T16:39:57-08:00[_foo=bar][_baz=bat]
 ~~~~
-{: #date-time-private title="Adding tags in private use namespaces"}
+{: #date-time-private title="Adding experimental tags"}
 
-{{date-time-private}}, based on {{rfc3339-datetime}}, utilizes the private use namespace to declare two
-additional pieces of information in the suffix that can be interpreted
-by any compatible implementations and ignored otherwise.
+{{date-time-private}}, based on {{rfc3339-datetime}}, utilizes keys
+identified as experimental by a leading underscore to declare two additional pieces of
+information in the suffix; these can be interpreted by implementations
+that take part in the controlled experiment making use of these tag keys.
 
 # IANA Considerations {#iana-cons}
 
 IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
 Each entry in the registry shall consist of the information described in {{registered}}.
-Initial contents of the registry are specified in {{namespaced}}.
+Initial contents of the registry are specified in {{registered}}. [^todo1]
 
-The policy is "RFC required", "Specification Required", ???[^policy]
-{{RFC8126}}.
+[^todo1]: We need to actually do this; see github issue #4.
 
-[^policy]: We need to define the policy for both namespaces and full keys.
-{: source="--- cabo"}
-
-
+The registration policy {{RFC8126}} is "Specification Required" for
+permanent entries, and "Expert Review" for provisional ones.
+In the second case, the expert is instructed to ascertain that a basic
+specification does exist, even if not complete or published yet.
 
 # Security Considerations
 
