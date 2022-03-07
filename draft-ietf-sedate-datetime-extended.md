@@ -197,12 +197,13 @@ Timestamp:
 : An unambiguous representation of some instant in time.
 
 UTC Offset:
-: An amount of time before or after UTC that defines the relationship
-  between UTC and the local time in a particular place.
+: Difference between a given local time and UTC, usually given in
+  negative or positive hours and minutes. For example, local time in New
+  York in the wintertime is 5 hours behind UTC, so its UTC offset is "-05:00".
 
 Z:
 : A suffix which, when applied to a time, denotes a UTC offset of
-  00:00; often spoken "Zulu" from the ICAO phonetic alphabet
+  +00:00; often spoken "Zulu" from the ICAO phonetic alphabet
   representation of the letter "Z" (from {{Section 2 of RFC3339}}).
 
 Time Zone:
@@ -235,7 +236,7 @@ IANA Time Zone:
 
 Offset Time Zone:
 : A time zone defined by a specific UTC offset, e.g. `+08:45` and
-  serialized using the same numieric UTC offset format used in an
+  serialized using the same numeric UTC offset format used in an
   RFC 3339 timestamp. Although serialization with offset time zones is
   supported in this document for backwards compatibility with
   java.time.ZonedDateTime {{JAVAZDT}}, use of offset time zones is
@@ -392,7 +393,7 @@ time-zone-char    = time-zone-initial / DIGIT / "-" / "+"
 time-zone-part    = time-zone-initial *13(time-zone-char)
                     ; but not "." or ".."
 time-zone-name    = time-zone-part *("/" time-zone-part)
-time-zone         = "[" time-zone-name / time-offset "]"
+time-zone         = "[" time-zone-name / time-numoffset "]"
 
 namespace         = 1*alphanum
 namespace-key     = 1*alphanum
