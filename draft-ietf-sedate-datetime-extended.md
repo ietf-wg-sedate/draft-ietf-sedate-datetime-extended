@@ -132,7 +132,7 @@ in {{RFC3339}} that has the following properties:
 
 
 This document does not address extensions to the format where the
-semantic result no longer is a fixed timestamp that is referenced to a
+semantic result is no longer a fixed timestamp that is referenced to a
 (past or future) UTC time.
 For instance, it does not address:
 
@@ -182,7 +182,7 @@ UTC:
   for attempting to follow Universal Time based on measuring the
   rotation of the earth.
 
-  UTC is often mistakenly referred to as GMT, an earlier timescale
+  UTC is often mistakenly referred to as GMT, an earlier time scale
   UTC was designed to be a useful successor for.
 
 ABNF:
@@ -301,6 +301,8 @@ URL:
 {: #record title="Registration record for a tag key"}
 
 'Identifier' contains the key name.
+A key name ending with a hyphen/minus sign "`-`" is a namespace
+that covers all timestamp tag keys beginning with that prefix.
 
 'Description' contains the name and description of the namespace.
 
@@ -410,10 +412,9 @@ by any compatible implementations and ignored otherwise.
 
 # IANA Considerations {#iana-cons}
 
-Define a registry that can contain both namespaces and keys.
-Namespaces can be recognized by ending with a hyphen/minus.
-Actual keys do not.
-See {{registered}} for the detailed information (to be edited).
+IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
+Each entry in the registry shall consist of the information described in {{registered}}.
+Initial contents of the registry are specified in {{namespaced}}.
 
 The policy is "RFC required", "Specification Required", ???[^policy]
 {{RFC8126}}.
