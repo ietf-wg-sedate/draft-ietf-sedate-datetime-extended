@@ -272,7 +272,7 @@ Offset Time Zone:
   calculations in programs that add, subtract, or otherwise derive new
   timestamps from the one provided. For example,
   `2020-01-01T00:00+01:00[Europe/Paris]` will let programs add six
-  months to the timestamp while adjusting for Daylight Saving Time.
+  months to the timestamp while adjusting for Summer Time (Daylight Saving Time).
   But the same calculation applied to `2020-01-01T00:00+01:00[+01:00]`
   will produce an incorrect result that will be off by one hour in the
   timezone `Europe/Paris`.
