@@ -40,6 +40,11 @@ author:
     phone: +49-421-218-63921
     email: cabo@tzi.org
 
+contributor:
+- name: Justin Grant
+  email: justingrant.ietf.public@gmail.com
+- name: Your Name Here
+
 normative:
 #  RFC2026:
 #  RFC2028:
@@ -49,11 +54,13 @@ normative:
   RFC6838: media-types
   RFC8126:
 #  BCP47:
-  BCP178:
+  BCP178: RFC6648
+  BCP175: RFC6557
 informative:
   # obsolete, but needed for its Appendix E:
   RFC1305: ntp-old
   ISO8601:
+    display: ISO8601:1988
     target: https://www.iso.org/standard/15903.html
     title: >
       Data elements and interchange formats — Information interchange —
@@ -85,6 +92,14 @@ informative:
     title: Unicode CLDR Project
     date: false
     author:
+  TZDB:
+    target: https://data.iana.org/time-zones/tz-link.html
+    title: Sources for time zone and daylight saving time data
+    date: false
+  TZDB-NAMING:
+    target: https://data.iana.org/time-zones/theory.html
+    title: Theory and pragmatics of the tz code and data
+    date: false
 ...
 
 --- abstract
@@ -220,30 +235,36 @@ Time Zone:
   changes or other changes to the UTC offset of that time zone.
   Unlike the UTC offset of a timestamp which makes no claims about
   the UTC offset of other related timestamps (and which is therefore
-  unsuitable for performing local-time arithmetic operations like
+  unsuitable for performing local-time operations such as
   "one day later"), a time zone also defines how to derive new
-  timestamps. For example, to calculate "one day later than this
+  timestamps based on differences in local time.
+  For example, to calculate "one day later than this
   timestamp in San Francisco", a time zone is required because the
   UTC offset of local time in San Francisco can change from one day
   to the next.
 
 IANA Time Zone:
 : A named time zone that is included in the Time Zone Database (often
-  called `tz` or `zoneinfo`) maintained by IANA. Most IANA time zones
+  called `tz` or `zoneinfo`) maintained by IANA {{TZDB}}{{BCP175}}.
+  Most IANA time zones
   are named for the largest city in a particular region that shares
-  the same time zone rules, e.g. `Europe/Paris` or `Asia/Tokyo`.
-  Special IANA time zones like `Etc/GMT+10` are used to represent
+  the same time zone rules, e.g. `Europe/Paris` or `Asia/Tokyo` {{TZDB-NAMING}}.
+  Special IANA time zones such as `Etc/GMT+10` can be used to represent
   timestamps outside country boundaries, e.g. a buoy in the middle
-  of the Pacific Ocean. The IANA time zone for `Z` is called `Etc/GMT`. 
+  of the Pacific Ocean (note that the `Etc/GMT+10` time zone has a constant UTC
+  Offset of -10:00 \[sic!]). <!-- The IANA time zone for `Z` is called
+  `Etc/GMT`. Not true.  No idea which time zone name is preferred for Z. -->
   <!-- ref needed -->
 
 Offset Time Zone:
 : A time zone defined by a specific UTC offset, e.g. `+08:45` and
-  serialized using the same numeric UTC offset format used in an
-  RFC 3339 timestamp. Although serialization with offset time zones is
+  serialized using as its name the same numeric UTC offset format used in an
+  RFC 3339 timestamp.
+  Although serialization with offset time zones is
   supported in this document for backwards compatibility with
   java.time.ZonedDateTime {{JAVAZDT}}, use of offset time zones is
-  strongly discouraged. In particular, programs MUST NOT copy the UTC
+  strongly discouraged.
+  In particular, programs MUST NOT copy the UTC
   offset from a timestamp into an offset time zone in order to satisfy
   another program which requires a time zone annotation in its input.
   Doing this will improperly assert that the UTC offset of timestamps
@@ -253,7 +274,8 @@ Offset Time Zone:
   `2020-01-01T00:00+01:00[Europe/Paris]` will let programs add six
   months to the timestamp while adjusting for Daylight Saving Time.
   But the same calculation applied to `2020-01-01T00:00+01:00[+01:00]`
-  will produce an incorrect result that will be off by one hour.
+  will produce an incorrect result that will be off by one hour in the
+  timezone `Europe/Paris`.
 
 CLDR:
 : Common locale data repository {{CLDR}}, a project of the Unicode
