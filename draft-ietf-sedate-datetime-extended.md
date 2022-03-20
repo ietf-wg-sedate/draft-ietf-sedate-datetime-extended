@@ -254,7 +254,14 @@ IANA Time Zone:
   of the Pacific Ocean (note that the `Etc/GMT+10` time zone has a constant UTC
   Offset of -10:00 \[sic!]). <!-- The IANA time zone for `Z` is called
   `Etc/GMT`. Not true.  No idea which time zone name is preferred for Z. -->
-  <!-- ref needed -->
+
+  Note that the rules defined for a named IANA time zone can change
+  over time.
+  The use of a named IANA time zone implies that the intent is for the
+  rules that are current at the time of interpretation to apply, i.e.,
+  the additional information conveyed by using that time zone name is
+  to change with the changed rules as recorded in the IANA time zone
+  database.
 
 Offset Time Zone:
 : A time zone defined by a specific UTC offset, e.g. `+08:45` and
