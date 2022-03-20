@@ -198,15 +198,61 @@ Internet Date/Time Format:
 Timestamp:
 : An unambiguous representation of some instant in time.
 
+UTC Offset:
+: Difference between a given local time and UTC, usually given in
+  negative or positive hours and minutes. For example, local time in New
+  York in the wintertime is 5 hours behind UTC, so its UTC offset is "-05:00".
+
 Z:
 : A suffix which, when applied to a time, denotes a UTC offset of
   00:00; often spoken "Zulu" from the ICAO phonetic alphabet
   representation of the letter "Z" (from {{Section 2 of RFC3339}}).
 
 Time Zone:
-: A time zone that is included in the Time Zone Database (often
-  called `tz` or `zoneinfo`) maintained by IANA.
+: A set of rules representing the relationship of local time to UTC
+  for a particular place or region. Mathematically, a time zone can 
+  be thought of as a function that maps timestamps to UTC offsets.
+  Time zones can deterministically convert a timestamp to local time.
+  They can also be used in the reverse direction to convert local time
+  to a timestamp, with the caveat that some local times may have zero
+  or multiple possible timestamps due to nearby Daylight Saving Time
+  changes or other changes to the UTC offset of that time zone.
+  Unlike the UTC offset of a timestamp which makes no claims about
+  the UTC offset of other related timestamps (and which is therefore
+  unsuitable for performing local-time arithmetic operations like
+  "one day later"), a time zone also defines how to derive new
+  timestamps. For example, to calculate "one day later than this
+  timestamp in San Francisco", a time zone is required because the
+  UTC offset of local time in San Francisco can change from one day
+  to the next. 
+
+IANA Time Zone:
+: A named time zone that is included in the Time Zone Database (often
+  called `tz` or `zoneinfo`) maintained by IANA. Most IANA time zones
+  are named for the largest city in a particular region that shares
+  the same time zone rules, e.g. `Europe/Paris` or `Asia/Tokyo`.
+  Special IANA time zones like `Etc/GMT+10` are used to represent
+  timestamps outside country boundaries, e.g. a buoy in the middle
+  of the Pacific Ocean. The IANA time zone for `Z` is called `Etc/GMT`. 
   <!-- ref needed -->
+
+Offset Time Zone:
+: A time zone defined by a specific UTC offset, e.g. `+08:45` and
+  serialized using the same numeric UTC offset format used in an
+  RFC 3339 timestamp. Although serialization with offset time zones is
+  supported in this document for backwards compatibility with
+  java.time.ZonedDateTime {{JAVAZDT}}, use of offset time zones is
+  strongly discouraged. In particular, programs MUST NOT copy the UTC
+  offset from a timestamp into an offset time zone in order to satisfy
+  another program which requires a time zone annotation in its input.
+  Doing this will improperly assert that the UTC offset of timestamps
+  in that location will never change, which can result in incorrect
+  calculations in programs that add, subtract, or otherwise derive new
+  timestamps from the one provided. For example,
+  `2020-01-01T00:00+01:00[Europe/Paris]` will let programs add six
+  months to the timestamp while adjusting for Daylight Saving Time.
+  But the same calculation applied to `2020-01-01T00:00+01:00[+01:00]`
+  will produce an incorrect result that will be off by one hour.
 
 CLDR:
 : Common locale data repository {{CLDR}}, a project of the Unicode
@@ -290,8 +336,8 @@ order to allow the inclusion of an optional suffix.
 
 The extended date/time format is described by the rule
 `date-time-ext`.
-`date-time` is imported from {{Section 5.6 of RFC3339}}, `ALPHA` and
-`DIGIT` from {{Section B.1 of RFC5234}}.
+`date-time` and `time-numoffset` are imported from {{Section 5.6 of
+RFC3339}}, `ALPHA` and `DIGIT` from {{Section B.1 of RFC5234}}.
 
 ~~~~ abnf
 time-zone-initial = ALPHA / "." / "_"
@@ -299,7 +345,7 @@ time-zone-char    = time-zone-initial / DIGIT / "-" / "+"
 time-zone-part    = time-zone-initial *13(time-zone-char)
                     ; but not "." or ".."
 time-zone-name    = time-zone-part *("/" time-zone-part)
-time-zone         = "[" time-zone-name "]"
+time-zone         = "[" time-zone-name / time-numoffset "]"
 
 key-initial       = ALPHA / "_"
 key-char          = key-initial / DIGIT / "-"
