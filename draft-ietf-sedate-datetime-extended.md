@@ -1,6 +1,6 @@
 ---
-stand_alone: true
-ipr: trust200902
+v: 3
+
 docname: draft-ietf-sedate-datetime-extended-latest
 cat: std
 consensus: true
@@ -85,6 +85,7 @@ informative:
     title: Unicode CLDR Project
     date: false
     author:
+...
 
 --- abstract
 
@@ -210,7 +211,7 @@ Z:
 
 Time Zone:
 : A set of rules representing the relationship of local time to UTC
-  for a particular place or region. Mathematically, a time zone can 
+  for a particular place or region. Mathematically, a time zone can
   be thought of as a function that maps timestamps to UTC offsets.
   Time zones can deterministically convert a timestamp to local time.
   They can also be used in the reverse direction to convert local time
@@ -224,7 +225,7 @@ Time Zone:
   timestamps. For example, to calculate "one day later than this
   timestamp in San Francisco", a time zone is required because the
   UTC offset of local time in San Francisco can change from one day
-  to the next. 
+  to the next.
 
 IANA Time Zone:
 : A named time zone that is included in the Time Zone Database (often
