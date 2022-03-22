@@ -1,0 +1,1691 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2022-03-22T01:17:48.371112+00:00",
+  "repo": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    },
+    {
+      "name": "out of scope in -02",
+      "description": "",
+      "color": "B47180"
+    },
+    {
+      "name": "might be solved by -02",
+      "description": "",
+      "color": "B4F0D7"
+    },
+    {
+      "name": "editorial",
+      "description": "",
+      "color": "0e8a16"
+    },
+    {
+      "name": "philosophical",
+      "description": "no direct implication on text",
+      "color": "FBCA04"
+    }
+  ],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOGI5hMc49SAjb",
+      "title": "We seem to ignore the lessons learned and documented in RFC 6648 (\u201cx-dash\u201d).",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/2",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "might be solved by -02"
+      ],
+      "body": "",
+      "createdAt": "2021-10-16T19:35:41Z",
+      "updatedAt": "2021-12-03T17:25:31Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "(SEDATE meeting:) Could get rid of all namespaceing, could define procedure well enough we no longer need x-\r\n",
+          "createdAt": "2021-10-20T16:39:06Z",
+          "updatedAt": "2021-10-20T16:39:06Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "(Removing namespacing would remove about half of the text.)",
+          "createdAt": "2021-10-20T16:41:00Z",
+          "updatedAt": "2021-10-20T16:41:00Z"
+        },
+        {
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "body": "CCing SEDATE\n\nOn 20/10/2021 22.11, cabo wrote:\n> (Removing namespacing would remove about half of the text.)\n\nYes, but then any additional information that could be included would \nneed a full RFC cycle. One of the main motivations behind this was to \nlower the barrier so that people don't deviate from the standards track \nlike they did for timezones.\n",
+          "createdAt": "2021-10-21T06:38:57Z",
+          "updatedAt": "2021-10-21T06:38:57Z"
+        },
+        {
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "body": "Also CCing other stakeholders directly for greater visibility.\n",
+          "createdAt": "2021-10-21T07:12:53Z",
+          "updatedAt": "2021-10-21T07:12:53Z"
+        },
+        {
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "body": "On 2021-10-21, at 08:38, Ujjwal Sharma ***@***.***> wrote:\n> \n> CCing SEDATE\n\nI\u2019m not sure we want all the discussion copied between both GitHub and the mailing list, but I\u2019ll stick with this until the chairs intervene.\n\n> On 20/10/2021 22.11, cabo wrote:\n>> (Removing namespacing would remove about half of the text.)\n> \n> Yes, but then any additional information that could be included would need a full RFC cycle.\n\nThere is space between not having extensibility at all and having a complicated way to registering namespaces where extensions can then be registered.\n\nWhy don\u2019t we just register extensions?\n\n> One of the main motivations behind this was to lower the barrier so that people don't deviate from the standards track like they did for timezones.\n\nExactly.\n\nMake a registry for extensions, not for namespaces for extensions.\nThink hard about the RFC 8126 policies applying to this (we can distinguish different policies for different kinds of names).\n\nGr\u00fc\u00dfe, Carsten\n\n",
+          "createdAt": "2021-10-21T07:18:15Z",
+          "updatedAt": "2021-10-21T07:18:15Z"
+        },
+        {
+          "author": "sffc",
+          "authorAssociation": "NONE",
+          "body": "CC @sffc @macchiati to comment about namespacing and extensions.",
+          "createdAt": "2021-11-03T17:23:26Z",
+          "updatedAt": "2021-11-03T17:23:26Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "-02 has a cleaned up naming and name spacing system.\r\nhttps://www.ietf.org/archive/id/draft-ietf-sedate-datetime-extended-02.html#section-2.2-4.2 now defines an \"x-\" namespace and restricts usage of that to actual experiments.\r\nIs that what we want to do?\r\nIs that all we need to do?\r\nDiscuss.",
+          "createdAt": "2021-12-03T17:24:41Z",
+          "updatedAt": "2021-12-03T17:24:41Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOGI5hMc49fIsa",
+      "title": "What is the meaning of adding a timezone to a timestamp",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/3",
+      "state": "CLOSED",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "out of scope in -02"
+      ],
+      "body": "The current draft does not say what it actually means when a timezone name is added to a timestamp.\r\n\r\nIs the combination of the timezone name and the timezone offset an assertion that the offset was correct for the named timezone at the time?\r\n\r\nWhat if that assertion is not true?\r\n\r\nWhat about future times?  Does the timezone name take precedence over the offset given (i.e., the timestamp changes its meaning with political decisions) or does the offset win?\r\n",
+      "createdAt": "2021-10-20T15:52:39Z",
+      "updatedAt": "2022-03-20T23:04:12Z",
+      "closedAt": "2022-03-20T23:04:12Z",
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "(From the SEDATE meeting: \"encode the intention\"?)\r\n",
+          "createdAt": "2021-10-20T16:30:36Z",
+          "updatedAt": "2021-10-20T16:30:36Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "(From the SEDATE meeting: \"don't encode the timezone if that is not the overriding information\".)\r\n\r\nOne use case is documenting the time zone name, though.",
+          "createdAt": "2021-10-20T16:31:53Z",
+          "updatedAt": "2021-10-20T16:31:53Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "We now have a clarified scope (#10 as published in -02).\r\nThis makes the underlying issue out of scope -- the RFC 3339 semantics prevail.\r\nDiscuss.",
+          "createdAt": "2021-12-03T17:19:59Z",
+          "updatedAt": "2021-12-03T17:19:59Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "#17 essentially is the continuation of this issue with a revised question.\r\nThe resolution of the question in this PR remains in place.",
+          "createdAt": "2022-03-20T23:04:12Z",
+          "updatedAt": "2022-03-20T23:04:12Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOGI5hMc49fPax",
+      "title": "Need at least one extension defined so we can have good examples",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/4",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "(Ned Freed)",
+      "createdAt": "2021-10-20T16:21:26Z",
+      "updatedAt": "2021-10-20T16:21:26Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOGI5hMc49fQM_",
+      "title": "Optimized for users or for programs?",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/5",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "philosophical"
+      ],
+      "body": "Did we ever say whether this is for human end-users or just an internal programming thing?  \r\n\r\nIn the latter case, we possibly can limit this to ASCII.  \r\nIn the former case, we are opening the big box of Pandora of UTF-8.",
+      "createdAt": "2021-10-20T16:25:12Z",
+      "updatedAt": "2022-03-20T23:18:47Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "In Temporal, we've assumed that these strings are primarily for consumption by software, not for display to end users. The fact that they're human-readable is important for easier debugging/logging purposes for developers or other technical readers, but we have no expectation that these strings should be meaningful for non-technical end users.  Furthermore, when there's a tradeoff between human readability and machine readability, the latter should almost always win.\r\n\r\nA good example of this prioritization is timestamps with a calendar annotation. A more human-readable solution might show the day, month, and year in the context of the calendar. But a more machine-readable solution just shows the ISO 8601 date in the string, in order to maximize RFC 3339 compatibility and to enable programs to sort dates from multiple calendars on the same timeline.  In this case, the machine benefits of sorting and compatibility win out over the human benefit of being able to interpret the string within the context of a non-ISO calendar.",
+          "createdAt": "2021-12-10T19:14:09Z",
+          "updatedAt": "2021-12-10T19:14:09Z"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOGI5hMc49fSIc",
+      "title": "Are TZDB identifiers stable enough?",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/6",
+      "state": "CLOSED",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Is it wise to base this on tzdb identifiers, given tzdb community does not acknowldge identifiers to be managed artifacts, but mere byproducts?\r\n\r\nList of valid identifiers is not under control of this specification.\r\n\r\n(Hans-J\u00f6rg Happel)",
+      "createdAt": "2021-10-20T16:33:19Z",
+      "updatedAt": "2022-03-20T23:16:33Z",
+      "closedAt": "2022-03-20T23:16:33Z",
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "cabo: Is solving the TZ conundrum on our charter?\r\n\r\nBron: Thankfully not!  But we need to decide what to reference\r\n\r\nJohn Klensin: Carsten, I hope we can at least describe that conundrum well enough that it is understood.  Solving it is obviously a whole different matter.",
+          "createdAt": "2021-10-20T16:49:45Z",
+          "updatedAt": "2021-10-20T16:49:45Z"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOGI5hMc49fUA2",
+      "title": "Support Floating time?",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/7",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "out of scope in -02"
+      ],
+      "body": "i.e., time without a specified timezone.\r\n",
+      "createdAt": "2021-10-20T16:42:28Z",
+      "updatedAt": "2021-12-03T17:18:32Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "Ujjwal: could special-case Z as opposed to +0000 (to mean J).",
+          "createdAt": "2021-10-20T16:43:31Z",
+          "updatedAt": "2021-10-20T16:45:03Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "(that would be incompatible to, e.g., icalendar)",
+          "createdAt": "2021-10-20T16:43:51Z",
+          "updatedAt": "2021-10-20T16:44:31Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "John Klensin: \"\"ingenious\" gives me the creeps.  If we need to do something, let's make it explicit and avoid heuristics or cleverness to which people will need to adapt.\"",
+          "createdAt": "2021-10-20T16:47:54Z",
+          "updatedAt": "2021-10-20T16:47:54Z"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOGI5hMc49fWKe",
+      "title": "Do we want to support timescales?",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/8",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "out of scope in -02"
+      ],
+      "body": "",
+      "createdAt": "2021-10-20T16:53:07Z",
+      "updatedAt": "2021-12-03T17:18:18Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "(My answer: yes.  Generally speaking, all the information in https://www.ietf.org/archive/id/draft-ietf-cbor-time-tag-00.html is a candidate for inclusion, so we get parity between text and binary forms again.)\r\n",
+          "createdAt": "2021-10-20T16:54:48Z",
+          "updatedAt": "2021-10-20T16:54:48Z"
+        },
+        {
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "body": "CCing SEDATE ML to this.\n\nOn 20/10/2021 22.24, cabo wrote:\n> (My answer: yes. Generally speaking, all the information in \n> https://www.ietf.org/archive/id/draft-ietf-cbor-time-tag-00.html \n> <https://www.ietf.org/archive/id/draft-ietf-cbor-time-tag-00.html> is a \n> candidate for inclusion, so we get parity between text and binary forms \n> again.)\n> \n> \u2014\n> You are receiving this because you are subscribed to this thread.\n> Reply to this email directly, view it on GitHub \n> <https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/8#issuecomment-947853434>, \n> or unsubscribe \n> <https://github.com/notifications/unsubscribe-auth/ADEDOMQSGEDSCYAU6LEBA43UH3X6HANCNFSM5GMDR3VA>.\n> \n\n-- \nUjjwal \"Ryzokuken\" Sharma (he/him)\n\nCompilers Hacker, Node.js Core Collaborator and Speaker\n",
+          "createdAt": "2021-10-20T17:00:45Z",
+          "updatedAt": "2021-10-20T17:00:45Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOGI5hMc49iGCs",
+      "title": "We need to name the baby",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/9",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "We need a name that people will use until they can say RFC9999 timestamps (and maybe even when they can).\r\n",
+      "createdAt": "2021-10-21T10:55:43Z",
+      "updatedAt": "2022-03-21T12:51:16Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "\"Extended Timestamps\" or \"Extended Internet Timestamps\" ?",
+          "createdAt": "2022-03-21T12:51:15Z",
+          "updatedAt": "2022-03-21T12:51:15Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOGI5hMc5AIo4t",
+      "title": "Should ABNF support numeric offsets in brackets?",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/12",
+      "state": "CLOSED",
+      "author": "justingrant",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The current ABNF for the time zone extension does not support offset time zones, e.g. `[+08:45]`. These zones are supported in java.time.ZonedDateTime, which is the prior art driving the bracketed time zone extension format. Therefore, I'm assuming that it makes sense for the standard to also allow offsets in brackets too.  \r\n\r\nCurrent ABNF:\r\n\r\nhttps://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/blob/0e54f23f0d56a647962084ccd3c858931c09233f/draft-ietf-sedate-datetime-extended.md#L346-L351\r\n\r\nSuggested ABNF for`time-zone`, where `time-numoffset` is imported from RFC 3339: \r\n\r\n```\r\ntime-zone         = \"[\" time-zone-name / time-numoffset \"]\"\r\n```\r\n\r\nExample of Java usage:\r\n\r\n```java\r\npublic class MyClass {\r\n    public static void main(String args[]) {\r\n      java.time.ZonedDateTime zdt = java.time.ZonedDateTime.parse(\"2021-12-09T00:00-08:00[-08:00]\");\r\n      System.out.println(zdt.toString());\r\n    }\r\n}\r\n```",
+      "createdAt": "2021-12-09T20:54:47Z",
+      "updatedAt": "2022-03-20T22:15:27Z",
+      "closedAt": "2022-03-20T22:15:27Z",
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "Please excuse my ignorance: What is the meaning of `-08:00[-08:00]`?  We'd need some text explaining the semantics.",
+          "createdAt": "2021-12-09T21:31:18Z",
+          "updatedAt": "2021-12-09T21:31:18Z"
+        },
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> What is the meaning of `-08:00[-08:00]`\r\n\r\nThis format asserts that derived timestamps (e.g. add one day) should also use the `-08:00` offset.  It's mostly for backwards compatibility with Java.time. It's not recommended for normal use. \r\n\r\nHeres the explanatory text I added in #15: \r\n\r\n> Offset Time Zone:\r\n> : A time zone defined by a specific UTC offset, e.g. `+08:45` and\r\n>   serialized using the same numieric UTC offset format used in an\r\n>   RFC 3339 timestamp. Although serialization with offset time zones is\r\n>   supported in this document for backwards compatibility with\r\n>   java.time.ZonedDateTime {{JAVAZDT}}, use of offset time zones is\r\n>   strongly discouraged. In particular, programs MUST NOT copy the UTC\r\n>   offset from a timestamp into an offset time zone in order to satisfy\r\n>   another program which requires a time zone annotation in its input.\r\n>   Doing this will improperly assert that the UTC offset of timestamps\r\n>   in that location will never change, which can result in incorrect\r\n>   calculations in programs that add, subtract, or otherwise derive new\r\n>   timestamps from the one provided. For example,\r\n>   `2020-01-01T00:00+01:00[Europe/Paris]` will let programs add six\r\n>   months to the timestamp while adjusting for Daylight Saving Time.\r\n>   But the same calculation applied to `2020-01-01T00:00+01:00[+01:00]`\r\n>   will produce an incorrect result that will be off by one hour.\r\n> \r\n\r\n\r\n",
+          "createdAt": "2021-12-09T22:59:44Z",
+          "updatedAt": "2021-12-10T03:19:32Z"
+        },
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I assume that conflicts between the timestamp offset and a bracketed offset (e.g. `2020-01-01T00:00+01:00[+02:00]`) should be handled the same as other conflicts, per discussion in https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/17. ",
+          "createdAt": "2022-03-07T23:18:49Z",
+          "updatedAt": "2022-03-07T23:18:49Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOGI5hMc5AIsgy",
+      "title": "Is there a convention for sequencing ABNF productions?",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/14",
+      "state": "OPEN",
+      "author": "gibson042",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "The [current draft](https://datatracker.ietf.org/doc/html/draft-ietf-sedate-datetime-extended#section-3.1) is similar to RFC 3339 in defining productions before they are used, but I personally find that hard to read because it is necessary to scan down through almost all of them before finding the `date-time-ext` entry point and then going backwards to understand it, a process that applies recursively to every sub-production. My preference would be to instead define `date-time-ext` first, followed by the productions referenced by it, as seen in e.g. [RFC 7231](https://www.rfc-editor.org/rfc/rfc7231.html#section-5.3.2) and [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.3).",
+      "createdAt": "2021-12-09T21:11:01Z",
+      "updatedAt": "2022-03-20T23:01:26Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "I'm with you on this -- I prefer my ABNF top-down, with the first rule being the entry point (exported grammar).\r\nWe should consciously decide to be different from rfc3339, though.",
+          "createdAt": "2021-12-09T21:28:53Z",
+          "updatedAt": "2021-12-09T21:28:53Z"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOGI5hMc5FQzjC",
+      "title": "How to handle conflicts between timestamp offset vs. bracketed timezone?",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/17",
+      "state": "OPEN",
+      "author": "justingrant",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "It's possible for a timestamp's offset to conflict with the timezone extension. Usually this is caused by a programmer bug where the wrong offset or the wrong timezone was put in the string. \r\n\r\nHowever, in rare cases changes to TZDB rules can cause a conflict. Assume `2020-01-15T12:00-02:00[America/Sao_Paulo]` was stored by a program running in 2018 using TZDB rules in effect that time. But after Brazil's time zone rules were changed in April 2019, the correct offset for that point in time is now `-03:00`.\r\n\r\nHow should the SEDATE standard deal with conflicts like this?\r\n\r\n**_UPDATE 2022-03-21:_** \r\n\r\nOur (Temporal team's) understanding is that the WG wants the new standard to be a strict superset of RFC 3339, which implies that the timestamp should be considered a higher priority than the bracketed time zone extension. Using the Brazil example above, a timezone-aware implementation using the current TZDB should interpret `2020-01-15T12:00-02:00[America/Sao_Paulo]` (now the wrong offset) as the same timestamp but a different local time: `2020-01-15T11:00-03:00[America/Sao_Paulo]`.\r\n\r\nIf this understanding is correct, then here's strawman text for discussion: \r\n\r\n> If a time zone extension is present, then:\r\n> - If the offset is `Z` or `-00:00`, then a timezone-aware implementation SHOULD use the time zone extension to determine the local date, time-of-day, and offset.\r\n> - Otherwise: \r\n>   - The date, time-of-day, and offset in the string SHOULD express the local date, time-of-day, and offset in that time zone according to the time zone rules that were active when the timestamp was recorded.\r\n>   - If the date, time-of-day, and offset are now not valid for that time zone (e.g. because TZDB rules changed after the timestamp was recorded) then a timezone-aware implementation SHOULD calculate the local date, time-of-day, and offset using its current time zone rules.\r\n\r\nOur assumption is that a later standard (maybe the same one that will standardize floating times?) may provide a way to encode a different conflict-resolution preference into timestamp strings.\r\n\r\nNote that the `Z` offset exception is needed because, as noted in [this mailing list post](https://mailarchive.ietf.org/arch/msg/sedate/ASuUtP1euUmyaetyv7do6iCfAjo/), many applications (and libraries like java.time) use `Z` to mean \"I don't know the local offset\".\r\n\r\n<details><summary>ORIGINAL CONTENT (LONG)</summary>\r\n\r\nHere's how Temporal handles conflicts like this in our current API design:\r\n1. A \"conflict\" means that the date and time shown in the timestamp is not valid for the time zone in brackets, according to the TZDB rules that the parsing program is using.\r\n2. If there's a conflict, by default an exception is thrown when parsing.\r\n3. The offset `Z` will never cause a conflict, because Temporal interprets `Z` as a \"null time zone\" that is not asserting anything about the local date or local time in a real place on earth. Therefore, the bracketed time zone will take precedence if a `Z` offset is used.\r\n4. Callers can optionally override the behaviors above by calling the parsing function using an optional parameter that controls parsing behavior: `offset: 'use'` will make the offset win, `offset: 'ignore'` will make the bracketed extension win, and `offset: 'reject'` is the default behavior. \r\n\r\nWe'd prefer the standardized behavior to be compatible with the current Temporal implementation described above. \r\n\r\nBut if we must make a change, then we'd be OK to change the default behavior from \"throw an exception in case of conflict\" to \"non-Z offsets always win\".  We think that \"throw on conflict\" is the best default behavior because it helps the developer detect conflicts which would otherwise go unnoticed by the 99% of developers who'll never anticipate possible conflicts. But we also acknowledge valid arguments in favor of an \"offset wins by default\" behavior.\r\n\r\nWe WOULD NOT be OK with a behavior that always rejects Z offsets with bracketed time zones, because that would prevent creating strings where the original local date/time is unknown. This \"don't know the offset\" limitation is very common for timestamps stored in a relational database and other systems that only store a \"time since epoch\" value without an offset. In those cases, there's no clear alternative to using a Z offset in the string.\r\n\r\nWe WOULD NOT be OK with a change that prevented Temporal from providing callers with an option (see (4) above) to override the default conflict-resolution behavior. The ability for callers to have an opt-in way to decide conflict resolution behavior is important because, as discussed above in the Brazil example, in rare cases valid strings will later become conflicting. In many cases, it's not practical for these previously-stored strings to be updated. (For example, they may be stored in a database owned by someone else.) So programmers need to have a way to deal with those kinds of strings if they receive them.\r\n\r\n</details>\r\n",
+      "createdAt": "2022-03-07T23:14:44Z",
+      "updatedAt": "2022-03-21T11:37:27Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@ryzokuken and I discussed this issue tonight in context of recent discussions on the WG, and I just updated the OP to simplify and and clarify Temporal's requests to align with the latest WG discussions.\r\n\r\nApologies for late-breaking updates, but hopefully it should simplify the discussion in the real-time meeting.",
+          "createdAt": "2022-03-21T11:37:27Z",
+          "updatedAt": "2022-03-21T11:37:27Z"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOGI5hMc5GBO5Y",
+      "title": "MUST understand (elective/critical)",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/issues/18",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "\r\n```\r\n1996-12-19T16:39:57-08:00[America/Los_Angeles][u-ca=hebrew]\r\n```\r\n(Elective, ignore option if not understood)\r\n\r\n```\r\n1996-12-19T16:39:57-08:00[America/Los_Angeles][u-ca!hebrew]\r\n```\r\n(Critical, must understand/must reject date if not understood)\r\n",
+      "createdAt": "2022-03-20T23:34:19Z",
+      "updatedAt": "2022-03-20T23:34:19Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOGI5hMc4tSESg",
+      "title": "Editorial round 1",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/pull/1",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-10-16T19:24:31Z",
+      "updatedAt": "2021-10-20T11:46:40Z",
+      "baseRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "baseRefName": "main",
+      "baseRefOid": "3dfe8ad57372de6268af2cd825b5712e01a77241",
+      "headRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "headRefName": "editorial-round-1",
+      "headRefOid": "3594d116e79eed05b8d2c0b395d846f4b2f0e29b",
+      "closedAt": "2021-10-20T09:02:28Z",
+      "mergedAt": "2021-10-20T09:02:28Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "0a6181f31a6748dd381fc80336ce567f03247914"
+      },
+      "comments": [
+        {
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "body": "I looked through the inline comments as well. Should we file issues for all of these?",
+          "createdAt": "2021-10-20T11:14:51Z",
+          "updatedAt": "2021-10-20T11:14:51Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "On 2021-10-20, at 13:15, Ujjwal Sharma ***@***.***> wrote:\n> \n> I looked through the inline comments as well. Should we file issues for all of these?\n\nI think we should have a quick check if we can resolve any of these between us, and then make issues.\n\nGr\u00fc\u00dfe, Carsten\n\n",
+          "createdAt": "2021-10-20T11:24:48Z",
+          "updatedAt": "2021-10-20T11:24:48Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "\n\n> On 2021-10-20, at 13:24, Carsten Bormann ***@***.***> wrote:\n> \n> On 2021-10-20, at 13:15, Ujjwal Sharma ***@***.***> wrote:\n>> \n>> I looked through the inline comments as well. Should we file issues for all of these?\n> \n> I think we should have a quick check if we can resolve any of these between us, and then make issues.\n\n(Many of the comments are really editorial.\nE.g., if you have a \u201cBCP47 extensions registry\u201d in mind, we can simply point to that; I just couldn\u2019t find that.)\n\nI think I\u2019ll submit the -01 now anyway, so we do have a new version to look at for the interim.\n\nGr\u00fc\u00dfe, Carsten\n\n\n\n",
+          "createdAt": "2021-10-20T11:37:05Z",
+          "updatedAt": "2021-10-20T11:37:05Z"
+        },
+        {
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "body": "Perfect, thanks. I'll try to see how many of the comments can be trivially resolved.",
+          "createdAt": "2021-10-20T11:38:29Z",
+          "updatedAt": "2021-10-20T11:38:29Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "Please confirm -01; we can submit a -02 quickly after that (I-D deadline 2021-10-25!).",
+          "createdAt": "2021-10-20T11:42:32Z",
+          "updatedAt": "2021-10-20T11:42:32Z"
+        },
+        {
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "body": "-01 is published \\o/",
+          "createdAt": "2021-10-20T11:46:40Z",
+          "updatedAt": "2021-10-20T11:46:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGI5hMc4uvt8U",
+          "commit": {
+            "abbreviatedOid": "5fa3d18"
+          },
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "Perfect, thanks for the changes! They look great, and I apologize for the issues especially with the references, Metanorma was not making my life any easier.",
+          "createdAt": "2021-10-20T09:56:54Z",
+          "updatedAt": "2021-10-20T11:14:25Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Why'd you move this in the middle of the definition body?",
+              "createdAt": "2021-10-20T09:56:54Z",
+              "updatedAt": "2021-10-20T11:14:26Z"
+            },
+            {
+              "originalPosition": 5,
+              "body": "Thanks, this was as ugly as it was due to all the weird quirks in metanorma.",
+              "createdAt": "2021-10-20T09:58:09Z",
+              "updatedAt": "2021-10-20T11:14:26Z"
+            },
+            {
+              "originalPosition": 30,
+              "body": "oh, I see that this was fixed later",
+              "createdAt": "2021-10-20T09:58:53Z",
+              "updatedAt": "2021-10-20T11:14:26Z"
+            },
+            {
+              "originalPosition": 5,
+              "body": ":100: ",
+              "createdAt": "2021-10-20T09:59:27Z",
+              "updatedAt": "2021-10-20T11:14:26Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOGI5hMc4vRfUq",
+      "title": "Define scope as per IETF 112.",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/pull/10",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-12-01T21:08:23Z",
+      "updatedAt": "2021-12-03T16:37:02Z",
+      "baseRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "baseRefName": "main",
+      "baseRefOid": "aeb6e98db411857ff87b30e2ce9b9c9a7cd3db7f",
+      "headRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "headRefName": "scope",
+      "headRefOid": "6b4eabefb7398c6584ad1db99f8bfe4477675320",
+      "closedAt": "2021-12-03T16:37:02Z",
+      "mergedAt": "2021-12-03T16:37:02Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "4cc5428d8317676d675bafbb57cb8e8907bd4626"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGI5hMc4xBs0f",
+          "commit": {
+            "abbreviatedOid": "6b4eabe"
+          },
+          "author": "brong",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "As a description of one path forward, this is good - and it's sufficient for the proposal that I made.  Good threading of the potential needle here.",
+          "createdAt": "2021-12-03T11:12:24Z",
+          "updatedAt": "2021-12-03T11:12:24Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOGI5hMc4vRquH",
+      "title": "Rough draft of simplified key/namespace handling.",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/pull/11",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-12-01T22:19:12Z",
+      "updatedAt": "2021-12-03T16:37:15Z",
+      "baseRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "baseRefName": "main",
+      "baseRefOid": "aeb6e98db411857ff87b30e2ce9b9c9a7cd3db7f",
+      "headRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "headRefName": "simplify-key-registration",
+      "headRefOid": "d15b351ea7df113c6870698c079e133cf75845c3",
+      "closedAt": "2021-12-03T16:37:15Z",
+      "mergedAt": "2021-12-03T16:37:15Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "0e54f23f0d56a647962084ccd3c858931c09233f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGI5hMc4xBrou",
+          "commit": {
+            "abbreviatedOid": "dbd9daf"
+          },
+          "author": "brong",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "This looks generally good - I've put a couple of specific comments.",
+          "createdAt": "2021-12-03T11:06:51Z",
+          "updatedAt": "2021-12-03T11:10:31Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "is this also multiple possible components, or just two components?",
+              "createdAt": "2021-12-03T11:06:51Z",
+              "updatedAt": "2021-12-03T11:10:31Z"
+            },
+            {
+              "originalPosition": 40,
+              "body": "the problem with any MUST NOT when generating values is that you need to define how to parse incorrect inputs, and the choices are either \"reject outright\", \"undefined\" or something like what we have here.",
+              "createdAt": "2021-12-03T11:08:01Z",
+              "updatedAt": "2021-12-03T11:10:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xBthO",
+          "commit": {
+            "abbreviatedOid": "dbd9daf"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-03T11:15:36Z",
+          "updatedAt": "2021-12-03T11:15:36Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "My intent was two components; the syntax this inherited also currently only allows two.\r\nThat is certainly not yet a decision, just the way it is being proposed now.\r\n",
+              "createdAt": "2021-12-03T11:15:36Z",
+              "updatedAt": "2021-12-03T11:15:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xBtxy",
+          "commit": {
+            "abbreviatedOid": "dbd9daf"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-03T11:16:49Z",
+          "updatedAt": "2021-12-03T11:16:49Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "Yes, but defining it as a MUST NOT is a prerequisite to fewer people generating it.\r\n\r\n(The funny space in MUST NOT is working around an RFCXMLv3 grammar bug.)",
+              "createdAt": "2021-12-03T11:16:49Z",
+              "updatedAt": "2021-12-03T11:16:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xBwOq",
+          "commit": {
+            "abbreviatedOid": "c27008e"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-03T11:28:17Z",
+          "updatedAt": "2021-12-03T11:28:17Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "Yes, we need more text about error handling.\r\nWhat is there now translates into \"put in conflicting information at will, the recipient will sort it out\", which usually leads into an interop nightmare, because they won't (at least not interoperably).\r\nAdded a little todo to that text now.",
+              "createdAt": "2021-12-03T11:28:17Z",
+              "updatedAt": "2021-12-03T11:28:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xBx8r",
+          "commit": {
+            "abbreviatedOid": "c27008e"
+          },
+          "author": "brong",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-03T11:36:34Z",
+          "updatedAt": "2021-12-03T11:36:34Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "I've seen this before as \"creators MUST NOT generate\" and \"if seen, recipients MUST disambuguate as follows\"\r\n\r\n(I meant to type disambiguate, but I do like disambuguate as a word)",
+              "createdAt": "2021-12-03T11:36:34Z",
+              "updatedAt": "2021-12-03T11:36:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xBydO",
+          "commit": {
+            "abbreviatedOid": "c27008e"
+          },
+          "author": "brong",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-03T11:39:05Z",
+          "updatedAt": "2021-12-03T11:39:05Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "Might be worth making that explicit here, maybe:\r\n\r\n```\r\nThe key of a tag can be split into a namespace and subkey, by including a single hypen/minus sign\r\n```\r\n\r\n(substitute \"subkey\" with a better descriptor of that part if you have a better name for it - I was thinking \"key name\" but it's pretty ambiguous)",
+              "createdAt": "2021-12-03T11:39:05Z",
+              "updatedAt": "2021-12-03T11:39:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xCaMv",
+          "commit": {
+            "abbreviatedOid": "d15b351"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-03T14:28:06Z",
+          "updatedAt": "2021-12-03T14:28:07Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "I'll put disambuguate into the definitions :-)\r\nYes, the combo would be the right thing.\r\nThe second MUST still heavily encourages ignoring the first, though.",
+              "createdAt": "2021-12-03T14:28:07Z",
+              "updatedAt": "2021-12-03T14:28:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xCaVP",
+          "commit": {
+            "abbreviatedOid": "d15b351"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-03T14:28:38Z",
+          "updatedAt": "2021-12-03T14:28:39Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "I expanded it a bit:\r\n\r\n```\r\nThe key of a tag can be split into two parts by including a\r\nhyphen/minus sign \"`-`\"; the first part (including the \"`-`\") can then\r\nbe used as a namespace.\r\n```\r\n",
+              "createdAt": "2021-12-03T14:28:38Z",
+              "updatedAt": "2021-12-03T14:28:39Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "PR_kwDOGI5hMc4vou8g",
+      "title": "Improve grammar and diction",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/pull/13",
+      "state": "MERGED",
+      "author": "gibson042",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "* Replace \"DST\" and \"daylight savings time\" with \"daylight saving time\"\r\n* Replace \"timezone\" with \"time zone\"\r\n* Properly capitalize \"Unicode Consortium\"\r\n* Improve phrasing",
+      "createdAt": "2021-12-09T21:01:59Z",
+      "updatedAt": "2022-03-07T14:23:33Z",
+      "baseRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "baseRefName": "main",
+      "baseRefOid": "a3e36724b0e1fb1f4b828fb83df2715e3b0ba3c0",
+      "headRepository": "gibson042/draft-ietf-sedate-datetime-extended",
+      "headRefName": "2021-12-spelling",
+      "headRefOid": "63a9eecc98b8116ee76b68961ba685c715c45779",
+      "closedAt": "2022-03-07T14:23:32Z",
+      "mergedAt": "2022-03-07T14:23:32Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "a1b823130ae6b7c633d76d08060caef0fcbe2ad2"
+      },
+      "comments": [
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "If you don't have time to work further on this very useful PR, I could merge it and fix these three nits.",
+          "createdAt": "2021-12-14T07:23:23Z",
+          "updatedAt": "2021-12-14T07:23:23Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "Please don't add material to this one.\r\nWe went the opposite direction in the last interim, so I'm about to remove some of this text.",
+          "createdAt": "2021-12-14T08:05:48Z",
+          "updatedAt": "2021-12-14T08:05:48Z"
+        },
+        {
+          "author": "gibson042",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "OK, I pushed a commit just before your last comment but will withhold any further changes.",
+          "createdAt": "2021-12-14T08:09:42Z",
+          "updatedAt": "2021-12-14T08:09:42Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "Sorry for the unsmooth handling of this PR.\r\nI now cherry-picked from this PR.\r\nCan I ask you to rebase to main and see what remaining parts you want to pursue?\r\n",
+          "createdAt": "2021-12-18T21:10:27Z",
+          "updatedAt": "2021-12-18T21:10:27Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "My last message was too close to the holidays.\r\nDo you want to rebase this PR?  Or do you think it is essentially covered by my cherry-picking?",
+          "createdAt": "2022-01-21T07:28:27Z",
+          "updatedAt": "2022-01-21T07:28:27Z"
+        },
+        {
+          "author": "gibson042",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks for the ping, @cabo. Almost everything was covered by the cherry-picking, but a few things remain. I have rebased the PR to include only those.",
+          "createdAt": "2022-01-21T19:11:33Z",
+          "updatedAt": "2022-01-21T19:11:33Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGI5hMc4xXXNL",
+          "commit": {
+            "abbreviatedOid": "39a9eec"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "Thank you!\r\nI would like to continue to be very explicit about the role of UTC, hence a few comments.\r\n(Also, \"this document\" is a constant source of confusion, which I try to avoid by being more explicit.)",
+          "createdAt": "2021-12-09T21:20:34Z",
+          "updatedAt": "2021-12-09T21:27:28Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "There is a reason that the existing text says \"referenced to UTC\".\r\n(I have no idea what \"unambiguous\" means for timestamps, so I would prefer not to use this word.)",
+              "createdAt": "2021-12-09T21:20:34Z",
+              "updatedAt": "2021-12-09T21:27:28Z"
+            },
+            {
+              "originalPosition": 34,
+              "body": "Again, I'd prefer to keep UTC here.",
+              "createdAt": "2021-12-09T21:20:40Z",
+              "updatedAt": "2021-12-09T21:27:28Z"
+            },
+            {
+              "originalPosition": 66,
+              "body": "I don't think that UTC (an international time) can aspire to \"supersede\" GMT (a UK time).  I'd stick with the carefully chosen wording.",
+              "createdAt": "2021-12-09T21:21:54Z",
+              "updatedAt": "2021-12-09T21:27:28Z"
+            },
+            {
+              "originalPosition": 112,
+              "body": "I generally don't know what \"this document\" refers to.\r\nCan we be more explicit?",
+              "createdAt": "2021-12-09T21:23:03Z",
+              "updatedAt": "2021-12-09T21:27:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xX5Ae",
+          "commit": {
+            "abbreviatedOid": "39a9eec"
+          },
+          "author": "gibson042",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "Thanks for the review, @cabo! Continued discussion in comment threads.",
+          "createdAt": "2021-12-10T00:56:56Z",
+          "updatedAt": "2021-12-10T01:23:56Z",
+          "comments": [
+            {
+              "originalPosition": 112,
+              "body": "The text includes 13 instances of \"this document\", seemingly inherited from RFC 3339. This is the only instance of \"the present document\", and replacing it improves consistency (although I would not object to replacing all resulting instances of the phrase with something else).",
+              "createdAt": "2021-12-10T00:56:56Z",
+              "updatedAt": "2021-12-10T01:23:56Z"
+            },
+            {
+              "originalPosition": 23,
+              "body": "> There is a reason that the existing text says \"referenced to UTC\".\r\n\r\nCan you articulate that reason? What does it even mean for a timestamp (which is \"unambiguous representation of some instant in time\", presumably an instance of the `date-time-ext` production) to be \"referenced to a UTC time\"? The intent of this rewording is to cover hypothetical format extensions where the semantic result of interpreting an instance of `date-time-ext` is \"no longer an unambiguous instant in time\" but instead describes either no instant in time (such as a local time skipped by DST transition) or multiple instants (such as a local time that is duplicated by DST transition).",
+              "createdAt": "2021-12-10T01:02:48Z",
+              "updatedAt": "2021-12-10T01:23:56Z"
+            },
+            {
+              "originalPosition": 34,
+              "body": "What is \"actual time in UTC time\"? UTC is a time scale organizing instants according to calendar days and clock times within them, so \"in UTC time\" is clear enough. But \"actual time\" seems ill-defined to me. How about this?\r\n```suggestion\r\n  instant in UTC time corresponding with the timestamp.\r\n```",
+              "createdAt": "2021-12-10T01:06:48Z",
+              "updatedAt": "2021-12-10T01:23:56Z"
+            },
+            {
+              "originalPosition": 66,
+              "body": "As far as I can tell, \"supercede\" and \"successor\" are conceptually interchangeable (both referring to the temporal sequence in which distinct entities occupy the same position) and in fact \"superseder\" is synonymous with \"successor\" according to https://www.merriam-webster.com/thesaurus/superseder . But perhaps we can find an even better phrasing?\r\n```suggestion\r\n  that predates the introduction of Universal Time and currently\r\n  coincides with a UTC offset of 00:00.\r\n```",
+              "createdAt": "2021-12-10T01:23:28Z",
+              "updatedAt": "2021-12-10T01:23:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xY9V4",
+          "commit": {
+            "abbreviatedOid": "21b757c"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-10T09:11:04Z",
+          "updatedAt": "2021-12-10T09:11:05Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "RFC 3339 is specifically tied to UTC (see its section 1: https://www.rfc-editor.org/rfc/rfc3339#section-1).  This document [hah] is not intended to change this (future ones might add a timescale parameter).",
+              "createdAt": "2021-12-10T09:11:05Z",
+              "updatedAt": "2021-12-10T09:11:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xY-9P",
+          "commit": {
+            "abbreviatedOid": "e3ae2fd"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-10T09:17:46Z",
+          "updatedAt": "2021-12-10T09:17:47Z",
+          "comments": [
+            {
+              "originalPosition": 66,
+              "body": "I have a different dictionary, which does not equate \"succeed\" and \"supersede\" as much.\r\nI really think that what the original text says is an accurate description, and trying to wordsmith this in a way that insinuates a relationship beyond the fact that one was inspiring the definition of the other is going to create difficulties.  I also don't want to open the whole can of worms of UT1 etc. here.  So I stand by the original text.",
+              "createdAt": "2021-12-10T09:17:47Z",
+              "updatedAt": "2021-12-10T09:17:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xY_ql",
+          "commit": {
+            "abbreviatedOid": "e3ae2fd"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-10T09:20:39Z",
+          "updatedAt": "2021-12-10T09:20:39Z",
+          "comments": [
+            {
+              "originalPosition": 112,
+              "body": "\"This document\" is fine unless it isn't.  This passage refers to a registry, which (loosely speaking) is a document.  So \"this document\" is ambiguous (and actually preferably refers to any referent that may be in scope, which is the wrong reference here) and needs to be disambiguated.  Changing the other 13 instances to also be unambiguous may be needed if a candidate reference is in scope, but it is this one that is clearly confusing to this reader.",
+              "createdAt": "2021-12-10T09:20:39Z",
+              "updatedAt": "2021-12-10T09:20:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xZAkt",
+          "commit": {
+            "abbreviatedOid": "e3ae2fd"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-10T09:24:17Z",
+          "updatedAt": "2021-12-10T09:24:17Z",
+          "comments": [
+            {
+              "originalPosition": 66,
+              "body": "BTW, https://en.wikipedia.org/wiki/Greenwich_Mean_Time has a nice description of the different ongoing meanings of GMT (mean solar time, civil time in the UK during winter), none of which is actually superseded by UTC.",
+              "createdAt": "2021-12-10T09:24:17Z",
+              "updatedAt": "2021-12-10T09:24:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xiUQG",
+          "commit": {
+            "abbreviatedOid": "e3ae2fd"
+          },
+          "author": "gibson042",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-14T06:58:17Z",
+          "updatedAt": "2021-12-14T06:58:17Z",
+          "comments": [
+            {
+              "originalPosition": 66,
+              "body": "> ongoing meanings of GMT... none of which is actually superseded by UTC\r\n\r\nIsn't that in itself an argument against keeping the current \"UTC was designed to supersede\" language?",
+              "createdAt": "2021-12-14T06:58:17Z",
+              "updatedAt": "2021-12-14T06:58:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xiVIa",
+          "commit": {
+            "abbreviatedOid": "e3ae2fd"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-14T07:03:42Z",
+          "updatedAt": "2021-12-14T07:03:43Z",
+          "comments": [
+            {
+              "originalPosition": 66,
+              "body": "I don't know what \"current\" means here, but the pre-PR language is about UTC being \"a useful successor for\" GMT.  That is why I would like to keep it.",
+              "createdAt": "2021-12-14T07:03:43Z",
+              "updatedAt": "2021-12-14T07:03:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4xihh6",
+          "commit": {
+            "abbreviatedOid": "e3ae2fd"
+          },
+          "author": "gibson042",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-14T08:08:17Z",
+          "updatedAt": "2021-12-14T08:08:18Z",
+          "comments": [
+            {
+              "originalPosition": 112,
+              "body": "I've updated this to clearly reference the registry, although I think more dramatic refactoring is in order to initialize the registry with more formal entries that specify all fields of the included template as in e.g. [RFC 7763](https://www.rfc-editor.org/rfc/rfc7763.html#section-6) and [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545#section-8).",
+              "createdAt": "2021-12-14T08:08:17Z",
+              "updatedAt": "2021-12-14T08:08:18Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOGI5hMc4vpM7J",
+      "title": "Add ABNF and content about offset time zones",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/pull/15",
+      "state": "MERGED",
+      "author": "justingrant",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Java.time.ZonedDateTime supports offset time zones, e.g. `2020-01-01T00:00+01:00[+01:00]`. For backwards compatibility, this RFC should support them too.\r\n\r\nThis PR also adds clarifying text to several time-zone-related definitions.\r\n\r\nFixes #12.",
+      "createdAt": "2021-12-09T22:52:12Z",
+      "updatedAt": "2022-03-21T10:13:40Z",
+      "baseRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "baseRefName": "main",
+      "baseRefOid": "1fe72b7802864cb71713bb3ed64b5e985ec7c30f",
+      "headRepository": "justingrant/draft-ietf-sedate-datetime-extended",
+      "headRefName": "patch-1",
+      "headRefOid": "c7db2f78ab60101881f8f23eda2aa65dfc3a04b1",
+      "closedAt": "2022-03-20T22:15:27Z",
+      "mergedAt": "2022-03-20T22:15:27Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "43d6b9e13acbc511ef3b774c186951882c339bfd"
+      },
+      "comments": [
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> We probably need a mailing list discussion to add numeric offsets as alternative to timezones.\r\n\r\nMakes sense. Should I start one?\r\n\r\n> To me, a numeric offset is not a timezone, so I'm not sure I like the term \"Offset time zone\".\r\n\r\nYep, we added these in Temporal primarily for compatibility with prior art in Java.time. https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html\r\n\r\nIn Java (and currently in Temporal) a time zone ID can either be an IANA name or an offset.  The ID is an index into a set of rules ([ZoneRules](https://docs.oracle.com/javase/8/docs/api/java/time/zone/ZoneRules.html) in Java, [TimeZone](https://tc39.es/proposal-temporal/docs/timezone.html) in Temporal) for converting between exact time and local time. If the ID is an offset, there's only one trivial rule because the offset is always the same.\r\n\r\nI don't have a strong opinion about the name of offset time zones. ",
+          "createdAt": "2021-12-19T05:49:31Z",
+          "updatedAt": "2021-12-19T05:49:31Z"
+        },
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@cabo - Let me know if you have responses to the questions in my comment above, or how you'd like me to change this PR. Thanks!",
+          "createdAt": "2022-03-07T20:27:00Z",
+          "updatedAt": "2022-03-07T20:27:00Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "I think we still need the mailing list discussion first.  If we get to a certain state of clarity by March 18, we might be able to post yet another update of the draft right before IETF week.",
+          "createdAt": "2022-03-07T20:57:42Z",
+          "updatedAt": "2022-03-07T20:57:42Z"
+        },
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I think we still need the mailing list discussion first.\r\n\r\nSounds good. I sent mail to the mailing list. Waiting for responses. ",
+          "createdAt": "2022-03-08T06:42:35Z",
+          "updatedAt": "2022-03-08T06:42:35Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "I plan to merge this within a couple of hours, so we have a merged draft to look at in Monday's WG meeting.  Since the discussion hasn't concluded yet, I'll edit the merge so it is useful for those discussions; we can edit some more after Monday's meeting.\r\n",
+          "createdAt": "2022-03-19T13:52:11Z",
+          "updatedAt": "2022-03-19T13:52:11Z"
+        },
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I plan to merge this within a couple of hours, so we have a merged draft to look at in Monday's WG meeting. Since the discussion hasn't concluded yet, I'll edit the merge so it is useful for those discussions; we can edit some more after Monday's meeting.\r\n\r\nSounds good to me. Based on your comments here and on the mailing list, I think we're in agreement on the important points.",
+          "createdAt": "2022-03-19T18:09:47Z",
+          "updatedAt": "2022-03-19T18:09:47Z"
+        },
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I plan to merge this within a couple of hours, so we have a merged draft to look at in Monday's WG meeting. Since the discussion hasn't concluded yet, I'll edit the merge so it is useful for those discussions; we can edit some more after Monday's meeting.\r\n\r\nHi @cabo - is the merged draft available?  If not, I'm happy to make the edits you and @ryzokuken suggested here in this PR, but didn't want to step on changes you're making in parallel. Let me know how I can help. Thanks!",
+          "createdAt": "2022-03-20T21:13:28Z",
+          "updatedAt": "2022-03-20T21:13:28Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "body": "I merged the PR and made some edits in main.\r\nI included you in the contributor list; please advise if that is OK, the information is right and whether you want to include any more contact/affiliation information.",
+          "createdAt": "2022-03-20T22:56:16Z",
+          "updatedAt": "2022-03-20T22:56:16Z"
+        },
+        {
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I merged the PR and made some edits in main.\r\n\r\nGreat!  Your edits look good to me. I may follow up after the meeting with minor text clarification PRs but nothing important.\r\n\r\n> I included you in the contributor list; please advise if that is OK, the information is right and whether you want to include any more contact/affiliation information.\r\n\r\nInfo looks right. I'm a volunteer not working on behalf of my employer so no need for additional affiliation. \r\n\r\nThanks!\r\n",
+          "createdAt": "2022-03-21T00:14:42Z",
+          "updatedAt": "2022-03-21T00:14:42Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGI5hMc4xZXbb",
+          "commit": {
+            "abbreviatedOid": "5972b36"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "A quick comment...",
+          "createdAt": "2021-12-10T10:28:01Z",
+          "updatedAt": "2021-12-10T10:28:51Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "How about \"Difference between a given local time and UTC, usually given in negative or positive hours and minutes\"?",
+              "createdAt": "2021-12-10T10:28:01Z",
+              "updatedAt": "2021-12-10T10:28:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4x0VsB",
+          "commit": {
+            "abbreviatedOid": "5972b36"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-18T21:27:32Z",
+          "updatedAt": "2021-12-18T21:27:32Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "```suggestion\r\n  serialized using the same numeric UTC offset format used in an\r\n```",
+              "createdAt": "2021-12-18T21:27:32Z",
+              "updatedAt": "2021-12-18T21:28:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4x0Vt9",
+          "commit": {
+            "abbreviatedOid": "5972b36"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "We probably need a mailing list discussion to add numeric offsets as alternative to timezones.\r\n\r\nTo me, a numeric offset is not a timezone, so I'm not sure I like the term \"Offset time zone\".\r\n\r\nThe definitions now contain significant tutorial content.  This is probably a good thing, but I wonder whether that tutorial part is better separated from the actual definition.",
+          "createdAt": "2021-12-18T21:30:14Z",
+          "updatedAt": "2021-12-18T21:30:14Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4x0adG",
+          "commit": {
+            "abbreviatedOid": "34228f8"
+          },
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-19T05:31:40Z",
+          "updatedAt": "2021-12-19T05:31:40Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Sounds good. I used your text and added a short example too.",
+              "createdAt": "2021-12-19T05:31:40Z",
+              "updatedAt": "2021-12-19T05:31:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc4x0adT",
+          "commit": {
+            "abbreviatedOid": "34228f8"
+          },
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-19T05:31:56Z",
+          "updatedAt": "2021-12-19T05:31:56Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "Good catch, thanks.",
+              "createdAt": "2021-12-19T05:31:56Z",
+              "updatedAt": "2021-12-19T05:31:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42fbBp",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "ediosyncratic",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "A couple of notes.",
+          "createdAt": "2022-03-18T10:49:45Z",
+          "updatedAt": "2022-03-18T11:01:37Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Suggestion: \"... that maps UTC timestamps to UTC offsets.\"\r\nUnless, in fact, this RFC already has language saying \"timestamp\" is implicitly UTC timestamp.\r\nRationale: when a zone skips a time interval (typically an hour, e.g. a spring-forward at the start of DST) there are zome-time timestamps that do not represent any actual moment in time; and when one repeats a time interval (e.g. a fall-back, end of DST) there are two different readings of any zone-time timestamp (one using the offset in effect before the transition, the other using the offset in effect after it) in that interval.  So there is a mapping from UTC-time timestamps to zone-time timestamps, hence also to zone-offsets from UTC, but this mapping is neither injective (some zone-time timestamps are duplicated) nor surjective (some are omitted), hence it does not have an inverse mapping (and I wish those who control time-zones would learn, from this, to be sparing in their use of changes to zone offsets, but that ship sailed a long time ago).",
+              "createdAt": "2022-03-18T10:49:46Z",
+              "updatedAt": "2022-03-18T11:01:37Z"
+            },
+            {
+              "originalPosition": 7,
+              "body": "OK, subject to \"usually\" but please note that zone offsets with seconds and fractional second values have existed - The Netherlands had its own definitive observatory relative to which it defined its time-zone until May 1937; it was 19 minutes 32.13 seconds ahead of GMT. See the Olson database's europe file for details.\r\nSo offsets including seconds and fractions of a second should ideally be supported, for all that offsets are usually in hours and minutes.",
+              "createdAt": "2022-03-18T10:59:35Z",
+              "updatedAt": "2022-03-18T11:01:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42iNEJ",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-18T23:36:28Z",
+          "updatedAt": "2022-03-18T23:36:28Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Yep, that's exactly why \"usually\" is here, to allow for cases like that. But my understanding is that [RFC 3339 Section 4.2](https://datatracker.ietf.org/doc/html/rfc3339#section-4.2) specifically excludes representing sub-minute offsets in strings:\r\n\r\n>       NOTE: Following ISO 8601, numeric offsets represent only time\r\n>       zones that differ from UTC by an integral number of minutes.\r\n>       However, many historical time zones differ from UTC by a non-\r\n>       integral number of minutes.  To represent such historical time\r\n>       stamps exactly, applications must convert them to a representable\r\n>       time zone.\r\n\r\nHonestly I find this text confusing because I'm not sure what \"representable time zone\" means; my assumption is that it means \"pick the closest offset to the real offset\"?  Also, I believe there was earlier discussion on the SEDATE group specifically excluded changing the string format to accommodate sub-minute offsets in the string.  If you want to re-open this discussion, you could but that's probably out of scope to this PR. \r\n\r\nThat said, given that RFC 3339 already has a definition for what's called \"Local Offset\" in that spec, I'm now thinking that I should remove this definition here and just refer to RFC 3339's \"Local Offset\" definition instead.",
+              "createdAt": "2022-03-18T23:36:28Z",
+              "updatedAt": "2022-03-18T23:36:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42iN93",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-18T23:48:18Z",
+          "updatedAt": "2022-03-18T23:48:18Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "@cabo - in IETF specs, what's the usual process when a definition is re-used from another specification?  Is the definition added here too, with a note referring back to the definition in another RFC?  Or can the definition be omitted completely?",
+              "createdAt": "2022-03-18T23:48:18Z",
+              "updatedAt": "2022-03-18T23:48:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42iODF",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-18T23:49:46Z",
+          "updatedAt": "2022-03-18T23:49:47Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "I'm using \"timestamp\" here to mean the same as it does in RFC 3339:\r\n\r\n>       Timestamp   This term is used in this document to refer to an\r\n>                  unambiguous representation of some instant in time.\r\n\r\nIn the context of that definition, there's no ambiguity. So I don't think there's a need to qualify \"timestamp\" here, other than perhaps to clarify that we're using the same definition as RFC 3339.\r\n\r\nIt's a separate and valid discussion of whether there should be a standardized string format that omits the offset. Such a string format would indeed be ambiguous because there are potentially multiple matching offsets, e.g. `2020-03-08T01:30[America/Los_Angeles]` could map to `2020-03-08T01:30-07:00[America/Los_Angeles]` or `2020-03-08T01:30-08:00[America/Los_Angeles]`.\r\n\r\nNote that an offset-less format is out of scope to this document and this PR, but hopefully is something that we'll consider at a later date for a different specification.",
+              "createdAt": "2022-03-18T23:49:46Z",
+              "updatedAt": "2022-03-18T23:49:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42iVqD",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-19T05:21:05Z",
+          "updatedAt": "2022-03-19T05:21:05Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "At a minimum, you would need to specifically import the definition (\"the terms ant, cat, and elk are defined in RFC4711\").  If that definition is more than a click away (or, worse, buried in a paywalled document), I'd always fully cite it.\r\n",
+              "createdAt": "2022-03-19T05:21:05Z",
+              "updatedAt": "2022-03-19T05:21:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42idwd",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-19T13:48:37Z",
+          "updatedAt": "2022-03-19T13:48:38Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "This is the \"+\" that appears to be an unnecessary addition to the definition as cited from RFC 3339.\r\n",
+              "createdAt": "2022-03-19T13:48:38Z",
+              "updatedAt": "2022-03-19T13:48:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42iiet",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-19T18:07:25Z",
+          "updatedAt": "2022-03-19T18:07:25Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "Sounds good, I'd assumed it was a typo, but if there's a good reason to leave as-is that sounds fine to me. ",
+              "createdAt": "2022-03-19T18:07:25Z",
+              "updatedAt": "2022-03-19T18:07:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42iknF",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "LGTM, thanks!",
+          "createdAt": "2022-03-19T20:20:20Z",
+          "updatedAt": "2022-03-19T20:28:46Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Not to be a pedant, but shouldn't this be in your global .gitignore instead? :sweat_smile: ",
+              "createdAt": "2022-03-19T20:20:20Z",
+              "updatedAt": "2022-03-19T20:28:46Z"
+            },
+            {
+              "originalPosition": 7,
+              "body": "> Also, I believe there was earlier discussion on the SEDATE group specifically excluded changing the string format to accommodate sub-minute offsets in the string.\r\n\r\nThat is infact the case. I haven't given up on it just yet, by the way, I'll still attempt to \"backport\" some of the updates from newer editions of ISO 8601 to IETF where I can once we have a working copy of the former with the liason relationship, but there's no point in blocking this draft for that potentially controversial set of updates (like sub-minute offsets here as well as extended years).",
+              "createdAt": "2022-03-19T20:27:30Z",
+              "updatedAt": "2022-03-19T20:28:46Z"
+            },
+            {
+              "originalPosition": 12,
+              "body": "I too prefer to be explicit but it's nice to keep the diff smaller.",
+              "createdAt": "2022-03-19T20:28:20Z",
+              "updatedAt": "2022-03-19T20:28:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42ik2G",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "justingrant",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-19T20:35:48Z",
+          "updatedAt": "2022-03-19T20:35:48Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Hmmm, that works too... it's just my habit in other open source projects to make things easier for other VSCode users. Also fine to ignore this change. Your call! ",
+              "createdAt": "2022-03-19T20:35:48Z",
+              "updatedAt": "2022-03-19T20:35:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42i_5L",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-20T19:57:02Z",
+          "updatedAt": "2022-03-20T19:57:02Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "My usual rule of thumb is: if it's specific to a given project: include it in the project, if it's specific to your work setup: include it in the global gitignore. This would keep you from repeating yourself :innocent: ",
+              "createdAt": "2022-03-20T19:57:02Z",
+              "updatedAt": "2022-03-20T19:57:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42jC25",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-03-20T22:08:00Z",
+          "updatedAt": "2022-03-20T22:12:03Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2022-03-20T22:08:00Z",
+              "updatedAt": "2022-03-20T22:12:04Z"
+            },
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\n  00:00; often spoken \"Zulu\" from the ICAO phonetic alphabet\r\n```",
+              "createdAt": "2022-03-20T22:11:22Z",
+              "updatedAt": "2022-03-20T22:12:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42kRu6",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "ediosyncratic",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-21T09:54:32Z",
+          "updatedAt": "2022-03-21T09:54:32Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "Note that every offset other than 00:00 does need a sign, and which sign you use with 00:00 makes no difference, so it is a kindness to the authors of parsers for the spec to always insist there be a sign, saving them the need to special-case the no-sign 00:00.",
+              "createdAt": "2022-03-21T09:54:32Z",
+              "updatedAt": "2022-03-21T09:54:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42kTP4",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-21T09:59:38Z",
+          "updatedAt": "2022-03-21T09:59:38Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "A kindness not afforded by the text of RFC 3339.  This is a definition of the term \"Z\", copied verbatim from RFC 3339.  Changing or not changing this definition in this draft will not change the syntax for timestamps, which already requires + or - to delimit the offset from the time.",
+              "createdAt": "2022-03-21T09:59:38Z",
+              "updatedAt": "2022-03-21T09:59:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42kUPw",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "ediosyncratic",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-21T10:02:58Z",
+          "updatedAt": "2022-03-21T10:02:59Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "I suspect the quoted ISO 8601 language means one of:\r\n* turn your 1937-05-21 11:23+00:19:32.13's time and offset into 11:03:50.87Z or 12:03:50.87+01:00, or\r\n* replace the offset with the zone that implies it, 1937-05-21 11:23[Europe/Amsterdam]\r\n\r\nReferencing RFC 3339's definition overtly would clearly be a kindness to the reader, especially if you're opting to stick to its limitations. Since RFCs are fully open access, you don't need to worry about a paywall, but don't let that get in the way of quoting it.",
+              "createdAt": "2022-03-21T10:02:58Z",
+              "updatedAt": "2022-03-21T10:02:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc42kXS4",
+          "commit": {
+            "abbreviatedOid": "27e23fc"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-21T10:13:40Z",
+          "updatedAt": "2022-03-21T10:13:40Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "The definition of UTC offset is used in the following definitions only, so the question whether there should be UTC offsets with fractional minutes is somewhat orthogonal to this PR.  If you have a use case for fractional minutes, please do create an issue!",
+              "createdAt": "2022-03-21T10:13:40Z",
+              "updatedAt": "2022-03-21T10:13:40Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOGI5hMc40EMOt",
+      "title": "Remove namespaces, add permanent/provisional/experimental",
+      "url": "https://github.com/ietf-wg-sedate/draft-ietf-sedate-datetime-extended/pull/16",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "3.5 h left...",
+      "createdAt": "2022-03-07T20:13:46Z",
+      "updatedAt": "2022-03-08T04:54:06Z",
+      "baseRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "baseRefName": "main",
+      "baseRefOid": "1fe72b7802864cb71713bb3ed64b5e985ec7c30f",
+      "headRepository": "ietf-wg-sedate/draft-ietf-sedate-datetime-extended",
+      "headRefName": "no-namespaces",
+      "headRefOid": "6ab6a279e58ca67718b46a72c9401d99edc1c17a",
+      "closedAt": "2022-03-07T23:34:30Z",
+      "mergedAt": "2022-03-07T23:34:30Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "942abd67ebca42ca8c0e5e48d9e722906e511831"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGI5hMc41xpWS",
+          "commit": {
+            "abbreviatedOid": "06d5e4e"
+          },
+          "author": "gibson042",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-07T20:19:51Z",
+          "updatedAt": "2022-03-07T20:28:49Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "```suggestion\r\nnot specifically configured to take part in such an experiment.\r\n```",
+              "createdAt": "2022-03-07T20:19:51Z",
+              "updatedAt": "2022-03-07T20:28:49Z"
+            },
+            {
+              "originalPosition": 190,
+              "body": "Is it intentional for the referenced section to not actually define any tag keys, even the \"u-ca\" used in the third example?",
+              "createdAt": "2022-03-07T20:28:39Z",
+              "updatedAt": "2022-03-07T20:28:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc41xxMw",
+          "commit": {
+            "abbreviatedOid": "06d5e4e"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-07T20:52:21Z",
+          "updatedAt": "2022-03-07T20:52:21Z",
+          "comments": [
+            {
+              "originalPosition": 190,
+              "body": "No, this is a gaping hole. Added a TODO in the text.",
+              "createdAt": "2022-03-07T20:52:21Z",
+              "updatedAt": "2022-03-07T20:52:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGI5hMc41y7UU",
+          "commit": {
+            "abbreviatedOid": "6ab6a27"
+          },
+          "author": "ryzokuken",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "Apologies for the late review, LGTM.",
+          "createdAt": "2022-03-08T04:54:06Z",
+          "updatedAt": "2022-03-08T04:54:06Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
