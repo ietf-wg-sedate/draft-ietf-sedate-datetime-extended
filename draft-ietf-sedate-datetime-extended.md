@@ -143,7 +143,7 @@ in {{RFC3339}} that has the following properties:
   {{RFC3339}} timestamps compatible with this format.
 
 * The format is compatible with the pre-existing popular syntax for attaching
-  time zone names to timestamps ({{JAVAZDT}}).
+  time zone names to timestamps {{JAVAZDT}}.
 
 * The format provides a generalized way to attach any additional
   information to the timestamp.
@@ -168,7 +168,7 @@ information in the timestamp, e.g., between the UTC offset and time zone
 name in the timestamp.
 For instance, such an inconsistency might arise because of:
 
-* Political decisions as discussed above, or
+* political decisions as discussed above, or
 * errors in the applications producing and consuming such a timestamp.
 
 While the information available is not generally sufficient to resolve
@@ -209,7 +209,7 @@ ABNF:
   The rules defined in {{Appendix B of RFC5234}} are imported implicitly.
 
 Internet Date/Time Format:
-: The date/time format defined in section 3 of this document.
+: The date/time format defined in {{extended-format}} of this document.
 
 Timestamp:
 : An unambiguous representation of some instant in time.
@@ -329,7 +329,7 @@ specified for the media type registry {{RFC6838}}; if in doubt, the
 provisions of this registry should be applied analogously.
 
 Key Identifier:
-: The key.
+: The key (conforming to `suffix-key` in {{abnf}})
 
 Registration status:
 : "Provisional" or "Permanent"
@@ -357,7 +357,7 @@ not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
-# Syntax Extensions to RFC 3339
+# Syntax Extensions to RFC 3339 {#extended-format}
 
 ## ABNF
 
@@ -366,6 +366,7 @@ order to allow the inclusion of an optional suffix.
 
 The extended date/time format is described by the rule
 `date-time-ext`.
+
 `date-time` and `time-numoffset` are imported from {{Section 5.6 of
 RFC3339}}, `ALPHA` and `DIGIT` from {{Section B.1 of RFC5234}}.
 
