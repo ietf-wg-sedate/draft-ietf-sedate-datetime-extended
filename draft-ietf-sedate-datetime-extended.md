@@ -357,6 +357,57 @@ not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
+## Optionally Critical
+
+For the format defined here, suffix tags are always *optional*: They
+can be added or left out as desired by the generator of the string in
+Internet Date/Time Format.  (An application might require the presence
+of specific suffix tags, though.)
+
+Without further indication, they are also *elective*: Even if included
+in the Internet Date/Time Format string, the recipient is free to
+ignore the suffix tag.  Reasons might include that the recipient does
+not implement (or know about) the specific suffix key, or that it does
+recognize the key but cannot act on the value provided.
+
+A suffix tag may also indicate that it is *critical*: The recipient is
+advised that it MUST not act on the Internet Date/Time Format string
+unless it can process the suffix tag as specified.  A critical suffix
+tag is indicated by following its opening bracket with an exclamation
+mark (see `critical-flag` in {{abnf}}).
+
+A string such as:
+
+    2022-07-08T00:14:07Z[Europe/Paris]
+
+is internally inconsistent, as Europe/Paris does not use a time zone
+offset of 0.
+The time zone hint given is elective, though, so the recipient is not
+required to act on the inconsistency; it can treat the Internet
+Date/Time Format string as if it were:
+
+    2022-07-08T00:14:07Z
+
+Similar with:
+
+    2022-07-08T00:14:07Z[knort=blargel]
+
+However,
+
+    2022-07-08T00:14:07Z[!Europe/Paris]
+    2022-07-08T00:14:07Z[!knort=blargel]
+
+both have an internal inconsistency or an unrecognized suffix key/value, so
+a recipient needs to treat the Internet Date/Time Format string as erroneous.
+
+Note that this does not mean that an application is disallowed to
+perform additional processing on elective suffix tags, e.g., asking
+the user how to resolve the inconsistency.
+It means it is not required to do so with elective suffix tags, but is
+required to reject or perform some other error handling when
+encountering inconsistent or unrecognized suffix tags marked as
+critical.
+
 # Syntax Extensions to RFC 3339 {#extended-format}
 
 ## ABNF
@@ -376,7 +427,8 @@ time-zone-char    = time-zone-initial / DIGIT / "-" / "+"
 time-zone-part    = time-zone-initial *13(time-zone-char)
                     ; but not "." or ".."
 time-zone-name    = time-zone-part *("/" time-zone-part)
-time-zone         = "[" time-zone-name / time-numoffset "]"
+time-zone         = "[" critical-flag
+                        time-zone-name / time-numoffset "]"
 
 key-initial       = ALPHA / "_"
 key-char          = key-initial / DIGIT / "-"
@@ -384,10 +436,13 @@ suffix-key        = key-initial *key-char
 
 suffix-value      = 1*alphanum
 suffix-values     = suffix-value *("-" suffix-value)
-suffix-tag        = "[" suffix-key "=" suffix-values "]"
+suffix-tag        = "[" critical-flag
+                        suffix-key "=" suffix-values "]"
 suffix            = [time-zone] *suffix-tag
 
 date-time-ext     = date-time suffix
+
+critical-flag     = [ "!" ]
 
 alphanum          = ALPHA / DIGIT
 ~~~~
