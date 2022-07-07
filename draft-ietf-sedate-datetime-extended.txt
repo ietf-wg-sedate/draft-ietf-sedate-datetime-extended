@@ -5,8 +5,8 @@
 Serialising Extended Data About Times and Events               U. Sharma
 Internet-Draft                                              Igalia, S.L.
 Intended status: Standards Track                              C. Bormann
-Expires: 21 September 2022                        Universität Bremen TZI
-                                                           20 March 2022
+Expires: 8 January 2023                           Universität Bremen TZI
+                                                             7 July 2022
 
 
  Date and Time on the Internet: Timestamps with additional information
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 September 2022.
+   This Internet-Draft will expire on 8 January 2023.
 
 Copyright Notice
 
@@ -118,7 +118,7 @@ Table of Contents
       [RFC3339] timestamps compatible with this format.
 
    *  The format is compatible with the pre-existing popular syntax for
-      attaching time zone names to timestamps ([JAVAZDT]).
+      attaching time zone names to timestamps [JAVAZDT].
 
    *  The format provides a generalized way to attach any additional
       information to the timestamp.
@@ -143,7 +143,7 @@ Table of Contents
    time zone name in the timestamp.  For instance, such an inconsistency
    might arise because of:
 
-   *  Political decisions as discussed above, or
+   *  political decisions as discussed above, or
 
    *  errors in the applications producing and consuming such a
       timestamp.
@@ -185,7 +185,7 @@ Table of Contents
       [RFC5234].  The rules defined in Appendix B of [RFC5234] are
       imported implicitly.
 
-   Internet Date/Time Format:  The date/time format defined in section 3
+   Internet Date/Time Format:  The date/time format defined in Section 3
       of this document.
 
    Timestamp:  An unambiguous representation of some instant in time.
@@ -296,7 +296,7 @@ Table of Contents
    specified for the media type registry [RFC6838]; if in doubt, the
    provisions of this registry should be applied analogously.
 
-   Key Identifier:  The key.
+   Key Identifier:  The key (conforming to suffix-key in Section 3.1)
 
    Registration status:  "Provisional" or "Permanent"
 
@@ -328,6 +328,7 @@ Table of Contents
    order to allow the inclusion of an optional suffix.
 
    The extended date/time format is described by the rule date-time-ext.
+
    date-time and time-numoffset are imported from Section 5.6 of
    [RFC3339], ALPHA and DIGIT from Appendix B.1 of [RFC5234].
 
@@ -466,10 +467,10 @@ Table of Contents
               bulletins.html>.
 
    [ISO8601:1988]
-              International Organization for Standardization, "Data
-              elements and interchange formats — Information interchange
-              — Representation of dates and times", ISO 8601:1988, June
-              1988, <https://www.iso.org/standard/15903.html>.
+              ISO, "Data elements and interchange formats — Information
+              interchange — Representation of dates and times",
+              ISO 8601:1988, June 1988,
+              <https://www.iso.org/standard/15903.html>.
 
    [ITU-R-TF.460-6]
               "ITU-R TF.460-6. Standard-frequency and time-signal
