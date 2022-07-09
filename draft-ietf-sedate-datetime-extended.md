@@ -398,7 +398,7 @@ However,
     2022-07-08T00:14:07Z[!knort=blargel]
 
 both have an internal inconsistency or an unrecognized suffix key/value, so
-a recipient needs to treat the Internet Date/Time Format string as erroneous.
+a recipient MUST treat the Internet Date/Time Format string as erroneous.
 
 Note that this does not mean that an application is disallowed to
 perform additional processing on elective suffix tags, e.g., asking
