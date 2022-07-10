@@ -376,17 +376,20 @@ unless it can process the suffix tag as specified.  A critical suffix
 tag is indicated by following its opening bracket with an exclamation
 mark (see `critical-flag` in {{abnf}}).
 
-A string such as:
+Internet Date/Time Format strings such as:
 
     2022-07-08T00:14:07Z[Europe/Paris]
+    2022-07-08T00:14:07+01:00[Europe/Paris]
 
-is internally inconsistent, as Europe/Paris does not use a time zone
-offset of 0.
-The time zone hint given is elective, though, so the recipient is not
+are internally inconsistent, as Europe/Paris does not use a time zone
+offset of 0 (which is indicated in the `Z`, an abbreviation for
+`+00:00`), nor a time zone offset of `+01:00` in July 2022.
+The time zone hint given in the suffix tag is elective, though, so the recipient is not
 required to act on the inconsistency; it can treat the Internet
 Date/Time Format string as if it were:
 
     2022-07-08T00:14:07Z
+    2022-07-08T00:14:07+01:00
 
 Similar with:
 
@@ -395,9 +398,10 @@ Similar with:
 However,
 
     2022-07-08T00:14:07Z[!Europe/Paris]
+    2022-07-08T00:14:07+01:00[!Europe/Paris]
     2022-07-08T00:14:07Z[!knort=blargel]
 
-both have an internal inconsistency or an unrecognized suffix key/value, so
+all have an internal inconsistency or an unrecognized suffix key/value, so
 a recipient MUST treat the Internet Date/Time Format string as erroneous.
 
 Note that this does not mean that an application is disallowed to
@@ -517,4 +521,3 @@ TBD
 {:unnumbered}
 
 Richard Gibson provided some editorial improvements.
-
