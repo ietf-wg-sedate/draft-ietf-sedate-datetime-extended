@@ -160,7 +160,7 @@ For instance, it does not address:
   instant in time corresponding with the timestamp.
 * "Floating time", i.e., a local time without information describing
   the UTC offset or time zone in which it should be interpreted.
-* The use of time scales different from UTC, such as TAI.
+* The use of timescales different from UTC, such as TAI.
 
 However, additional information augmenting a fixed timestamp may be
 sufficient to detect an inconsistency between intention and the actual
@@ -200,7 +200,7 @@ UTC:
   for attempting to follow Universal Time based on measuring the
   rotation of the earth.
 
-  UTC is often mistakenly referred to as GMT, an earlier time scale
+  UTC is often mistakenly referred to as GMT, an earlier timescale
   UTC was designed to be a useful successor for.
 
 ABNF:
@@ -288,7 +288,7 @@ CLDR:
 : Common locale data repository {{CLDR}}, a project of the Unicode
   Consortium to provide locale data to applications.
 
-For more information about time scales, see {{Appendix E of RFC1305}},
+For more information about timescales, see {{Appendix E of RFC1305}},
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
 {{ITU-R-TF.460-6}}.
 
@@ -462,4 +462,3 @@ TBD
 {:unnumbered}
 
 Richard Gibson provided some editorial improvements.
-
