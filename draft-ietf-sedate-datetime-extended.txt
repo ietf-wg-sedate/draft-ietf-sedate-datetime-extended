@@ -5,8 +5,8 @@
 Serialising Extended Data About Times and Events               U. Sharma
 Internet-Draft                                              Igalia, S.L.
 Intended status: Standards Track                              C. Bormann
-Expires: 8 January 2023                           Universität Bremen TZI
-                                                             7 July 2022
+Expires: 11 January 2023                          Universität Bremen TZI
+                                                            10 July 2022
 
 
  Date and Time on the Internet: Timestamps with additional information
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2023.
+   This Internet-Draft will expire on 11 January 2023.
 
 Copyright Notice
 
@@ -135,7 +135,7 @@ Table of Contents
    *  "Floating time", i.e., a local time without information describing
       the UTC offset or time zone in which it should be interpreted.
 
-   *  The use of time scales different from UTC, such as TAI.
+   *  The use of timescales different from UTC, such as TAI.
 
    However, additional information augmenting a fixed timestamp may be
    sufficient to detect an inconsistency between intention and the
@@ -177,7 +177,7 @@ Table of Contents
       for attempting to follow Universal Time based on measuring the
       rotation of the earth.
 
-      UTC is often mistakenly referred to as GMT, an earlier time scale
+      UTC is often mistakenly referred to as GMT, an earlier timescale
       UTC was designed to be a useful successor for.
 
    ABNF:  Augmented Backus-Naur Form, a format used to represent
@@ -256,7 +256,7 @@ Table of Contents
    CLDR:  Common locale data repository [CLDR], a project of the Unicode
       Consortium to provide locale data to applications.
 
-   For more information about time scales, see Appendix E of [RFC1305],
+   For more information about timescales, see Appendix E of [RFC1305],
    Section 3 of [ISO8601:1988], and the appropriate ITU documents
    [ITU-R-TF.460-6].
 
