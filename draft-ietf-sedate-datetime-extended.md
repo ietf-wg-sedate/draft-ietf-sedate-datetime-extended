@@ -100,6 +100,10 @@ informative:
     target: https://data.iana.org/time-zones/theory.html
     title: Theory and pragmatics of the tz code and data
     date: false
+  TR35:
+    target: https://unicode-org.github.io/cldr/ldml/tr35-dates.html#Supplemental_Calendar_Data
+    title: Unicode Technical Standard #35
+    date: false
 ...
 
 --- abstract
@@ -254,6 +258,10 @@ Time Zone:
   timestamp in San Francisco", a time zone is required because the
   UTC offset of local time in San Francisco can change from one day
   to the next.
+
+Calendar:
+: A set of rules defining how dates are counted and consumed by implementations.
+The set of calendars is as defined by {{TR35}} in the {{CLDR}} data.
 
 IANA Time Zone:
 : A named time zone that is included in the Time Zone Database (often
@@ -423,6 +431,12 @@ It means it is not required to do so with elective suffix tags, but is
 required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
+
+### Calendar-aware
+
+Out of the possible suffixes, the suffix `u-ca` is reserved for calendars. Due to
+this, the value provided to the `u-ca` suffix tag must be a valid calendar value
+as defined in this document.
 
 # Syntax Extensions to RFC 3339 {#extended-format}
 
