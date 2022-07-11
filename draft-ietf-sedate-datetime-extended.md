@@ -109,6 +109,18 @@ This document defines an extension to the timestamp format defined in
 RFC3339 for representing additional information including a time
 zone.
 
+
+[^status]
+
+[^status]:
+    The present version (-05) includes a few changes that are intended
+    for discussion at IETF 114.  In particular, the introduction of
+    the critical-flag exposes the fact that some RFC 3339
+    implementations assign different semantics to the time zone
+    offsets Z and +00:00; we may want to consider ways to cope with
+    this apparently common deviation.
+
+
 --- middle
 
 # Introduction {#intro}
