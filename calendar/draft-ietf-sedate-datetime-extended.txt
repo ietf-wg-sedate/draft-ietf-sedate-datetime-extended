@@ -83,15 +83,15 @@ Table of Contents
      2.1.  Informative
      2.2.  Registered
      2.3.  Optionally Critical
-       2.3.1.  Calendar-aware
    3.  Syntax Extensions to RFC 3339
      3.1.  ABNF
      3.2.  Examples
-   4.  IANA Considerations
-   5.  Security Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+   4.  The u-ca Suffix Key: Calendar Awareness
+   5.  IANA Considerations
+   6.  Security Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgements
    Contributors
    Authors' Addresses
@@ -226,10 +226,6 @@ Table of Contents
       to calculate "one day later than this timestamp in San Francisco",
       a time zone is required because the UTC offset of local time in
       San Francisco can change from one day to the next.
-
-   Calendar:  A set of rules defining how dates are counted and consumed
-      by implementations.  The set of calendars is as defined by [TR35]
-      in the [CLDR] data.
 
    IANA Time Zone:  A named time zone that is included in the Time Zone
       Database (often called tz or zoneinfo) maintained by IANA
@@ -390,12 +386,6 @@ Table of Contents
    reject or perform some other error handling when encountering
    inconsistent or unrecognized suffix tags marked as critical.
 
-2.3.1.  Calendar-aware
-
-   Out of the possible suffixes, the suffix u-ca is reserved for
-   calendars.  Due to this, the value provided to the u-ca suffix tag
-   must be a valid calendar value as defined in this document.
-
 3.  Syntax Extensions to RFC 3339
 
 3.1.  ABNF
@@ -465,8 +455,8 @@ Table of Contents
                 Figure 4: Projecting to the Hebrew calendar
 
    Figure 4 represents the exact same instant, but it informs calendar-
-   aware implementations that they should project it to the Hebrew
-   calendar.
+   aware implementations (see Section 4) that they should project it to
+   the Hebrew calendar.
 
    1996-12-19T16:39:57-08:00[_foo=bar][_baz=bat]
 
@@ -478,26 +468,50 @@ Table of Contents
    implementations that take part in the controlled experiment making
    use of these tag keys.
 
-4.  IANA Considerations
+4.  The u-ca Suffix Key: Calendar Awareness
+
+   Out of the possible suffix keys, the suffix key u-ca is allocated to
+   indicate the calendar in which the date/time is preferably presented.
+
+   A calendar is a set of rules defining how dates are counted and
+   consumed by implementations.  The set of suffix values allowed for
+   this suffix key is as defined by the [CLDR] data for [TR35].  At the
+   time of writing, this information is collected in [CLDR-CALENDAR].
+
+5.  IANA Considerations
+
+
+   // RFC Editor: please replace RFCthis with the RFC number of this RFC
+   // and remove this note.
 
    IANA is requested to establish a registry called "Timestamp Suffix
    Tag Keys".  Each entry in the registry shall consist of the
    information described in Section 2.2.  Initial contents of the
-   registry are specified in Section 2.2.
-   // We need to actually do this; see github issue #4.
+   registry are specified in Table 1.
+
+   +============+==============+==============+============+===========+
+   | Key        | Registration | Description: | Change     |Reference  |
+   | Identifier | status       |              | controller |           |
+   +============+==============+==============+============+===========+
+   | u-ca       | Permanent    | Preferred    | IESG       |Section 4  |
+   |            |              | Calendar for |            |of RFCthis |
+   |            |              | Presentation |            |           |
+   +------------+--------------+--------------+------------+-----------+
+
+       Table 1: Initial Content of Timestamp Suffix Tag Keys registry
 
    The registration policy [RFC8126] is "Specification Required" for
    permanent entries, and "Expert Review" for provisional ones.  In the
    second case, the expert is instructed to ascertain that a basic
    specification does exist, even if not complete or published yet.
 
-5.  Security Considerations
+6.  Security Considerations
 
    TBD
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [BCP175]   Lear, E. and P. Eggert, "Procedures for Maintaining the
               Time Zone Database", BCP 175, RFC 6557,
@@ -538,9 +552,13 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-6.2.  Informative References
+7.2.  Informative References
 
    [CLDR]     "Unicode CLDR Project", <https://cldr.unicode.org>.
+
+   [CLDR-CALENDAR]
+              "cldr/common/bcp47/calendar.xml", <https://github.com/
+              unicode-org/cldr/blob/main/common/bcp47/calendar.xml>.
 
    [IERS]     "International Earth Rotation Service Bulletins",
               <https://www.iers.org/IERS/EN/Publications/Bulletins/
