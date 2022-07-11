@@ -5,8 +5,8 @@
 Serialising Extended Data About Times and Events               U. Sharma
 Internet-Draft                                              Igalia, S.L.
 Intended status: Standards Track                              C. Bormann
-Expires: 11 January 2023                          Universität Bremen TZI
-                                                            10 July 2022
+Expires: 12 January 2023                          Universität Bremen TZI
+                                                            11 July 2022
 
 
  Date and Time on the Internet: Timestamps with additional information
@@ -17,6 +17,14 @@ Abstract
    This document defines an extension to the timestamp format defined in
    RFC3339 for representing additional information including a time
    zone.
+
+
+   // The present version (-05) includes a few changes that are intended
+   // for discussion at IETF 114.  In particular, the introduction of
+   // the critical-flag exposes the fact that some RFC 3339
+   // implementations assign different semantics to the time zone
+   // offsets Z and +00:00; we may want to consider ways to cope with
+   // this apparently common deviation.
 
 About This Document
 
@@ -50,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 January 2023.
+   This Internet-Draft will expire on 12 January 2023.
 
 Copyright Notice
 
