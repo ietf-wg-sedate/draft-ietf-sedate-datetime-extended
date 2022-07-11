@@ -92,6 +92,10 @@ informative:
     title: Unicode CLDR Project
     date: false
     author:
+  CLDR-CALENDAR:
+    target: https://github.com/unicode-org/cldr/blob/main/common/bcp47/calendar.xml
+    title: cldr/common/bcp47/calendar.xml
+    date: false
   TZDB:
     target: https://data.iana.org/time-zones/tz-link.html
     title: Sources for time zone and daylight saving time data
@@ -258,10 +262,6 @@ Time Zone:
   timestamp in San Francisco", a time zone is required because the
   UTC offset of local time in San Francisco can change from one day
   to the next.
-
-Calendar:
-: A set of rules defining how dates are counted and consumed by implementations.
-The set of calendars is as defined by {{TR35}} in the {{CLDR}} data.
 
 IANA Time Zone:
 : A named time zone that is included in the Time Zone Database (often
@@ -432,12 +432,6 @@ required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
 
-### Calendar-aware
-
-Out of the possible suffixes, the suffix `u-ca` is reserved for calendars. Due to
-this, the value provided to the `u-ca` suffix tag must be a valid calendar value
-as defined in this document.
-
 # Syntax Extensions to RFC 3339 {#extended-format}
 
 ## ABNF
@@ -512,7 +506,7 @@ account.
 {: #date-time-hebrew title="Projecting to the Hebrew calendar"}
 
 {{date-time-hebrew}} represents the exact same instant, but it informs calendar-aware
-implementations that they should project it to the Hebrew calendar.
+implementations (see {{calendar}}) that they should project it to the Hebrew calendar.
 
 ~~~~
 1996-12-19T16:39:57-08:00[_foo=bar][_baz=bat]
@@ -524,13 +518,31 @@ identified as experimental by a leading underscore to declare two additional pie
 information in the suffix; these can be interpreted by implementations
 that take part in the controlled experiment making use of these tag keys.
 
+# The u-ca Suffix Key: Calendar Awareness {#calendar}
+
+Out of the possible suffix keys, the suffix key `u-ca` is allocated to
+indicate the calendar in which the date/time is preferably presented.
+
+A calendar is a set of rules defining how dates are counted and
+consumed by implementations.  The set of suffix values allowed for
+this suffix key is as defined by the {{CLDR}} data for {{TR35}}.
+At the time of writing, this information is collected in {{CLDR-CALENDAR}}.
+
+
 # IANA Considerations {#iana-cons}
+
+[^to-be-removed]
+
+[^to-be-removed]: RFC Editor: please replace RFCthis with the RFC
+    number of this RFC and remove this note.
 
 IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
 Each entry in the registry shall consist of the information described in {{registered}}.
-Initial contents of the registry are specified in {{registered}}. [^todo1]
+Initial contents of the registry are specified in {{tab-registered}}.
 
-[^todo1]: We need to actually do this; see github issue #4.
+| Key Identifier | Registration status | Description:                        | Change controller | Reference             |
+| u-ca           | Permanent           | Preferred Calendar for Presentation | IESG              | {{calendar}} of RFCthis |
+{: #tab-registered title="Initial Content of Timestamp Suffix Tag Keys registry"}
 
 The registration policy {{RFC8126}} is "Specification Required" for
 permanent entries, and "Expert Review" for provisional ones.
