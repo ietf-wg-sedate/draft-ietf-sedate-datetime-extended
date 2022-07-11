@@ -15,7 +15,7 @@ pi:
   sortrefs: 'yes'
 title: >
   Date and Time on the Internet: Timestamps with additional information
-abbrev: Internet Extended Date/Time Format (IXDTF)
+abbrev: Internet Extended Date/Time Fmt (IXDTF)
 wg: Serialising Extended Data About Times and Events
 
 venue:
@@ -127,7 +127,7 @@ zone.
     fact that some RFC 3339 implementations assign different semantics
     to the time zone offsets Z and +00:00; we may want to consider
     ways to cope with this apparently common deviation.
-    Also, the name of he format is still up for suggestions that
+    Also, the name of the format is still up for suggestions that
     improve upon the current choice.
 
 
@@ -394,7 +394,7 @@ not implement (or know about) the specific suffix key, or that it does
 recognize the key but cannot act on the value provided.
 
 A suffix tag may also indicate that it is *critical*: The recipient is
-advised that it MUST not act on the Internet Extended Date/Time Format (IXDTF) string
+advised that it MUST NOT act on the Internet Extended Date/Time Format (IXDTF) string
 unless it can process the suffix tag as specified.  A critical suffix
 tag is indicated by following its opening bracket with an exclamation
 mark (see `critical-flag` in {{abnf}}).
