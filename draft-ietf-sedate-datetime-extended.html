@@ -1186,30 +1186,33 @@ improve upon the current choice.</span><a href="#section-abstract-2" class="pilc
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-the-u-ca-suffix-key-calenda" class="xref">The u-ca Suffix Key: Calendar Awareness</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-references" class="xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
-                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-C" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1673,7 +1676,7 @@ account.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
           </figcaption></figure>
 </div>
 <p id="section-3.2-7"><a href="#date-time-hebrew" class="xref">Figure 4</a> represents the exact same instant, but it informs calendar-aware
-implementations that they should project it to the Hebrew calendar.<a href="#section-3.2-7" class="pilcrow">¶</a></p>
+implementations (see <a href="#calendar" class="xref">Section 4</a>) that they should project it to the Hebrew calendar.<a href="#section-3.2-7" class="pilcrow">¶</a></p>
 <span id="name-adding-experimental-tags"></span><div id="date-time-private">
 <figure id="figure-5">
           <div class="alignLeft art-text artwork" id="section-3.2-8.1">
@@ -1693,35 +1696,77 @@ that take part in the controlled experiment making use of these tag keys.<a href
 </div>
 </section>
 </div>
-<div id="iana-cons">
+<div id="calendar">
 <section id="section-4">
-      <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      <h2 id="name-the-u-ca-suffix-key-calenda">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-the-u-ca-suffix-key-calenda" class="section-name selfRef">The u-ca Suffix Key: Calendar Awareness</a>
       </h2>
-<p id="section-4-1">IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
+<p id="section-4-1">Out of the possible suffix keys, the suffix key <code>u-ca</code> is allocated to
+indicate the calendar in which the date/time is preferably presented.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">A calendar is a set of rules defining how dates are counted and
+consumed by implementations.  The set of suffix values allowed for
+this suffix key is as defined by the <span>[<a href="#CLDR" class="xref">CLDR</a>]</span> data for <span>[<a href="#TR35" class="xref">TR35</a>]</span>.
+At the time of writing, this information is collected in <span>[<a href="#CLDR-CALENDAR" class="xref">CLDR-CALENDAR</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="iana-cons">
+<section id="section-5">
+      <h2 id="name-iana-considerations">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-5-1"><span class="cref" id="to-be-removed">RFC Editor: please replace RFCthis with the RFC
+number of this RFC and remove this note.</span><a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
 Each entry in the registry shall consist of the information described in <a href="#registered" class="xref">Section 2.2</a>.
-Initial contents of the registry are specified in <a href="#registered" class="xref">Section 2.2</a>. <span class="cref" id="todo1">We need to actually do this; see github issue #4.</span><a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">The registration policy <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span> is "Specification Required" for
+Initial contents of the registry are specified in <a href="#tab-registered" class="xref">Table 1</a>.<a href="#section-5-2" class="pilcrow">¶</a></p>
+<span id="name-initial-content-of-timestam"></span><div id="tab-registered">
+<table class="center" id="table-1">
+        <caption>
+<a href="#table-1" class="selfRef">Table 1</a>:
+<a href="#name-initial-content-of-timestam" class="selfRef">Initial Content of Timestamp Suffix Tag Keys registry</a>
+        </caption>
+<thead>
+          <tr>
+            <th class="text-left" rowspan="1" colspan="1">Key Identifier</th>
+            <th class="text-left" rowspan="1" colspan="1">Registration status</th>
+            <th class="text-left" rowspan="1" colspan="1">Description:</th>
+            <th class="text-left" rowspan="1" colspan="1">Change controller</th>
+            <th class="text-left" rowspan="1" colspan="1">Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">u-ca</td>
+            <td class="text-left" rowspan="1" colspan="1">Permanent</td>
+            <td class="text-left" rowspan="1" colspan="1">Preferred Calendar for Presentation</td>
+            <td class="text-left" rowspan="1" colspan="1">IESG</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <a href="#calendar" class="xref">Section 4</a> of RFCthis</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<p id="section-5-4">The registration policy <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span> is "Specification Required" for
 permanent entries, and "Expert Review" for provisional ones.
 In the second case, the expert is instructed to ascertain that a basic
-specification does exist, even if not complete or published yet.<a href="#section-4-2" class="pilcrow">¶</a></p>
+specification does exist, even if not complete or published yet.<a href="#section-5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-5">
+<section id="section-6">
       <h2 id="name-security-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-5-1">TBD<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">TBD<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<section id="section-6">
+<section id="section-7">
       <h2 id="name-references">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
-<section id="section-6.1">
+<section id="section-7.1">
         <h3 id="name-normative-references">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="BCP175">[BCP175]</dt>
@@ -1758,14 +1803,18 @@ specification does exist, even if not complete or published yet.<a href="#sectio
 <dd class="break"></dd>
 </dl>
 </section>
-<section id="section-6.2">
+<section id="section-7.2">
         <h3 id="name-informative-references">
-<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="CLDR">[CLDR]</dt>
         <dd>
 <span class="refTitle">"Unicode CLDR Project"</span>, <span>&lt;<a href="https://cldr.unicode.org">https://cldr.unicode.org</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="CLDR-CALENDAR">[CLDR-CALENDAR]</dt>
+        <dd>
+<span class="refTitle">"cldr/common/bcp47/calendar.xml"</span>, <span>&lt;<a href="https://github.com/unicode-org/cldr/blob/main/common/bcp47/calendar.xml">https://github.com/unicode-org/cldr/blob/main/common/bcp47/calendar.xml</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IERS">[IERS]</dt>
         <dd>
@@ -1786,6 +1835,10 @@ specification does exist, even if not complete or published yet.<a href="#sectio
 <dt id="RFC1305">[RFC1305]</dt>
         <dd>
 <span class="refAuthor">Mills, D.</span>, <span class="refTitle">"Network Time Protocol (Version 3) Specification, Implementation and Analysis"</span>, <span class="seriesInfo">RFC 1305</span>, <span class="seriesInfo">DOI 10.17487/RFC1305</span>, <time datetime="1992-03" class="refDate">March 1992</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1305">https://www.rfc-editor.org/rfc/rfc1305</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="TR35">[TR35]</dt>
+        <dd>
+<span class="refTitle">"Unicode Technical Standard"</span>, <span>&lt;<a href="https://unicode-org.github.io/cldr/ldml/tr35-dates.html#Supplemental_Calendar_Data">https://unicode-org.github.io/cldr/ldml/tr35-dates.html#Supplemental_Calendar_Data</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TZDB">[TZDB]</dt>
         <dd>
