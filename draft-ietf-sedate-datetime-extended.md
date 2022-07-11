@@ -15,7 +15,7 @@ pi:
   sortrefs: 'yes'
 title: >
   Date and Time on the Internet: Timestamps with additional information
-abbrev: Timestamps Extended
+abbrev: Internet Extended Date/Time Format (IXDTF)
 wg: Serialising Extended Data About Times and Events
 
 venue:
@@ -114,11 +114,13 @@ zone.
 
 [^status]:
     The present version (-05) includes a few changes that are intended
-    for discussion at IETF 114.  In particular, the introduction of
-    the critical-flag exposes the fact that some RFC 3339
-    implementations assign different semantics to the time zone
-    offsets Z and +00:00; we may want to consider ways to cope with
-    this apparently common deviation.
+    for discussion at IETF 114.
+    In particular, the introduction of the critical-flag exposes the
+    fact that some RFC 3339 implementations assign different semantics
+    to the time zone offsets Z and +00:00; we may want to consider
+    ways to cope with this apparently common deviation.
+    Also, the name of he format is still up for suggestions that
+    improve upon the current choice.
 
 
 --- middle
@@ -131,7 +133,7 @@ scheduling.
 
 Each distinct instant in time can be represented in a descriptive text
 format using a timestamp, and {{ISO8601}} standardizes a widely-adopted
-timestamp format, which forms the basis of {{RFC3339}}.
+timestamp format, which forms the basis of the Internet Date/Time Format {{RFC3339}}.
 However, this format only allows timestamps to contain very little
 additional relevant information, which means that, beyond that, any contextual
 information related to a given timestamp needs to be either handled
@@ -160,6 +162,7 @@ in {{RFC3339}} that has the following properties:
 * The format provides a generalized way to attach any additional
   information to the timestamp.
 
+We refer to this format as the Internet Extended Date/Time Format (IXDTF).
 
 This document does not address extensions to the format where the
 semantic result is no longer a fixed timestamp that is referenced to a
@@ -220,7 +223,7 @@ ABNF:
   strings in a protocol or language, as defined in {{RFC5234}}.
   The rules defined in {{Appendix B of RFC5234}} are imported implicitly.
 
-Internet Date/Time Format:
+Internet Extended Date/Time Format (IXDTF):
 : The date/time format defined in {{extended-format}} of this document.
 
 Timestamp:
@@ -304,7 +307,7 @@ For more information about timescales, see {{Appendix E of RFC1305}},
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
 {{ITU-R-TF.460-6}}.
 
-# Extended Date/Time format {#date-time-format}
+# Internet Extended Date/Time format (IXDTF) {#date-time-format}
 
 This section discusses desirable qualities of formats for the
 timestamp extension suffix and defines such a format that extends
@@ -373,22 +376,22 @@ leaking out to general production and why that MUST be prevented.
 
 For the format defined here, suffix tags are always *optional*: They
 can be added or left out as desired by the generator of the string in
-Internet Date/Time Format.  (An application might require the presence
+Internet Extended Date/Time Format (IXDTF).  (An application might require the presence
 of specific suffix tags, though.)
 
 Without further indication, they are also *elective*: Even if included
-in the Internet Date/Time Format string, the recipient is free to
+in the IXDTF string, the recipient is free to
 ignore the suffix tag.  Reasons might include that the recipient does
 not implement (or know about) the specific suffix key, or that it does
 recognize the key but cannot act on the value provided.
 
 A suffix tag may also indicate that it is *critical*: The recipient is
-advised that it MUST not act on the Internet Date/Time Format string
+advised that it MUST not act on the Internet Extended Date/Time Format (IXDTF) string
 unless it can process the suffix tag as specified.  A critical suffix
 tag is indicated by following its opening bracket with an exclamation
 mark (see `critical-flag` in {{abnf}}).
 
-Internet Date/Time Format strings such as:
+IXDTF strings such as:
 
     2022-07-08T00:14:07Z[Europe/Paris]
     2022-07-08T00:14:07+01:00[Europe/Paris]
@@ -414,7 +417,7 @@ However,
     2022-07-08T00:14:07Z[!knort=blargel]
 
 all have an internal inconsistency or an unrecognized suffix key/value, so
-a recipient MUST treat the Internet Date/Time Format string as erroneous.
+a recipient MUST treat the IXDTF string as erroneous.
 
 Note that this does not mean that an application is disallowed to
 perform additional processing on elective suffix tags, e.g., asking
@@ -431,8 +434,8 @@ critical.
 The following rules extend the ABNF syntax defined in {{RFC3339}} in
 order to allow the inclusion of an optional suffix.
 
-The extended date/time format is described by the rule
-`date-time-ext`.
+The Internet Extended Date/Time Format (IXDTF) is described by the
+rule `date-time-ext`.
 
 `date-time` and `time-numoffset` are imported from {{Section 5.6 of
 RFC3339}}, `ALPHA` and `DIGIT` from {{Section B.1 of RFC5234}}.
@@ -470,8 +473,7 @@ This special case is only available for time zone tags.
 
 ## Examples {#date-time-examples}
 
-Here are some examples of Internet extended date/time format.
-<!-- We need to agree a name for the baby. -->
+Here are some examples of Internet Extended Date/Time Format (IXDTF).
 
 ~~~~
 1996-12-19T16:39:57-08:00
