@@ -24,7 +24,7 @@ Abstract
    // the critical-flag exposes the fact that some RFC 3339
    // implementations assign different semantics to the time zone
    // offsets Z and +00:00; we may want to consider ways to cope with
-   // this apparently common deviation.  Also, the name of he format is
+   // this apparently common deviation.  Also, the name of the format is
    // still up for suggestions that improve upon the current choice.
 
 About This Document
@@ -349,7 +349,7 @@ Table of Contents
    recognize the key but cannot act on the value provided.
 
    A suffix tag may also indicate that it is _critical_: The recipient
-   is advised that it MUST not act on the Internet Extended Date/Time
+   is advised that it MUST NOT act on the Internet Extended Date/Time
    Format (IXDTF) string unless it can process the suffix tag as
    specified.  A critical suffix tag is indicated by following its
    opening bracket with an exclamation mark (see critical-flag in

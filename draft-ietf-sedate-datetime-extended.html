@@ -17,7 +17,7 @@ In particular, the introduction of the critical-flag exposes the
 fact that some RFC 3339 implementations assign different semantics
 to the time zone offsets Z and +00:00; we may want to consider
 ways to cope with this apparently common deviation.
-Also, the name of he format is still up for suggestions that
+Also, the name of the format is still up for suggestions that
 improve upon the current choice. 
     " name="description">
 <meta content="xml2rfc 3.13.0" name="generator">
@@ -1035,7 +1035,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Internet Extended Date/Time Format (IXDT</td>
+<td class="center">Internet Extended Date/Time Fmt (IXDTF)</td>
 <td class="right">July 2022</td>
 </tr></thead>
 <tfoot><tr>
@@ -1084,7 +1084,7 @@ In particular, the introduction of the critical-flag exposes the
 fact that some RFC 3339 implementations assign different semantics
 to the time zone offsets Z and +00:00; we may want to consider
 ways to cope with this apparently common deviation.
-Also, the name of he format is still up for suggestions that
+Also, the name of the format is still up for suggestions that
 improve upon the current choice.</span><a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
@@ -1526,7 +1526,7 @@ ignore the suffix tag.  Reasons might include that the recipient does
 not implement (or know about) the specific suffix key, or that it does
 recognize the key but cannot act on the value provided.<a href="#section-2.3-2" class="pilcrow">¶</a></p>
 <p id="section-2.3-3">A suffix tag may also indicate that it is <em>critical</em>: The recipient is
-advised that it <span class="bcp14">MUST</span> not act on the Internet Extended Date/Time Format (IXDTF) string
+advised that it <span class="bcp14">MUST NOT</span> act on the Internet Extended Date/Time Format (IXDTF) string
 unless it can process the suffix tag as specified.  A critical suffix
 tag is indicated by following its opening bracket with an exclamation
 mark (see <code>critical-flag</code> in <a href="#abnf" class="xref">Section 3.1</a>).<a href="#section-2.3-3" class="pilcrow">¶</a></p>
