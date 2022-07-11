@@ -92,6 +92,10 @@ informative:
     title: Unicode CLDR Project
     date: false
     author:
+  CLDR-CALENDAR:
+    target: https://github.com/unicode-org/cldr/blob/main/common/bcp47/calendar.xml
+    title: cldr/common/bcp47/calendar.xml
+    date: false
   TZDB:
     target: https://data.iana.org/time-zones/tz-link.html
     title: Sources for time zone and daylight saving time data
@@ -99,6 +103,10 @@ informative:
   TZDB-NAMING:
     target: https://data.iana.org/time-zones/theory.html
     title: Theory and pragmatics of the tz code and data
+    date: false
+  TR35:
+    target: https://unicode-org.github.io/cldr/ldml/tr35-dates.html#Supplemental_Calendar_Data
+    title: Unicode Technical Standard #35
     date: false
 ...
 
@@ -500,7 +508,7 @@ account.
 {: #date-time-hebrew title="Projecting to the Hebrew calendar"}
 
 {{date-time-hebrew}} represents the exact same instant, but it informs calendar-aware
-implementations that they should project it to the Hebrew calendar.
+implementations (see {{calendar}}) that they should project it to the Hebrew calendar.
 
 ~~~~
 1996-12-19T16:39:57-08:00[_foo=bar][_baz=bat]
@@ -512,13 +520,31 @@ identified as experimental by a leading underscore to declare two additional pie
 information in the suffix; these can be interpreted by implementations
 that take part in the controlled experiment making use of these tag keys.
 
+# The u-ca Suffix Key: Calendar Awareness {#calendar}
+
+Out of the possible suffix keys, the suffix key `u-ca` is allocated to
+indicate the calendar in which the date/time is preferably presented.
+
+A calendar is a set of rules defining how dates are counted and
+consumed by implementations.  The set of suffix values allowed for
+this suffix key is as defined by the {{CLDR}} data for {{TR35}}.
+At the time of writing, this information is collected in {{CLDR-CALENDAR}}.
+
+
 # IANA Considerations {#iana-cons}
+
+[^to-be-removed]
+
+[^to-be-removed]: RFC Editor: please replace RFCthis with the RFC
+    number of this RFC and remove this note.
 
 IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
 Each entry in the registry shall consist of the information described in {{registered}}.
-Initial contents of the registry are specified in {{registered}}. [^todo1]
+Initial contents of the registry are specified in {{tab-registered}}.
 
-[^todo1]: We need to actually do this; see github issue #4.
+| Key Identifier | Registration status | Description:                        | Change controller | Reference             |
+| u-ca           | Permanent           | Preferred Calendar for Presentation | IESG              | {{calendar}} of RFCthis |
+{: #tab-registered title="Initial Content of Timestamp Suffix Tag Keys registry"}
 
 The registration policy {{RFC8126}} is "Specification Required" for
 permanent entries, and "Expert Review" for provisional ones.
