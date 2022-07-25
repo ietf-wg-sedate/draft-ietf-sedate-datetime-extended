@@ -17,6 +17,7 @@ title: >
   Date and Time on the Internet: Timestamps with additional information
 abbrev: Internet Extended Date/Time Fmt (IXDTF)
 wg: Serialising Extended Data About Times and Events
+updates: 3339
 
 venue:
   group: Serialising Extended Data About Times and Events (SEDATE)
@@ -57,6 +58,8 @@ normative:
   BCP178: RFC6648
   BCP175: RFC6557
 informative:
+  RFC2822:
+  RFC5322:
   # obsolete, but needed for its Appendix E:
   RFC1305: ntp-old
   ISO8601:
@@ -117,18 +120,16 @@ This document defines an extension to the timestamp format defined in
 RFC3339 for representing additional information including a time
 zone.
 
+It updates RFC3339 in the specific interpretation of the local offset
+`Z`, which is no longer understood to "imply that UTC is the preferred
+reference point for the specified time"; see {{update}}.
 
 [^status]
 
 [^status]:
-    The present version (-05) includes a few changes that are intended
-    for discussion at IETF 114.
-    In particular, the introduction of the critical-flag exposes the
-    fact that some RFC 3339 implementations assign different semantics
-    to the time zone offsets Z and +00:00; we may want to consider
-    ways to cope with this apparently common deviation.
-    Also, the name of the format is still up for suggestions that
-    improve upon the current choice.
+    The present version (-06) reflects the discussions at IETF 114.
+    In particular, RFC 3339 is now updated with respect to the semantics
+    of time zone offset `Z`.
 
 
 --- middle
@@ -315,6 +316,38 @@ For more information about timescales, see {{Appendix E of RFC1305}},
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
 {{ITU-R-TF.460-6}}.
 
+# Updating RFC 3339 {#update}
+
+{{Section 4.3 of RFC3339}} states that an offset given as `Z` or
+`+00:00` implies that "UTC is the preferred reference point for the
+specified time".  The offset `-00:00` is provided as a way to express
+that "the time in UTC is known, but the offset to local time is
+unknown".
+
+This convention mirrors a similar convention described in {{Section 3.3
+of RFC5322}}, introduced earlier in {{Section 3.3 of RFC2822}} for email
+headers.
+The latter convention is in actual use, while the former always was
+handicapped by the fact that {{ISO8601}} does not actually allow `-00:00`.
+
+Implementations that needed to express the semantics of `-00:00`
+therefore tended to use `Z` as a "neutral" offset instead.
+
+This specification updates RFC3339, aligning it with the actual
+practice of interpreting the local offset `Z`: this is no longer
+understood to "imply that UTC is the preferred reference point for the
+specified time".
+
+Note that the semantics of the local offset `+00:00` is not updated;
+this retains the implication that UTC is the preferred reference point
+for the specified time.
+
+Note also that the fact that {{ISO8601}} does not allow `-00:00` as a
+local offset reduces the level of interoperability that can be
+achieved in using this feature; the present specification however does
+not formally deprecate this syntax.  For the intents and purposes of
+the present specification, the local offset `Z` can be used in its place.
+
 # Internet Extended Date/Time format (IXDTF) {#date-time-format}
 
 This section discusses desirable qualities of formats for the
@@ -380,7 +413,7 @@ not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
-## Optionally Critical
+## Optionally Critical \[Not yet updated!]
 
 For the format defined here, suffix tags are always *optional*: They
 can be added or left out as desired by the generator of the string in
