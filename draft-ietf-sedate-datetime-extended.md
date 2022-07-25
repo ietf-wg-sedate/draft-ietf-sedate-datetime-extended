@@ -333,7 +333,7 @@ The value of a tag can be one or more items delimited by hyphen/minus signs.
 Applications can build an informative timestamp *suffix* using any number of
 these tags.
 
-Keys are case-sensitive.  Values are case-sensitive unless otherwise specified.
+Keys are lower-case only.  Values are case-sensitive unless otherwise specified.
 
 When a suffix contains a repeated key or otherwise conflicting tags,
 implementations MUST give precedence to whichever value is positioned
@@ -457,7 +457,7 @@ time-zone-name    = time-zone-part *("/" time-zone-part)
 time-zone         = "[" critical-flag
                         time-zone-name / time-numoffset "]"
 
-key-initial       = ALPHA / "_"
+key-initial       = lcalpha / "_"
 key-char          = key-initial / DIGIT / "-"
 suffix-key        = key-initial *key-char
 
@@ -472,6 +472,7 @@ date-time-ext     = date-time suffix
 critical-flag     = [ "!" ]
 
 alphanum          = ALPHA / DIGIT
+lcalpha           = %x61-7A
 ~~~~
 {: #grammar title="ABNF grammar of extensions to RFC 3339"}
 
