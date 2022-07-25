@@ -1177,7 +1177,7 @@ of time zone offset <code>Z</code>.</span><a href="#section-abstract-3" class="p
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-registered" class="xref">Registered</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-optionally-critical-not-yet" class="xref">Optionally Critical [Not yet updated!]</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-optionally-critical" class="xref">Optionally Critical</a></p>
 </li>
             </ul>
 </li>
@@ -1548,10 +1548,10 @@ See <span>[<a href="#BCP178" class="xref">BCP178</a>]</span> for a discussion ab
 leaking out to general production and why that <span class="bcp14">MUST</span> be prevented.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="optionally-critical-not-yet-updated">
+<div id="optionally-critical">
 <section id="section-3.3">
-        <h3 id="name-optionally-critical-not-yet">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-optionally-critical-not-yet" class="section-name selfRef">Optionally Critical [Not yet updated!]</a>
+        <h3 id="name-optionally-critical">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-optionally-critical" class="section-name selfRef">Optionally Critical</a>
         </h3>
 <p id="section-3.3-1">For the format defined here, suffix tags are always <em>optional</em>: They
 can be added or left out as desired by the generator of the string in
@@ -1570,45 +1570,59 @@ mark (see <code>critical-flag</code> in <a href="#abnf" class="xref">Section 4.1
 <p id="section-3.3-4">IXDTF strings such as:<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.3-5">
 <pre>
-2022-07-08T00:14:07Z[Europe/Paris]
 2022-07-08T00:14:07+01:00[Europe/Paris]
 </pre><a href="#section-3.3-5" class="pilcrow">¶</a>
 </div>
-<p id="section-3.3-6">are internally inconsistent, as Europe/Paris does not use a time zone
-offset of 0 (which is indicated in the <code>Z</code>, an abbreviation for
-<code>+00:00</code>), nor a time zone offset of <code>+01:00</code> in July 2022.
+<p id="section-3.3-6">are internally inconsistent, as Europe/Paris does not use a time zone offset of <code>+01:00</code> in July 2022.
 The time zone hint given in the suffix tag is elective, though, so the recipient is not
 required to act on the inconsistency; it can treat the Internet
 Date/Time Format string as if it were:<a href="#section-3.3-6" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.3-7">
 <pre>
-2022-07-08T00:14:07Z
 2022-07-08T00:14:07+01:00
 </pre><a href="#section-3.3-7" class="pilcrow">¶</a>
 </div>
 <p id="section-3.3-8">Similar with:<a href="#section-3.3-8" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.3-9">
 <pre>
-2022-07-08T00:14:07Z[knort=blargel]
+2022-07-08T00:14:07+01:00[knort=blargel]
 </pre><a href="#section-3.3-9" class="pilcrow">¶</a>
 </div>
-<p id="section-3.3-10">However,<a href="#section-3.3-10" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3.3-11">
+<p id="section-3.3-10">(assuming that the recipient does not understand the suffix key <code>knort</code>).<a href="#section-3.3-10" class="pilcrow">¶</a></p>
+<aside id="section-3.3-11">
+          <p id="section-3.3-11.1">Note that:<a href="#section-3.3-11.1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.3-11.2">
 <pre>
-2022-07-08T00:14:07Z[!Europe/Paris]
+2022-07-08T00:14:07Z[Europe/Paris]
+</pre><a href="#section-3.3-11.2" class="pilcrow">¶</a>
+</div>
+<p id="section-3.3-11.3">does not exhibit such an inconsistency, as the local offset of <code>Z</code>
+does not imply a specific preferred time zone of interpretation.
+With the knowledge of how time zone offsets applied to Europe/Paris in
+the summer of 2022, it is equivalent to:<a href="#section-3.3-11.3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.3-11.4">
+<pre>
+2022-07-08T02:14:07+02:00[Europe/Paris]
+</pre><a href="#section-3.3-11.4" class="pilcrow">¶</a>
+</div>
+</aside>
+<p id="section-3.3-12">In contrast to this elective use of a suffix tag,<a href="#section-3.3-12" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.3-13">
+<pre>
 2022-07-08T00:14:07+01:00[!Europe/Paris]
 2022-07-08T00:14:07Z[!knort=blargel]
-</pre><a href="#section-3.3-11" class="pilcrow">¶</a>
+</pre><a href="#section-3.3-13" class="pilcrow">¶</a>
 </div>
-<p id="section-3.3-12">all have an internal inconsistency or an unrecognized suffix key/value, so
-a recipient <span class="bcp14">MUST</span> treat the IXDTF string as erroneous.<a href="#section-3.3-12" class="pilcrow">¶</a></p>
-<p id="section-3.3-13">Note that this does not mean that an application is disallowed to
+<p id="section-3.3-14">have an internal inconsistency or an unrecognized suffix key/value
+that are marked as critical, so a recipient <span class="bcp14">MUST</span> treat the IXDTF
+string as erroneous.<a href="#section-3.3-14" class="pilcrow">¶</a></p>
+<p id="section-3.3-15">Note that this does not mean that an application is disallowed to
 perform additional processing on elective suffix tags, e.g., asking
 the user how to resolve the inconsistency.
 It means it is not required to do so with elective suffix tags, but is
 required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
-critical.<a href="#section-3.3-13" class="pilcrow">¶</a></p>
+critical.<a href="#section-3.3-15" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
