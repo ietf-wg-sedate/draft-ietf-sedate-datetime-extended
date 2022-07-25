@@ -413,7 +413,7 @@ not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
-## Optionally Critical \[Not yet updated!]
+## Optionally Critical
 
 For the format defined here, suffix tags are always *optional*: They
 can be added or left out as desired by the generator of the string in
@@ -434,31 +434,44 @@ mark (see `critical-flag` in {{abnf}}).
 
 IXDTF strings such as:
 
-    2022-07-08T00:14:07Z[Europe/Paris]
     2022-07-08T00:14:07+01:00[Europe/Paris]
 
-are internally inconsistent, as Europe/Paris does not use a time zone
-offset of 0 (which is indicated in the `Z`, an abbreviation for
-`+00:00`), nor a time zone offset of `+01:00` in July 2022.
+are internally inconsistent, as Europe/Paris does not use a time zone offset of `+01:00` in July 2022.
 The time zone hint given in the suffix tag is elective, though, so the recipient is not
 required to act on the inconsistency; it can treat the Internet
 Date/Time Format string as if it were:
 
-    2022-07-08T00:14:07Z
     2022-07-08T00:14:07+01:00
 
 Similar with:
 
-    2022-07-08T00:14:07Z[knort=blargel]
+    2022-07-08T00:14:07+01:00[knort=blargel]
 
-However,
+(assuming that the recipient does not understand the suffix key `knort`).
 
-    2022-07-08T00:14:07Z[!Europe/Paris]
+<aside markdown="1">
+
+Note that:
+
+    2022-07-08T00:14:07Z[Europe/Paris]
+
+does not exhibit such an inconsistency, as the local offset of `Z`
+does not imply a specific preferred time zone of interpretation.
+With the knowledge of how time zone offsets applied to Europe/Paris in
+the summer of 2022, it is equivalent to:
+
+    2022-07-08T02:14:07+02:00[Europe/Paris]
+
+</aside>
+
+In contrast to this elective use of a suffix tag,
+
     2022-07-08T00:14:07+01:00[!Europe/Paris]
     2022-07-08T00:14:07Z[!knort=blargel]
 
-all have an internal inconsistency or an unrecognized suffix key/value, so
-a recipient MUST treat the IXDTF string as erroneous.
+have an internal inconsistency or an unrecognized suffix key/value
+that are marked as critical, so a recipient MUST treat the IXDTF
+string as erroneous.
 
 Note that this does not mean that an application is disallowed to
 perform additional processing on elective suffix tags, e.g., asking
