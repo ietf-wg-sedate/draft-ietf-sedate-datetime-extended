@@ -122,12 +122,8 @@ zone.
 
 [^status]:
     The present version (-05) includes a few changes that are intended
-    for discussion at IETF 114.
-    In particular, the introduction of the critical-flag exposes the
-    fact that some RFC 3339 implementations assign different semantics
-    to the time zone offsets Z and +00:00; we may want to consider
-    ways to cope with this apparently common deviation.
-    Also, the name of the format is still up for suggestions that
+    for future discussion.
+    For example, the name of the format is still up for suggestions that
     improve upon the current choice.
 
 
@@ -401,28 +397,24 @@ mark (see `critical-flag` in {{abnf}}).
 
 IXDTF strings such as:
 
-    2022-07-08T00:14:07Z[Europe/Paris]
     2022-07-08T00:14:07+01:00[Europe/Paris]
 
 are internally inconsistent, as Europe/Paris does not use a time zone
-offset of 0 (which is indicated in the `Z`, an abbreviation for
-`+00:00`), nor a time zone offset of `+01:00` in July 2022.
+offset of +01:00 in July 2022.
 The time zone hint given in the suffix tag is elective, though, so the recipient is not
 required to act on the inconsistency; it can treat the Internet
 Date/Time Format string as if it were:
 
-    2022-07-08T00:14:07Z
     2022-07-08T00:14:07+01:00
 
 Similar with:
 
-    2022-07-08T00:14:07Z[knort=blargel]
+    2022-07-08T00:14:07+01:00[knort=blargel]
 
 However,
 
-    2022-07-08T00:14:07Z[!Europe/Paris]
     2022-07-08T00:14:07+01:00[!Europe/Paris]
-    2022-07-08T00:14:07Z[!knort=blargel]
+    2022-07-08T00:14:07+01:00[!knort=blargel]
 
 all have an internal inconsistency or an unrecognized suffix key/value, so
 a recipient MUST treat the IXDTF string as erroneous.
@@ -434,6 +426,49 @@ It means it is not required to do so with elective suffix tags, but is
 required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
+
+## Offset vs. Time Zone Conflicts
+
+Time zone offsets in a timestamp string can conflict with its time zone suffix.
+For example, a calendar application could store an IXDTF string representing a
+far-future meeting in a particular time zone. If that time zone's definition is
+subsequently changed to abolish Daylight Saving Time, IXDTF strings that were
+originally correct may now be conflicting.
+
+If time zone and offset are in conflict an application MUST (if the critical
+flag is used on the time zone hint) or MAY (if the critical flag is not used)
+reject the timestamp or resolve the conflict via user and/or programmer input.
+
+## Use of `Z` Offset Designator with Time Zone Suffix
+
+RFC 3339 (as well as this standard that extends it) provides the offset `-00:00`
+to indicate that the actual local time and local offset are unknown. However,
+many implementations use `Z` for this purpose, often to maximize compatibility
+with ISO 8601 which disallows `-00:00`. Therefore, implementations MAY choose to
+interpret `Z` the same as `-00:00`: exempting `Z` offsets from conflict
+detection and instead using the time zone suffix to determine the local offset
+and local time. Because of this common behavior, implementations SHOULD use
+`+00:00` instead of `Z` when recording a timestamp when the local UTC offset is
+known to be zero and SHOULD NOT use `+00:00` when the local UTC offset is
+unknown. 
+
+For example, the following strings represent timestamps at 00:14:07 local time
+in a real-world time zone with the offset 0. Because Europe/London used offset
++01:00 in July 2022, the following strings SHOULD be considered conflicts:
+
+    2022-07-08T00:14:07+00:00[!Europe/London]
+    2022-07-08T00:14:07+00:00[Europe/London]
+
+However, the following strings (which represent the same instant as the strings
+above) SHOULD NOT be considered conflicts because they do not assert any
+particular local time nor local offset. Instead, applications that receive these
+strings SHOULD calculate their local offset and local time using the
+Europe/London time zone rules.
+
+    2022-07-08T00:14:07Z[!Europe/London]
+    2022-07-08T00:14:07Z[Europe/London]
+    2022-07-08T00:14:07-00:00[!Europe/London]
+    2022-07-08T00:14:07-00:00[Europe/London]
 
 # Syntax Extensions to RFC 3339 {#extended-format}
 
