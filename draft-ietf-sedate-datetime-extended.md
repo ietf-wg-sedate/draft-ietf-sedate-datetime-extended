@@ -414,7 +414,7 @@ Similar with:
 However,
 
     2022-07-08T00:14:07+01:00[!Europe/Paris]
-    2022-07-08T00:14:07+01:00[!knort=blargel]
+    2022-07-08T00:14:07Z[!knort=blargel]
 
 all have an internal inconsistency or an unrecognized suffix key/value, so
 a recipient MUST treat the IXDTF string as erroneous.
