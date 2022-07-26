@@ -450,7 +450,7 @@ detection and instead using the time zone suffix to determine the local offset
 and local time. Because of this common behavior, implementations SHOULD use
 `+00:00` instead of `Z` when recording a timestamp when the local UTC offset is
 known to be zero and SHOULD NOT use `+00:00` when the local UTC offset is
-unknown. 
+unknown.
 
 For example, the following strings represent timestamps at 00:14:07 local time
 in a real-world time zone with the offset 0. Because Europe/London used offset
