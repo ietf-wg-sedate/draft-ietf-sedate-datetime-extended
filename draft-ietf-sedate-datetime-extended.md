@@ -324,9 +324,9 @@ specified time".  The offset `-00:00` is provided as a way to express
 that "the time in UTC is known, but the offset to local time is
 unknown".
 
-This convention mirrors a similar convention described in {{Section 3.3
-of RFC5322}}, introduced earlier in {{Section 3.3 of RFC2822}} for email
-headers.
+This convention mirrors a similar convention for date/time information
+in email headers, described in {{Section 3.3 of RFC5322}} and introduced
+earlier in {{Section 3.3 of RFC2822}}.
 The latter convention is in actual use, while the former always was
 handicapped by the fact that {{ISO8601}} does not actually allow `-00:00`.
 
