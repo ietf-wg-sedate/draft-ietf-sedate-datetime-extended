@@ -17,6 +17,7 @@ title: >
   Date and Time on the Internet: Timestamps with additional information
 abbrev: Internet Extended Date/Time Fmt (IXDTF)
 wg: Serialising Extended Data About Times and Events
+updates: 3339
 
 venue:
   group: Serialising Extended Data About Times and Events (SEDATE)
@@ -57,6 +58,8 @@ normative:
   BCP178: RFC6648
   BCP175: RFC6557
 informative:
+  RFC2822:
+  RFC5322:
   # obsolete, but needed for its Appendix E:
   RFC1305: ntp-old
   ISO8601:
@@ -117,18 +120,16 @@ This document defines an extension to the timestamp format defined in
 RFC3339 for representing additional information including a time
 zone.
 
+It updates RFC3339 in the specific interpretation of the local offset
+`Z`, which is no longer understood to "imply that UTC is the preferred
+reference point for the specified time"; see {{update}}.
 
 [^status]
 
 [^status]:
-    The present version (-05) includes a few changes that are intended
-    for discussion at IETF 114.
-    In particular, the introduction of the critical-flag exposes the
-    fact that some RFC 3339 implementations assign different semantics
-    to the time zone offsets Z and +00:00; we may want to consider
-    ways to cope with this apparently common deviation.
-    Also, the name of the format is still up for suggestions that
-    improve upon the current choice.
+    The present version (-06) reflects the discussions at IETF 114.
+    In particular, RFC 3339 is now updated with respect to the semantics
+    of time zone offset `Z`.
 
 
 --- middle
@@ -315,6 +316,38 @@ For more information about timescales, see {{Appendix E of RFC1305}},
 Section 3 of {{ISO8601}}, and the appropriate ITU documents
 {{ITU-R-TF.460-6}}.
 
+# Updating RFC 3339 {#update}
+
+{{Section 4.3 of RFC3339}} states that an offset given as `Z` or
+`+00:00` implies that "UTC is the preferred reference point for the
+specified time".  The offset `-00:00` is provided as a way to express
+that "the time in UTC is known, but the offset to local time is
+unknown".
+
+This convention mirrors a similar convention for date/time information
+in email headers, described in {{Section 3.3 of RFC5322}} and introduced
+earlier in {{Section 3.3 of RFC2822}}.
+The latter convention is in actual use, while the former always was
+handicapped by the fact that {{ISO8601}} does not actually allow `-00:00`.
+
+Implementations that needed to express the semantics of `-00:00`
+therefore tended to use `Z` as a "neutral" offset instead.
+
+This specification updates RFC3339, aligning it with the actual
+practice of interpreting the local offset `Z`: this is no longer
+understood to "imply that UTC is the preferred reference point for the
+specified time".
+
+Note that the semantics of the local offset `+00:00` is not updated;
+this retains the implication that UTC is the preferred reference point
+for the specified time.
+
+Note also that the fact that {{ISO8601}} does not allow `-00:00` as a
+local offset reduces the level of interoperability that can be
+achieved in using this feature; the present specification however does
+not formally deprecate this syntax.  For the intents and purposes of
+the present specification, the local offset `Z` can be used in its place.
+
 # Internet Extended Date/Time format (IXDTF) {#date-time-format}
 
 This section discusses desirable qualities of formats for the
@@ -401,31 +434,44 @@ mark (see `critical-flag` in {{abnf}}).
 
 IXDTF strings such as:
 
-    2022-07-08T00:14:07Z[Europe/Paris]
     2022-07-08T00:14:07+01:00[Europe/Paris]
 
-are internally inconsistent, as Europe/Paris does not use a time zone
-offset of 0 (which is indicated in the `Z`, an abbreviation for
-`+00:00`), nor a time zone offset of `+01:00` in July 2022.
+are internally inconsistent, as Europe/Paris does not use a time zone offset of `+01:00` in July 2022.
 The time zone hint given in the suffix tag is elective, though, so the recipient is not
 required to act on the inconsistency; it can treat the Internet
 Date/Time Format string as if it were:
 
-    2022-07-08T00:14:07Z
     2022-07-08T00:14:07+01:00
 
 Similar with:
 
-    2022-07-08T00:14:07Z[knort=blargel]
+    2022-07-08T00:14:07+01:00[knort=blargel]
 
-However,
+(assuming that the recipient does not understand the suffix key `knort`).
 
-    2022-07-08T00:14:07Z[!Europe/Paris]
+<aside markdown="1">
+
+Note that:
+
+    2022-07-08T00:14:07Z[Europe/Paris]
+
+does not exhibit such an inconsistency, as the local offset of `Z`
+does not imply a specific preferred time zone of interpretation.
+With the knowledge of how time zone offsets applied to Europe/Paris in
+the summer of 2022, it is equivalent to:
+
+    2022-07-08T02:14:07+02:00[Europe/Paris]
+
+</aside>
+
+In contrast to this elective use of a suffix tag,
+
     2022-07-08T00:14:07+01:00[!Europe/Paris]
     2022-07-08T00:14:07Z[!knort=blargel]
 
-all have an internal inconsistency or an unrecognized suffix key/value, so
-a recipient MUST treat the IXDTF string as erroneous.
+each have an internal inconsistency or an unrecognized suffix key/value
+that are marked as critical, so a recipient MUST treat the IXDTF
+string as erroneous.
 
 Note that this does not mean that an application is disallowed to
 perform additional processing on elective suffix tags, e.g., asking
@@ -434,6 +480,56 @@ It means it is not required to do so with elective suffix tags, but is
 required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
+
+## Inconsistent `time-offset`/Time-Zone Information
+
+An RFC 3339 timestamp can contain a `time-offset` value that indicates
+the offset between local time and UTC (see {{Section 4 of RFC3339}},
+noting that {{update}} of the present specification updates {{Section 4.3
+of RFC3339}}).
+
+The information given in such a `time-offset` value can be
+inconsistent with the information provided in a time zone suffix for an
+IXDTF timestamp.
+
+For example, a calendar application could store an IXDTF string representing a
+far-future meeting in a particular time zone. If that time zone's definition is
+subsequently changed to abolish Daylight Saving Time, IXDTF strings that were
+originally consistent may now be inconsistent.
+
+In case of inconsistent `time-offset` and time zone suffix, if the
+critical flag is used on the time zone suffix, an application MUST act
+on the inconsistency.
+If the critical flag is not used, it MAY act on the inconsistency.
+Acting on the inconsistency may involve rejecting the timestamp, or
+resolving the inconsistency via additional information such as user input
+and/or programmed behavior.
+
+For example, the IXDTF timestamps in {{example-inconsistent}} represent
+00:14:07 UTC, indicating a local time with a `time-offset` of +00:00.
+However, because Europe/London used offset +01:00 in July 2022, the
+timestamps are inconsistent:
+
+    2022-07-08T00:14:07+00:00[!Europe/London]
+    2022-07-08T00:14:07+00:00[Europe/London]
+{: #example-inconsistent title="Inconsistent IXDTF timestamps"}
+
+As per {{Section 4.3 of RFC3339}} as updated by {{update}}, IXDTF
+timestamps may also forego indicating local time information in their
+{{RFC3339}} part.
+The IXDTF timestamps in {{example-consistent}} (which represent the same
+instant in time as the strings in {{example-inconsistent}}) are not
+inconsistent because they do not assert any particular local time nor
+local offset in their {{RFC3339}} part.
+Instead, applications that receive these strings can base their
+local offset and local time calculations on the time zone suffix
+given, i.e., using the Europe/London time zone rules.
+
+    2022-07-08T00:14:07Z[!Europe/London]
+    2022-07-08T00:14:07Z[Europe/London]
+    2022-07-08T00:14:07-00:00[!Europe/London]
+    2022-07-08T00:14:07-00:00[Europe/London]
+{: #example-consistent title="No inconsistency in IXDTF timestamps"}
 
 # Syntax Extensions to RFC 3339 {#extended-format}
 
