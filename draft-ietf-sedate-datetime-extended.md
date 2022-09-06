@@ -481,6 +481,56 @@ required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
 
+## Inconsistent `time-offset`/Time-Zone Information
+
+An RFC 3339 timestamp can contain a `time-offset` value that indicates
+the offset between local time and UTC (see {{Section 4 of RFC3339}},
+noting that {{update}} of the present specification updates {{Section 4.3
+of RFC3339}}).
+
+The information given in such a `time-offset` value can be
+inconsistent with the information provided in a time zone suffix for an
+IXDTF timestamp.
+
+For example, a calendar application could store an IXDTF string representing a
+far-future meeting in a particular time zone. If that time zone's definition is
+subsequently changed to abolish Daylight Saving Time, IXDTF strings that were
+originally consistent may now be inconsistent.
+
+In case of inconsistent `time-offset` and time zone suffix, if the
+critical flag is used on the time zone suffix, an application MUST act
+on the inconsistency.
+If the critical flag is not used, it MAY act on the inconsistency.
+Acting on the inconsistency may involve rejecting the timestamp, or
+resolving the inconsistency via additional information such as user input
+and/or programmed behavior.
+
+For example, the IXDTF timestamps in {{example-inconsistent}} represent
+00:14:07 UTC, indicating a local time with a `time-offset` of +00:00.
+However, because Europe/London used offset +01:00 in July 2022, the
+timestamps are inconsistent:
+
+    2022-07-08T00:14:07+00:00[!Europe/London]
+    2022-07-08T00:14:07+00:00[Europe/London]
+{: #example-inconsistent title="Inconsistent IXDTF timestamps"}
+
+As per {{Section 4.3 of RFC3339}} as updated by {{update}}, IXDTF
+timestamps may also forego indicating local time information in their
+{{RFC3339}} part.
+The IXDTF timestamps in {{example-consistent}} (which represent the same
+instant in time as the strings in {{example-inconsistent}}) are not
+inconsistent because they do not assert any particular local time nor
+local offset in their {{RFC3339}} part.
+Instead, applications that receive these strings can base their
+local offset and local time calculations on the time zone suffix
+given, i.e., using the Europe/London time zone rules.
+
+    2022-07-08T00:14:07Z[!Europe/London]
+    2022-07-08T00:14:07Z[Europe/London]
+    2022-07-08T00:14:07-00:00[!Europe/London]
+    2022-07-08T00:14:07-00:00[Europe/London]
+{: #example-consistent title="No inconsistency in IXDTF timestamps"}
+
 # Syntax Extensions to RFC 3339 {#extended-format}
 
 ## ABNF
