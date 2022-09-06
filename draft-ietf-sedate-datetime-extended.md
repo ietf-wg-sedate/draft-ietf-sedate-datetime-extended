@@ -469,7 +469,7 @@ In contrast to this elective use of a suffix tag,
     2022-07-08T00:14:07+01:00[!Europe/Paris]
     2022-07-08T00:14:07Z[!knort=blargel]
 
-have an internal inconsistency or an unrecognized suffix key/value
+each have an internal inconsistency or an unrecognized suffix key/value
 that are marked as critical, so a recipient MUST treat the IXDTF
 string as erroneous.
 
