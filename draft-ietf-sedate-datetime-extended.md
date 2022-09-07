@@ -436,7 +436,8 @@ IXDTF strings such as:
 
     2022-07-08T00:14:07+01:00[Europe/Paris]
 
-are internally inconsistent, as Europe/Paris does not use a time zone offset of `+01:00` in July 2022.
+are internally inconsistent (see {{inconsistent}}), as Europe/Paris did not
+use a time zone offset of `+01:00` in July 2022.
 The time zone hint given in the suffix tag is elective, though, so the recipient is not
 required to act on the inconsistency; it can treat the Internet
 Date/Time Format string as if it were:
@@ -481,7 +482,7 @@ required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
 
-## Inconsistent `time-offset`/Time-Zone Information
+## Inconsistent `time-offset`/Time-Zone Information {#inconsistent}
 
 An RFC 3339 timestamp can contain a `time-offset` value that indicates
 the offset between local time and UTC (see {{Section 4 of RFC3339}},
