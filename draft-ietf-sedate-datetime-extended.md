@@ -193,6 +193,8 @@ name in the timestamp.
 For instance, such an inconsistency might arise because of:
 
 * political decisions as discussed above, or
+* updates to time zone definitions being applied at different times
+  by timestamp producers and receivers, or
 * errors in the applications producing and consuming such a timestamp.
 
 While the information available is not generally sufficient to resolve
