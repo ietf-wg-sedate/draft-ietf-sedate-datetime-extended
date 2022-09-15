@@ -32,19 +32,18 @@ author:
   country: Spain
   code: '15008'
   email: ryzokuken@igalia.com
--   name: Carsten Bormann
-    org: Universität Bremen TZI
-    street: Postfach 330440
-    city: Bremen
-    code: D-28359
-    country: Germany
-    phone: +49-421-218-63921
-    email: cabo@tzi.org
+- name: Carsten Bormann
+  org: Universität Bremen TZI
+  street: Postfach 330440
+  city: Bremen
+  code: D-28359
+  country: Germany
+  phone: +49-421-218-63921
+  email: cabo@tzi.org
 
 contributor:
 - name: Justin Grant
   email: justingrant.ietf.public@gmail.com
-- name: Your Name Here
 
 normative:
 #  RFC2026:
@@ -454,7 +453,7 @@ Similar with:
 
 <aside markdown="1">
 
-Note that:
+Note that as per {{update}} (see also {{inconsistent}}), the IXDTF string:
 
     2022-07-08T00:14:07Z[Europe/Paris]
 
@@ -477,7 +476,8 @@ that are marked as critical, so a recipient MUST treat the IXDTF
 string as erroneous.
 
 Note that this does not mean that an application is disallowed to
-perform additional processing on elective suffix tags, e.g., asking
+perform additional processing on inconsistent or unrecognized elective
+suffix tags, e.g., asking
 the user how to resolve the inconsistency.
 It means it is not required to do so with elective suffix tags, but is
 required to reject or perform some other error handling when
