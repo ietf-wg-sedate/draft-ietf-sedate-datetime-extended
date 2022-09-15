@@ -32,19 +32,18 @@ author:
   country: Spain
   code: '15008'
   email: ryzokuken@igalia.com
--   name: Carsten Bormann
-    org: Universität Bremen TZI
-    street: Postfach 330440
-    city: Bremen
-    code: D-28359
-    country: Germany
-    phone: +49-421-218-63921
-    email: cabo@tzi.org
+- name: Carsten Bormann
+  org: Universität Bremen TZI
+  street: Postfach 330440
+  city: Bremen
+  code: D-28359
+  country: Germany
+  phone: +49-421-218-63921
+  email: cabo@tzi.org
 
 contributor:
 - name: Justin Grant
   email: justingrant.ietf.public@gmail.com
-- name: Your Name Here
 
 normative:
 #  RFC2026:
