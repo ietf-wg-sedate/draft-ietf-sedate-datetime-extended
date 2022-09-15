@@ -453,7 +453,7 @@ Similar with:
 
 <aside markdown="1">
 
-Note that:
+Note that as per {{update}} (see also {{inconsistent}}), the IXDTF string:
 
     2022-07-08T00:14:07Z[Europe/Paris]
 
