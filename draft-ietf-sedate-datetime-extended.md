@@ -476,7 +476,8 @@ that are marked as critical, so a recipient MUST treat the IXDTF
 string as erroneous.
 
 Note that this does not mean that an application is disallowed to
-perform additional processing on elective suffix tags, e.g., asking
+perform additional processing on inconsistent or unrecognized elective
+suffix tags, e.g., asking
 the user how to resolve the inconsistency.
 It means it is not required to do so with elective suffix tags, but is
 required to reject or perform some other error handling when
