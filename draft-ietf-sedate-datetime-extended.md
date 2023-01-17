@@ -110,6 +110,7 @@ informative:
     target: https://unicode-org.github.io/cldr/ldml/tr35-dates.html#Supplemental_Calendar_Data
     title: Unicode Technical Standard #35
     date: false
+  DATA-MINIMIZATION: I-D.arkko-iab-data-minimization-principle
 ...
 
 --- abstract
@@ -653,7 +654,40 @@ specification does exist, even if not complete or published yet.
 
 # Security Considerations
 
-TBD
+## Excessive Disclosure
+
+The ability to include various pieces of ancillary information with a
+timestamp might lead to excessive disclosure.
+An example for possibly excessive disclosure is given in {{Section 7 of
+RFC3339}}.
+Similarly, divulging information about the calendar system or the
+language of choice may provide more information about the originator
+of a timestamp than the data minimization principle would permit
+{{DATA-MINIMIZATION}}.
+More generally speaking, generators of IXDTF timestamps need to
+consider whether information to be added to the timestamp is
+appropriate to divulge to the recipients of this information, and need
+to err on the side of minimizing such disclosure if the set of
+recipients is not under control of the originator.
+
+## Data Format Implementation Vulnerabilities
+
+As usual when extending the syntax of a data format, this can lead to
+new vulnerabilities in implementations parsing and processing the
+format.
+No considerations are known for the IXDTF syntax that would pose
+concerns that are out of the ordinary.
+
+## Operating with Inconsistent Data
+
+Information provided in the various parts of an IXDTF string may be
+inconsistent in interesting ways, both with the extensions defined in
+this specification (see for instance {{inconsistent}}) and with new
+extensions still to be defined.
+Where consistent interpretation between multiple actors is required
+for security purposes (e.g., where timestamps are embedded as
+parameters in access control information), only such extensions can be
+employed that have a defined resolution of such inconsistent data.
 
 --- back
 
