@@ -127,9 +127,9 @@ reference point for the specified time"; see {{update}}.
 [^status]
 
 [^status]:
-    The present version (-06) reflects the discussions at IETF 114.
-    In particular, RFC 3339 is now updated with respect to the semantics
-    of time zone offset `Z`.
+    The present version (-07) reflects the WGLC comments.
+    In particular, information has been added to the Security
+    Considerations section.
 
 
 --- middle
