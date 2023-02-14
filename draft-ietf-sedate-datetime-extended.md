@@ -277,12 +277,8 @@ IANA Time Zone:
   Most IANA time zones are named for the largest city in a particular
   region that shares the same time zone rules, e.g. `Europe/Paris` or
   `Asia/Tokyo` {{TZDB-NAMING}}.
-  Special IANA time zones such as `Etc/GMT+10` can be used to represent
-  timestamps outside country boundaries, e.g. a buoy in the middle of
-  the Pacific Ocean (note that the `Etc/GMT+10` time zone has a constant
-  UTC Offset of -10:00 \[sic!]).
-  <!-- The IANA time zone for `Z` is called `Etc/GMT`. Not true.  
-  No idea which time zone name is preferred for Z. -->
+  Special IANA time zones such as `UTC` can be used to represent
+  timestamps that are unrelated to country boundaries.
 
   Rules defined for a named IANA time zone can change over
   time.
