@@ -119,14 +119,14 @@ informative:
 This document defines an extension to the timestamp format defined in
 RFC3339 for representing additional information including a time zone.
 
-It updates RFC3339 in the specific interpretation of the local offset
+It updates {{RFC3339}} in the specific interpretation of the local offset
 `Z`, which is no longer understood to "imply that UTC is the preferred
 reference point for the specified time"; see {{update}}.
 
 [^status]
 
 [^status]:
-    The present version (-07) reflects the WGLC comments. In particular,
+    The present version (-08) reflects the WGLC comments. In particular,
     information has been added to the Security Considerations section.
 
 
@@ -134,23 +134,24 @@ reference point for the specified time"; see {{update}}.
 
 # Introduction {#intro}
 
-Dates and times are used in a very diverse set of internet applications,
-all the way from server-side logging to calendaring and scheduling.
+Dates and times are used in a diverse set of internet applications,
+from server-side logging to calendaring and scheduling.
 
 Each distinct instant in time can be represented in a descriptive text
-format using a timestamp, and {{ISO8601}} standardizes a widely-adopted
-timestamp format, which forms the basis of the Internet Date/Time Format
+"timestamp".
+{{ISO8601}}, a standardized and widely-adopted
+timestamp format, forms the basis of the Internet Date/Time Format
 {{RFC3339}}.
-However, this format only allows timestamps to contain very little
-additional relevant information, which means that, beyond that, any
-contextual information related to a given timestamp needs to be either
-handled separately or attached to it in a non-standard manner.
+However, this format does not allow programs to add
+additional relevant information to timestamps.
+Contextual information related to a given timestamp must be either
+handled separately or attached in a non-standard manner.
 
-This is already a pressing issue for applications that handle each
-instant with an associated time zone name, to take into account events
-such as daylight saving time transitions.
-Most of these applications attach the time zone to the timestamp in a
-non-standard format, at least one of which is fairly well-adopted
+This is a pressing issue for applications that require knowing the
+time zone associated with a timestamp, in order to take into account events
+like daylight saving time transitions.
+Many of these applications attach the time zone to the timestamp in a
+non-standard format, at least one of which is fairly well-adopted:
 {{JAVAZDT}}.
 Furthermore, applications might want to attach even more information to
 the timestamp, including but not limited to the calendar system in which
@@ -161,53 +162,51 @@ it should be represented.
 This document defines an extension syntax for timestamps as specified in
 {{RFC3339}} that has the following properties:
 
-* The extension suffix is completely optional, making existing
+* Extensions are optional, making existing
   {{RFC3339}} timestamps compatible with this format.
 
-* The format is compatible with the pre-existing popular syntax for
-  attaching time zone names to timestamps {{JAVAZDT}}.
+* This format is compatible with pre-existing popular syntax for
+  attaching time zone names to timestamps: {{JAVAZDT}}.
 
-* The format provides a generalized way to attach any additional
+* This format provides a generalized way to attach additional
   information to the timestamp.
 
 We refer to this format as the Internet Extended Date/Time Format
 (IXDTF).
 
 This document does not address extensions to the format where the
-semantic result is no longer a fixed timestamp that is referenced to a
+semantic result is no longer a fixed timestamp that represents a
 (past or future) UTC time.
 For instance, it does not address:
 
 * Future time given as a local time in some specified time zone, where
   changes to the definition of that time zone (e.g., a political
-  decision to enact or rescind daylight saving time) affect the instant
-  in time corresponding with the timestamp.
+  decision to enact or rescind Daylight Saving Time) changes the instant
+  in time represented by a timestamp.
 * "Floating time", i.e., a local time without information describing the
   UTC offset or time zone in which it should be interpreted.
 * The use of timescales different from UTC, such as TAI.
 
-However, additional information augmenting a fixed timestamp may be
+However, additional information augmenting a timestamp may be
 sufficient to detect an inconsistency between intention and the actual
 information in the timestamp, e.g., between the UTC offset and time zone
-name in the timestamp.
-For instance, such an inconsistency might arise because of:
+name.
+For instance, inconsistencies might arise because of:
 
 * political decisions as discussed above, or
 * updates to time zone definitions being applied at different times by
   timestamp producers and receivers, or
-* errors in the applications producing and consuming such a timestamp.
+* errors in applications producing and consuming timestamps.
 
-While the information available is not generally sufficient to resolve
-the inconsistency, it may be used to initiate some out of band
+While the information in an IXDTF string is usually insufficient to resolve
+an inconsistency, it may be used to initiate out of band
 processing to obtain sufficient information for such a resolution.
 
 
-In order to address some of the requirements implied here, future
-related specifications might define syntax and semantics of strings
-similar to {{RFC3339}}.
-Note that the extension syntax defined in the present document is
-designed in such a way that it can be useful for such specifications as
-well.
+In order to address requirements implied here, future
+related specifications may further refine syntax and semantics of date/time strings.
+Therefore, the extension syntax defined in this document is
+designed to be useful for future specifications.
 
 ## Definitions {#definitions}
 
@@ -226,8 +225,8 @@ UTC:
   attempting to follow Universal Time based on measuring the rotation of
   the earth.
 
-  UTC is often mistakenly referred to as GMT, an earlier timescale UTC
-  was designed to be a useful successor for.
+  UTC is often mistakenly referred to as GMT, an earlier timescale
+  that UTC was designed to replace.
 
 ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
@@ -238,7 +237,7 @@ Internet Extended Date/Time Format (IXDTF):
 : The date/time format defined in {{extended-format}} of this document.
 
 Timestamp:
-: An unambiguous representation of some instant in time.
+: An unambiguous representation of a particular instant in time.
 
 UTC Offset:
 : Difference between a given local time and UTC, usually given in
@@ -262,14 +261,15 @@ Time Zone:
   to a timestamp, with the caveat that some local times may have zero or
   multiple possible timestamps due to nearby Daylight Saving Time
   changes or other changes to the UTC offset of that time zone.
-  Unlike the UTC offset of a timestamp which makes no claims about the
-  UTC offset of other related timestamps (and which is therefore
-  unsuitable for performing local-time operations such as "one day
-  later"), a time zone also defines how to derive new timestamps based
-  on differences in local time.
+  A time zone also defines how to derive new timestamps based on
+  differences in local dates and times.
   For example, to calculate "one day later than this timestamp in San
   Francisco", a time zone is required because the UTC offset of local
   time in San Francisco can change from one day to the next.
+  On the other hand, the UTC offset of a timestamp makes no claims
+  about the UTC offset of other related timestamps.
+  For this reason, UTC offsets are insufficient to perform local-time
+  operations like "one day later".
 
 IANA Time Zone:
 : A named time zone that is included in the Time Zone Database (often
@@ -289,14 +289,21 @@ IANA Time Zone:
 
 Offset Time Zone:
 : A time zone defined by a specific UTC offset, e.g. `+08:45` and
-  serialized using as its name the same numeric UTC offset format used
+  serialized in a time zone suffix with the same numeric UTC offset format used
   in an RFC 3339 timestamp.
+  For example:
+
+    2022-07-08T00:14:07+08:45[+08:45]
+
+  The offset in the suffix SHOULD repeat the offset of the timestamp.
+  Non-equivalent offsets are {{inconsistent}}.
+
   Although serialization with offset time zones is supported in this
-  document for backwards compatibility with java.time.ZonedDateTime
+  document for backwards compatibility with `java.time.ZonedDateTime`
   {{JAVAZDT}}, use of offset time zones is strongly discouraged.
   In particular, programs MUST NOT copy the UTC offset from a timestamp
   into an offset time zone in order to satisfy another program which
-  requires a time zone annotation in its input.
+  requires a time zone suffix in its input.
   Doing this will improperly assert that the UTC offset of timestamps in
   that location will never change, which can result in incorrect
   calculations in programs that add, subtract, or otherwise derive new
@@ -334,32 +341,30 @@ handicapped by the fact that {{ISO8601}} does not actually allow
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` as a "neutral" offset instead.
 
-This specification updates RFC3339, aligning it with the actual practice
+This specification updates {{RFC3339}}, aligning it with the actual practice
 of interpreting the local offset `Z`: this is no longer understood to
 "imply that UTC is the preferred reference point for the specified
 time".
 
-Note that the semantics of the local offset `+00:00` is not updated;
-this retains the implication that UTC is the preferred reference point
-for the specified time.
+Note that the semantics of `+00:00` is unchanged; this offset still
+implies that the local time is the same as UTC.
 
-Note also that the fact that {{ISO8601}} does not allow `-00:00` as a
-local offset reduces the level of interoperability that can be achieved
-in using this feature; the present specification however does not
+Although {{ISO8601}}'s exclusion of `-00:00` as a local offset reduces
+its interoperability, the present specification does not
 formally deprecate this syntax.
-For the intents and purposes of the present specification, the local
-offset `Z` can be used in its place.
+Instead, the present specification recommends that `Z` be used in its
+place.
 
 # Internet Extended Date/Time format (IXDTF) {#date-time-format}
 
 This section discusses desirable qualities of formats for the timestamp
-extension suffix and defines such a format that extends {{RFC3339}} for
+extension suffix and defines a format to extend {{RFC3339}} for
 use in Internet protocols.
 
 ## Informative
 
-The format is intended to allow implementations to specify additional
-important information in addition to the bare timestamp.
+The IXDTF format allows implementations to add additional
+important information to an {{RFC3339}} timestamp.
 
 This is done by defining *tags*, each with a *key* and a *value*
 separated by an equals sign.
@@ -383,7 +388,7 @@ first. [^interop1]
 
 ## Registered
 
-Actual suffix tag keys are registered by supplying the information
+Suffix tag keys are registered by supplying the information
 specified in this section.
 This information is modeled after that specified for the media type
 registry {{RFC6838}}; if in doubt, the provisions of this registry
@@ -407,8 +412,8 @@ Change controller:
 Reference:
 : A reference.
   For permanent tag keys, this includes a full specification.
-  For provisional tag keys, there is an expectation that some
-  information is available even if that does not amount to a full
+  For provisional tag keys, some
+  information is expected to be available even if it does not amount to a full
   specification; in this case, the registrant is expected to improve
   this information over time.
 
@@ -421,37 +426,37 @@ leaking out to general production and why that MUST be prevented.
 
 ## Optionally Critical
 
-For the format defined here, suffix tags are always *optional*: They can
-be added or left out as desired by the generator of the string in
-Internet Extended Date/Time Format (IXDTF).
-(An application might require the presence of specific suffix tags,
+For the format defined in this document, suffix tags are always *optional*.
+They can
+be added or left out as desired by the generator of the IXDTF string.
+(An application MAY require the presence of specific suffix tags,
 though.)
 
-Without further indication, they are also *elective*: Even if included
-in the IXDTF string, the recipient is free to ignore the suffix tag.
+Without further indication, suffix tags are also *elective*: a recipient
+MAY ignore any suffix tag included in an IXDTF string.
 Reasons might include that the recipient does not implement (or know
 about) the specific suffix key, or that it does recognize the key but
-cannot act on the value provided.
+cannot act on its value.
 
-A suffix tag may also indicate that it is *critical*: The recipient is
+A suffix tag MAY also indicate that it is *critical*: The recipient is
 advised that it MUST NOT act on the Internet Extended Date/Time Format
 (IXDTF) string unless it can process the suffix tag as specified.
 A critical suffix tag is indicated by following its opening bracket with
 an exclamation mark (see `critical-flag` in {{abnf}}).
 
-IXDTF strings such as:
+For example, IXDTF strings such as:
 
     2022-07-08T00:14:07+01:00[Europe/Paris]
 
-are internally inconsistent (see {{inconsistent}}), as Europe/Paris did
+are internally inconsistent (see {{inconsistent}}), because Europe/Paris did
 not use a time zone offset of `+01:00` in July 2022.
-The time zone hint given in the suffix tag is elective, though, so the
-recipient is not required to act on the inconsistency; it can treat the
+The time zone hint given in the suffix tag is not marked as critical, so the
+recipient MAY ignore the inconsistency; it can treat the
 Internet Date/Time Format string as if it were:
 
     2022-07-08T00:14:07+01:00
 
-Similar with:
+Similarly, the suffix below MAY be ignored:
 
     2022-07-08T00:14:07+01:00[knort=blargel]
 
@@ -467,7 +472,7 @@ string:
 
 does not exhibit such an inconsistency, as the local offset of `Z` does
 not imply a specific preferred time zone of interpretation.
-With the knowledge of how time zone offsets applied to Europe/Paris in
+Using the Time Zone Database rules for Europe/Paris in
 the summer of 2022, it is equivalent to:
 
     2022-07-08T02:14:07+02:00[Europe/Paris]
@@ -480,16 +485,14 @@ In contrast to this elective use of a suffix tag,
     2022-07-08T00:14:07Z[!knort=blargel]
 
 each have an internal inconsistency or an unrecognized suffix key/value
-that are marked as critical, so a recipient MUST treat the IXDTF string
-as erroneous.
+that are marked as critical, so a recipient MUST treat these strings as erroneous.
+In this case, applications MUST reject or perform some other error
+handling, like asking the user how to resolve the inconsistency.
 
-Note that this does not mean that an application is disallowed to
-perform additional processing on inconsistent or unrecognized elective
-suffix tags, e.g., asking the user how to resolve the inconsistency.
-It means it is not required to do so with elective suffix tags, but is
-required to reject or perform some other error handling when
-encountering inconsistent or unrecognized suffix tags marked as
-critical.
+Note that applications MAY also reject or perform additional processing
+on elective (not marked critical) suffix tags, but applications are not
+required to do so.
+
 
 ## Inconsistent `time-offset`/Time-Zone Information {#inconsistent}
 
@@ -538,9 +541,12 @@ using the Europe/London time zone rules.
 
     2022-07-08T00:14:07Z[!Europe/London]
     2022-07-08T00:14:07Z[Europe/London]
-    2022-07-08T00:14:07-00:00[!Europe/London]
-    2022-07-08T00:14:07-00:00[Europe/London]
 {: #example-consistent title="No inconsistency in IXDTF timestamps"}
+
+Note that `Z` SHOULD be used in IXDTF strings to indicate when the local
+time is unknown.
+As discussed in {{update}}, the offset `-00:00` SHOULD NOT be used for this
+purpose, because that syntax is not compatible with ISO 8601.
 
 # Syntax Extensions to RFC 3339 {#extended-format}
 
@@ -638,7 +644,7 @@ use of these tag keys.
 Out of the possible suffix keys, the suffix key `u-ca` is allocated to
 indicate the calendar in which the date/time is preferably presented.
 
-A calendar is a set of rules defining how dates are counted and consumed
+A calendar is a set of rules defining how dates should be interpreted
 by implementations.
 The set of suffix values allowed for this suffix key is as defined by
 the {{CLDR}} data for {{TR35}}.
@@ -681,8 +687,8 @@ language of choice may provide more information about the originator of
 a timestamp than the data minimization principle would permit
 {{DATA-MINIMIZATION}}.
 More generally speaking, generators of IXDTF timestamps need to consider
-whether information to be added to the timestamp is appropriate to
-divulge to the recipients of this information, and need to err on the
+whether information added to timestamps is appropriate to
+divulge to the recipients of this information, and SHOULD err on the
 side of minimizing such disclosure if the set of recipients is not under
 control of the originator.
 
@@ -697,8 +703,8 @@ concerns that are out of the ordinary.
 ## Operating with Inconsistent Data
 
 Information provided in the various parts of an IXDTF string may be
-inconsistent in interesting ways, both with the extensions defined in
-this specification (see for instance {{inconsistent}}) and with new
+inconsistent with the extensions defined in
+this specification (see {{inconsistent}}) and/or with future
 extensions still to be defined.
 Where consistent interpretation between multiple actors is required for
 security purposes (e.g., where timestamps are embedded as parameters in
@@ -710,4 +716,4 @@ have a defined resolution of such inconsistent data.
 # Acknowledgements
 {:unnumbered}
 
-Richard Gibson provided some editorial improvements.
+Richard Gibson and Justin Grant provided editorial improvements.
