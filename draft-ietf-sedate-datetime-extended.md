@@ -123,12 +123,6 @@ It updates {{RFC3339}} in the specific interpretation of the local offset
 `Z`, which is no longer understood to "imply that UTC is the preferred
 reference point for the specified time"; see {{update}}.
 
-[^status]
-
-[^status]:
-    The present version (-08) reflects the WGLC comments. In particular,
-    information has been added to the Security Considerations section.
-
 
 --- middle
 
@@ -180,16 +174,17 @@ semantic result is no longer a fixed timestamp that represents a
 For instance, it does not address:
 
 * Future time given as a local time in some specified time zone, where
-  changes to the definition of that time zone (e.g., a political
+  changes to the definition of that time zone (like a political
   decision to enact or rescind Daylight Saving Time) changes the instant
   in time represented by a timestamp.
 * "Floating time", i.e., a local time without information describing the
   UTC offset or time zone in which it should be interpreted.
-* The use of timescales different from UTC, such as TAI.
+* The use of timescales different from UTC, such as International Atomic
+  Time (TAI).
 
 However, additional information augmenting a timestamp may be
 sufficient to detect an inconsistency between intention and the actual
-information in the timestamp, e.g., between the UTC offset and time zone
+information in the timestamp, such as between a UTC offset and time zone
 name.
 For instance, inconsistencies might arise because of:
 
@@ -275,7 +270,7 @@ IANA Time Zone:
 : A named time zone that is included in the Time Zone Database (often
   called `tz` or `zoneinfo`) maintained by IANA {{TZDB}}{{BCP175}}.
   Most IANA time zones are named for the largest city in a particular
-  region that shares the same time zone rules, e.g. `Europe/Paris` or
+  region that shares the same time zone rules, like `Europe/Paris` or
   `Asia/Tokyo` {{TZDB-NAMING}}.
   Special IANA time zones such as `UTC` can be used to represent
   timestamps that are unrelated to country boundaries.
@@ -288,12 +283,12 @@ IANA Time Zone:
   conveyed by the time zone name may change.
 
 Offset Time Zone:
-: A time zone defined by a specific UTC offset, e.g. `+08:45` and
+: A time zone defined by a specific UTC offset like `+08:45` and
   serialized in a time zone suffix with the same numeric UTC offset format used
   in an RFC 3339 timestamp.
   For example:
 
-    2022-07-08T00:14:07+08:45[+08:45]
+    2022-07-08T00:14:07+08:45\[+08:45\]
 
   The offset in the suffix SHOULD repeat the offset of the timestamp.
   Non-equivalent offsets are {{inconsistent}}.
@@ -377,14 +372,26 @@ number of these tags.
 Keys are lower-case only.
 Values are case-sensitive unless otherwise specified.
 
-When a suffix contains a repeated key or otherwise conflicting tags,
-implementations MUST give precedence to whichever value is positioned
-first. [^interop1]
+For compatibility with {{JAVAZDT}} and other existing implementations, a
+"keyless" tag is supported for providing an IANA Time Zone Database
+identifier.
+All other tags require keys.
 
-[^interop1]:  I'd rather place a MU⁠ST NOT for this case, first.  This
-     definitely needs to be expanded into some general text about error
-     handling.
-{: source="--- cabo"}
+Tags can either be *critical* with a "!" prefix before the key, or
+non-critical without this prefix.
+Critical tags have more stringent error-handling requirements, as
+discussed in {{critical-flag}}.
+
+Tag keys and/or values can conflict with each other, or with the
+timestamp.
+For example, the UTC offset in the timestamp may be invalid for the TZDB
+identifier contained in the time zone tag.
+Tag conflicts, including expected error handling behavior, are discussed
+in {{critical-flag}} and {{inconsistent}}.
+
+When a suffix contains multiple tags with a repeated key,
+implementations MUST give precedence to whichever value is positioned
+first.
 
 ## Registered
 
@@ -424,7 +431,7 @@ specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
-## Optionally Critical
+## Optionally Critical {#critical-flag}
 
 For the format defined in this document, suffix tags are always *optional*.
 They can
@@ -485,11 +492,13 @@ In contrast to this elective use of a suffix tag,
     2022-07-08T00:14:07Z[!knort=blargel]
 
 each have an internal inconsistency or an unrecognized suffix key/value
-that are marked as critical, so a recipient MUST treat these strings as erroneous.
+that are marked as critical, so a recipient MUST treat these strings as
+erroneous.
 In this case, applications MUST reject or perform some other error
 handling, like asking the user how to resolve the inconsistency.
 
-Note that applications MAY also reject or perform additional processing
+Note that applications MAY also reject or perform additional error
+handling
 on elective (not marked critical) suffix tags, but applications are not
 required to do so.
 
@@ -671,7 +680,7 @@ Initial contents of the registry are specified in {{tab-registered}}.
 
 The registration policy {{RFC8126}} is "Specification Required" for
 permanent entries, and "Expert Review" for provisional ones.
- In the second case, the expert is instructed to ascertain that a basic
+In the second case, the expert is instructed to ascertain that a basic
 specification does exist, even if not complete or published yet.
 
 # Security Considerations
@@ -707,7 +716,7 @@ inconsistent with the extensions defined in
 this specification (see {{inconsistent}}) and/or with future
 extensions still to be defined.
 Where consistent interpretation between multiple actors is required for
-security purposes (e.g., where timestamps are embedded as parameters in
+security purposes (such as where timestamps are embedded as parameters in
 access control information), only such extensions can be employed that
 have a defined resolution of such inconsistent data.
 
