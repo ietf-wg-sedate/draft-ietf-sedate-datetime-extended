@@ -580,6 +580,11 @@ Note that a `time-zone` is syntactically similar to a `suffix-tag`,
 but does not include an equals sign.
 This special case is only available for time zone tags.
 
+`time-zone-name` is intended to be the name of an IANA Time Zone.
+As generator and recipient may be using different revisions of the
+Time Zone Database, recipients may not be aware of such an IANA Time
+Zone name and should treat such a situation as any other inconsistency.
+
 ## Examples {#date-time-examples}
 
 Here are some examples of Internet Extended Date/Time Format (IXDTF).
