@@ -365,14 +365,8 @@ these tags.
 
 Keys are lower-case only.  Values are case-sensitive unless otherwise specified.
 
-When a suffix contains a repeated key or otherwise conflicting tags,
-implementations MUST give precedence to whichever value is positioned
-first. [^interop1]
-
-[^interop1]:  I'd rather place a MU⁠ST NOT for this case, first.  This
-     definitely needs to be expanded into some general text about
-     error handling.
-{: source="--- cabo"}
+See {{optionally-critical}} for the handling of inconsistent information
+in a suffix.
 
 ## Registered
 
@@ -465,6 +459,8 @@ the summer of 2022, it is equivalent to:
 In contrast to this elective use of a suffix tag,
 
     2022-07-08T00:14:07+01:00[!Europe/Paris]
+    2022-07-08T00:14:07Z[!u-ca=chinese,u-ca=japanese]
+    2022-07-08T00:14:07Z[u-ca=chinese,!u-ca=japanese]
     2022-07-08T00:14:07Z[!knort=blargel]
 
 each have an internal inconsistency or an unrecognized suffix key/value
@@ -479,6 +475,17 @@ It means it is not required to do so with elective suffix tags, but is
 required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
+
+An application that encounters duplicate use of a suffix key in
+elective suffixes and does not want to perform additional processing
+on this inconsistency MUST choose the first suffix that has that key,
+i.e.,
+
+    2022-07-08T00:14:07Z[u-ca=chinese,u-ca=japanese]
+    2022-07-08T00:14:07Z[u-ca=chinese]
+
+are then treated the same.
+
 
 ## Inconsistent `time-offset`/Time-Zone Information {#inconsistent}
 
