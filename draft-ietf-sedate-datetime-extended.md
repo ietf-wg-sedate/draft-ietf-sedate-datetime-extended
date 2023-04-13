@@ -459,8 +459,8 @@ the summer of 2022, it is equivalent to:
 In contrast to this elective use of a suffix tag,
 
     2022-07-08T00:14:07+01:00[!Europe/Paris]
-    2022-07-08T00:14:07Z[!u-ca=chinese,u-ca=japanese]
-    2022-07-08T00:14:07Z[u-ca=chinese,!u-ca=japanese]
+    2022-07-08T00:14:07Z[!u-ca=chinese][u-ca=japanese]
+    2022-07-08T00:14:07Z[u-ca=chinese][!u-ca=japanese]
     2022-07-08T00:14:07Z[!knort=blargel]
 
 each have an internal inconsistency or an unrecognized suffix key/value
@@ -481,7 +481,7 @@ elective suffixes and does not want to perform additional processing
 on this inconsistency MUST choose the first suffix that has that key,
 i.e.,
 
-    2022-07-08T00:14:07Z[u-ca=chinese,u-ca=japanese]
+    2022-07-08T00:14:07Z[u-ca=chinese][u-ca=japanese]
     2022-07-08T00:14:07Z[u-ca=chinese]
 
 are then treated the same.
