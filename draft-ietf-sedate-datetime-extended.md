@@ -94,9 +94,11 @@ informative:
     title: Unicode CLDR Project
     date: false
     author:
-  CLDR-CALENDAR:
-    target: https://github.com/unicode-org/cldr/blob/main/common/bcp47/calendar.xml
-    title: cldr/common/bcp47/calendar.xml
+  CLDR-LINKS:
+    target: https://cldr.unicode.org/stable-links-info
+    title: Stable Links Info
+    author:
+      org: Unicode CLDR
     date: false
   TZDB:
     target: https://data.iana.org/time-zones/tz-link.html
@@ -107,9 +109,14 @@ informative:
     title: Theory and pragmatics of the tz code and data
     date: false
   TR35:
-    target: https://unicode-org.github.io/cldr/ldml/tr35-dates.html#Supplemental_Calendar_Data
-    title: Unicode Technical Standard #35
+  # target: https://unicode-org.github.io/cldr/ldml/tr35-dates.html#Supplemental_Calendar_Data
+    # target: https://www.unicode.org/reports/tr35/
+    target: https://www.unicode.org/reports/tr35/#UnicodeCalendarIdentifier
+    title: >
+      Unicode Technical Standard #35:
+      Unicode Locale Data Markup Language (LDML)
     date: false
+# points to https://github.com/unicode-org/cldr/blob/main/common/bcp47/calendar.xml
   DATA-MINIMIZATION: I-D.arkko-iab-data-minimization-principle
 ...
 
@@ -634,10 +641,12 @@ Out of the possible suffix keys, the suffix key `u-ca` is allocated to
 indicate the calendar in which the date/time is preferably presented.
 
 A calendar is a set of rules defining how dates are counted and
-consumed by implementations.  The set of suffix values allowed for
-this suffix key is as defined by the {{CLDR}} data for {{TR35}}.
-At the time of writing, this information is collected in {{CLDR-CALENDAR}}.
-
+consumed by implementations.
+The set of suffix values allowed for this suffix key is the set of
+values defined for the Unicode Calendar Identifier {{TR35}}.
+A resource that has been built to provide links into the most recent
+stable and development {{CLDR}} information about that is provided by
+{{CLDR-LINKS}}.
 
 # IANA Considerations {#iana-cons}
 
