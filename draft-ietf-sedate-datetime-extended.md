@@ -203,7 +203,7 @@ For instance, inconsistencies might arise because of:
 * political decisions as discussed above, or
 * updates to time zone definitions being applied at different times
   by timestamp producers and receivers, or
-* errors in the applications producing and consuming such timestamps.
+* errors in applications producing and consuming timestamps.
 
 While the information available in an IXDTF string is not generally sufficient to resolve
 an inconsistency, it may be used to initiate some out of band
