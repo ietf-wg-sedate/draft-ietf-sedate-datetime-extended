@@ -265,7 +265,7 @@ Time Zone:
   Time zones can deterministically convert a timestamp to local time.
   They can also be used in the reverse direction to convert local time
   to a timestamp, with the caveat that some local times may have zero
-  or multiple possible timestamps due to nearby Daylight Saving Time
+  or multiple possible timestamps due to nearby daylight saving time
   changes or other changes to the UTC offset of that time zone.
   Unlike the UTC offset of a timestamp which makes no claims about
   the UTC offset of other related timestamps (and which is therefore
@@ -314,7 +314,7 @@ Offset Time Zone:
   calculations in programs that add, subtract, or otherwise derive new
   timestamps from the one provided. For example,
   `2020-01-01T00:00+01:00[Europe/Paris]` will let programs add six
-  months to the timestamp while adjusting for Summer Time (Daylight Saving Time).
+  months to the timestamp while adjusting for Summer Time (daylight saving time).
   But the same calculation applied to `2020-01-01T00:00+01:00[+01:00]`
   will produce an incorrect result that will be off by one hour in the
   timezone `Europe/Paris`.
@@ -517,7 +517,7 @@ IXDTF timestamp.
 
 For example, a calendar application could store an IXDTF string representing a
 far-future meeting in a particular time zone. If that time zone's definition is
-subsequently changed to abolish Daylight Saving Time, IXDTF strings that were
+subsequently changed to abolish daylight saving time, IXDTF strings that were
 originally consistent may now be inconsistent.
 
 In case of inconsistent `time-offset` and time zone suffix, if the
