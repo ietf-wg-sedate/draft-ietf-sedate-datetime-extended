@@ -133,10 +133,8 @@ reference point for the specified time"; see {{update}}.
 
 [^status]
 
-[^status]:
-    The present version (-07) reflects the WGLC comments.
-    In particular, information has been added to the Security
-    Considerations section.
+[^status]:  (This "cref" paragraph will be removed by the RFC editor:)\\
+    The present version (-08) reflects comments received after IESG submission.
 
 
 --- middle
@@ -148,17 +146,19 @@ applications, all the way from server-side logging to calendaring and
 scheduling.
 
 Each distinct instant in time can be represented in a descriptive text
-format using a timestamp, and {{ISO8601}} standardizes a widely-adopted
+format using a timestamp.
+{{ISO8601}} standardizes a widely-adopted
 timestamp format, which forms the basis of the Internet Date/Time Format {{RFC3339}}.
-However, this format only allows timestamps to contain very little
-additional relevant information, which means that, beyond that, any contextual
+However, this format allows timestamps to contain only very little
+additional relevant information.
+Beyond that, any contextual
 information related to a given timestamp needs to be either handled
 separately or attached to it in a non-standard manner.
 
-This is already a pressing issue for applications that handle each
-instant with an associated time zone name, to take into account events
+This is a pressing issue for applications that handle each
+instant with an associated time zone name, in order to take into account events
 such as daylight saving time transitions.
-Most of these applications attach the time zone to the timestamp in a
+Many of these applications attach the time zone to the timestamp in a
 non-standard format, at least one of which is fairly well-adopted {{JAVAZDT}}.
 Furthermore, applications might want to attach even more information to the
 timestamp, including but not limited to the calendar system in which
@@ -186,26 +186,27 @@ semantic result is no longer a fixed timestamp that is referenced to a
 For instance, it does not address:
 
 * Future time given as a local time in some specified time zone, where
-  changes to the definition of that time zone (e.g., a political
+  changes to the definition of that time zone (such as a political
   decision to enact or rescind daylight saving time) affect the
-  instant in time corresponding with the timestamp.
+  instant in time represented by the timestamp.
 * "Floating time", i.e., a local time without information describing
   the UTC offset or time zone in which it should be interpreted.
-* The use of timescales different from UTC, such as TAI.
+* The use of timescales different from UTC, such as International Atomic
+  Time (TAI).
 
 However, additional information augmenting a fixed timestamp may be
 sufficient to detect an inconsistency between intention and the actual
-information in the timestamp, e.g., between the UTC offset and time zone
-name in the timestamp.
-For instance, such an inconsistency might arise because of:
+information in the timestamp, such as between the UTC offset and time zone
+name.
+For instance, inconsistencies might arise because of:
 
 * political decisions as discussed above, or
 * updates to time zone definitions being applied at different times
   by timestamp producers and receivers, or
-* errors in the applications producing and consuming such a timestamp.
+* errors in applications producing and consuming timestamps.
 
-While the information available is not generally sufficient to resolve
-the inconsistency, it may be used to initiate some out of band
+While the information available in an IXDTF string is not generally sufficient to resolve
+an inconsistency, it may be used to initiate some out of band
 processing to obtain sufficient information for such a resolution.
 
 
@@ -245,7 +246,7 @@ Internet Extended Date/Time Format (IXDTF):
 : The date/time format defined in {{extended-format}} of this document.
 
 Timestamp:
-: An unambiguous representation of some instant in time.
+: An unambiguous representation of a particular instant in time.
 
 UTC Offset:
 : Difference between a given local time and UTC, usually given in
@@ -264,7 +265,7 @@ Time Zone:
   Time zones can deterministically convert a timestamp to local time.
   They can also be used in the reverse direction to convert local time
   to a timestamp, with the caveat that some local times may have zero
-  or multiple possible timestamps due to nearby Daylight Saving Time
+  or multiple possible timestamps due to nearby daylight saving time
   changes or other changes to the UTC offset of that time zone.
   Unlike the UTC offset of a timestamp which makes no claims about
   the UTC offset of other related timestamps (and which is therefore
@@ -281,33 +282,39 @@ IANA Time Zone:
   called `tz` or `zoneinfo`) maintained by IANA {{TZDB}}{{BCP175}}.
   Most IANA time zones
   are named for the largest city in a particular region that shares
-  the same time zone rules, e.g. `Europe/Paris` or `Asia/Tokyo` {{TZDB-NAMING}}.
+  the same time zone rules, e.g., `Europe/Paris` or `Asia/Tokyo` {{TZDB-NAMING}}.
 
-  Note that the rules defined for a named IANA time zone can change
+  The rules defined for a named IANA time zone can change
   over time.
   The use of a named IANA time zone implies that the intent is for the
-  rules that are current at the time of interpretation to apply, i.e.,
+  rules to apply that are current at the time of interpretation:
   the additional information conveyed by using that time zone name is
-  to change with the changed rules as recorded in the IANA time zone
+  to change with any rule changes as recorded in the IANA time zone
   database.
 
 Offset Time Zone:
-: A time zone defined by a specific UTC offset, e.g. `+08:45` and
+: A time zone defined by a specific UTC offset, e.g. `+08:45`, and
   serialized using as its name the same numeric UTC offset format used in an
-  RFC 3339 timestamp.
+  RFC 3339 timestamp, for example:
+
+      2022-07-08T00:14:07+08:45[+08:45]
+
+  An offset in the suffix that does not repeat the offset of the
+  timestamp is inconsistent (see {{inconsistent}}).
+
   Although serialization with offset time zones is
   supported in this document for backwards compatibility with
-  java.time.ZonedDateTime {{JAVAZDT}}, use of offset time zones is
+  `java.time.ZonedDateTime` {{JAVAZDT}}, use of offset time zones is
   strongly discouraged.
   In particular, programs MUST NOT copy the UTC
   offset from a timestamp into an offset time zone in order to satisfy
-  another program which requires a time zone annotation in its input.
+  another program which requires a time zone suffix in its input.
   Doing this will improperly assert that the UTC offset of timestamps
   in that location will never change, which can result in incorrect
   calculations in programs that add, subtract, or otherwise derive new
   timestamps from the one provided. For example,
   `2020-01-01T00:00+01:00[Europe/Paris]` will let programs add six
-  months to the timestamp while adjusting for Summer Time (Daylight Saving Time).
+  months to the timestamp while adjusting for Summer Time (daylight saving time).
   But the same calculation applied to `2020-01-01T00:00+01:00[+01:00]`
   will produce an incorrect result that will be off by one hour in the
   timezone `Europe/Paris`.
@@ -355,13 +362,13 @@ the present specification, the local offset `Z` can be used in its place.
 # Internet Extended Date/Time format (IXDTF) {#date-time-format}
 
 This section discusses desirable qualities of formats for the
-timestamp extension suffix and defines such a format that extends
+timestamp extension suffix and defines the IXDTF format, which extends
 {{RFC3339}} for use in Internet protocols.
 
 ## Informative
 
-The format is intended to allow implementations to specify additional
-important information in addition to the bare timestamp.
+The format allows implementations to specify additional
+important information in addition to a bare {{RFC3339}} timestamp.
 
 This is done by defining *tags*, each with a *key* and
 a *value* separated by an equals sign.
@@ -377,7 +384,7 @@ in a suffix.
 
 ## Registered
 
-Actual suffix tag keys are registered by supplying the information
+Suffix tag keys are registered by supplying the information
 specified in this section.  This information is modeled after that
 specified for the media type registry {{RFC6838}}; if in doubt, the
 provisions of this registry should be applied analogously.
@@ -413,14 +420,15 @@ leaking out to general production and why that MUST be prevented.
 
 ## Optionally Critical
 
-For the format defined here, suffix tags are always *optional*: They
-can be added or left out as desired by the generator of the string in
-Internet Extended Date/Time Format (IXDTF).  (An application might require the presence
+For the IXDTF format, suffix tags are always *optional*: They
+can be added or left out as desired by the generator of the string.
+(An application might require the presence
 of specific suffix tags, though.)
 
-Without further indication, they are also *elective*: Even if included
-in the IXDTF string, the recipient is free to
-ignore the suffix tag.  Reasons might include that the recipient does
+Without further indication, suffix tags are also *elective*:
+The recipient is free to ignore any suffix tag included in an IXDTF
+string.
+Reasons might include that the recipient does
 not implement (or know about) the specific suffix key, or that it does
 recognize the key but cannot act on the value provided.
 
@@ -430,23 +438,17 @@ unless it can process the suffix tag as specified.  A critical suffix
 tag is indicated by following its opening bracket with an exclamation
 mark (see `critical-flag` in {{abnf}}).
 
-IXDTF strings such as:
+For example, IXDTF strings such as:
 
     2022-07-08T00:14:07+01:00[Europe/Paris]
 
-are internally inconsistent (see {{inconsistent}}), as Europe/Paris did not
+are internally inconsistent (see {{inconsistent}}), because Europe/Paris did not
 use a time zone offset of `+01:00` in July 2022.
 The time zone hint given in the suffix tag is elective, though, so the recipient is not
 required to act on the inconsistency; it can treat the Internet
 Date/Time Format string as if it were:
 
     2022-07-08T00:14:07+01:00
-
-Similar with:
-
-    2022-07-08T00:14:07+01:00[knort=blargel]
-
-(assuming that the recipient does not understand the suffix key `knort`).
 
 <aside markdown="1">
 
@@ -456,12 +458,18 @@ Note that as per {{update}} (see also {{inconsistent}}), the IXDTF string:
 
 does not exhibit such an inconsistency, as the local offset of `Z`
 does not imply a specific preferred time zone of interpretation.
-With the knowledge of how time zone offsets applied to Europe/Paris in
+Using the Time Zone Database rules for Europe/Paris in
 the summer of 2022, it is equivalent to:
 
     2022-07-08T02:14:07+02:00[Europe/Paris]
 
 </aside>
+
+Similarly, an unknown suffix may be entirely ignored:
+
+    2022-07-08T00:14:07+01:00[knort=blargel]
+
+(assuming that the recipient does not understand the suffix key `knort`).
 
 In contrast to this elective use of a suffix tag,
 
@@ -471,14 +479,16 @@ In contrast to this elective use of a suffix tag,
     2022-07-08T00:14:07Z[!knort=blargel]
 
 each have an internal inconsistency or an unrecognized suffix key/value
-that are marked as critical, so a recipient MUST treat the IXDTF
-string as erroneous.
+that are marked as critical, so a recipient MUST treat these IXDTF
+strings as erroneous.
+This means that the application MUST reject the data, or perform some
+other error handling, such as asking the user how to resolve the
+inconsistency (see {{inconsistent}}).
 
-Note that this does not mean that an application is disallowed to
-perform additional processing on inconsistent or unrecognized elective
-suffix tags, e.g., asking
-the user how to resolve the inconsistency.
-It means it is not required to do so with elective suffix tags, but is
+Note that applications MAY also perform additional processing on
+inconsistent or unrecognized elective suffix tags, such as asking the
+user how to resolve the inconsistency.
+While they are not required to do so with elective suffix tags, they are
 required to reject or perform some other error handling when
 encountering inconsistent or unrecognized suffix tags marked as
 critical.
@@ -507,7 +517,7 @@ IXDTF timestamp.
 
 For example, a calendar application could store an IXDTF string representing a
 far-future meeting in a particular time zone. If that time zone's definition is
-subsequently changed to abolish Daylight Saving Time, IXDTF strings that were
+subsequently changed to abolish daylight saving time, IXDTF strings that were
 originally consistent may now be inconsistent.
 
 In case of inconsistent `time-offset` and time zone suffix, if the
@@ -698,7 +708,7 @@ concerns that are out of the ordinary.
 
 Information provided in the various parts of an IXDTF string may be
 inconsistent in interesting ways, both with the extensions defined in
-this specification (see for instance {{inconsistent}}) and with new
+this specification (see for instance {{inconsistent}}) and with future
 extensions still to be defined.
 Where consistent interpretation between multiple actors is required
 for security purposes (e.g., where timestamps are embedded as
@@ -710,4 +720,5 @@ employed that have a defined resolution of such inconsistent data.
 # Acknowledgements
 {:unnumbered}
 
-Richard Gibson provided some editorial improvements.
+Richard Gibson and Justin Grant provided editorial improvements.
+The authors would like to thank Francesca Palombini for her AD review.
