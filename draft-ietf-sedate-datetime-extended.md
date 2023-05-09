@@ -287,9 +287,9 @@ IANA Time Zone:
   The rules defined for a named IANA time zone can change
   over time.
   The use of a named IANA time zone implies that the intent is for the
-  rules to apply that are current at the time of interpretation, i.e.,
+  rules to apply that are current at the time of interpretation:
   the additional information conveyed by using that time zone name is
-  to change with the changed rules as recorded in the IANA time zone
+  to change with any rule changes as recorded in the IANA time zone
   database.
 
 Offset Time Zone:
