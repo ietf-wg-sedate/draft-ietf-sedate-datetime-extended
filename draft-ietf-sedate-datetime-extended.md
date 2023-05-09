@@ -198,7 +198,7 @@ However, additional information augmenting a fixed timestamp may be
 sufficient to detect an inconsistency between intention and the actual
 information in the timestamp, such as between the UTC offset and time zone
 name.
-For instance, such inconsistencies might arise because of:
+For instance, inconsistencies might arise because of:
 
 * political decisions as discussed above, or
 * updates to time zone definitions being applied at different times
