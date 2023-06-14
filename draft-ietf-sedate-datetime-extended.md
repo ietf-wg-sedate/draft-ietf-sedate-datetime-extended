@@ -52,7 +52,7 @@ normative:
   RFC5234: abnf
 #  RFC5646: # in BCP47
   RFC6838: media-types
-  RFC8126:
+  BCP26: RFC8126
 #  BCP47:
   BCP178: RFC6648
   BCP175: RFC6557
@@ -674,7 +674,7 @@ Initial contents of the registry are specified in {{tab-registered}}.
 | u-ca           | Permanent           | Preferred Calendar for Presentation | IESG              | {{calendar}} of RFCthis |
 {: #tab-registered title="Initial Content of Timestamp Suffix Tag Keys registry"}
 
-The registration policy {{RFC8126}} is "Specification Required" for
+The registration policy {{BCP26}} is "Specification Required" for
 permanent entries, and "Expert Review" for provisional ones.
 In the second case, the expert is instructed to ascertain that a basic
 specification does exist, even if not complete or published yet.
