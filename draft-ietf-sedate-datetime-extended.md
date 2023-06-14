@@ -175,7 +175,7 @@ in {{RFC3339}} that has the following properties:
 * The format is compatible with the pre-existing popular syntax for attaching
   time zone names to timestamps {{JAVAZDT}}.
 
-* The format provides a generalized way to attach any additional
+* The format provides a generalized way to attach additional
   information to the timestamp.
 
 We refer to this format as the Internet Extended Date/Time Format (IXDTF).
@@ -338,7 +338,8 @@ unknown".
 This convention mirrors a similar convention for date/time information
 in email headers, described in {{Section 3.3 of RFC5322}} and introduced
 earlier in {{Section 3.3 of RFC2822}}.
-The latter convention is in actual use, while the former always was
+This email header convention is in actual use, while its adaptation into
+{{RFC3339}} always was
 handicapped by the fact that {{ISO8601}} does not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
