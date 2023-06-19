@@ -367,6 +367,19 @@ practice of interpreting the local offset `Z`: this is no longer
 understood to "imply that UTC is the preferred reference point for the
 specified time".
 
+A revised {{Section 4.3 of RFC3339}} with the update could read as follows:
+
+{:quote}
+>
+   If the time in UTC is known, but the offset to local time is unknown,
+   this can be represented with an offset of "Z".
+   (The original version of this specification provided "-00:00" for
+   this purpose, which is not allowed by {{ISO8601-2000}} and therefore
+   is less interoperable; {{RFC2822}} describes a related
+   convention for email which does not have this problem).
+   This differs semantically from an offset of "+00:00", which implies
+   that UTC is the preferred reference point for the specified time.
+
 ## Notes
 
 Note that the semantics of the local offset `+00:00` is not updated;
