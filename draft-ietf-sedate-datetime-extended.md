@@ -342,6 +342,8 @@ Section 3 of {{ISO8601}}, and the appropriate ITU documents
 
 # Updating RFC 3339 {#update}
 
+## Background
+
 {{Section 4.3 of RFC3339}} states that an offset given as `Z` or
 `+00:00` implies that "UTC is the preferred reference point for the
 specified time".  The offset `-00:00` is provided as a way to express
@@ -358,10 +360,14 @@ handicapped by the fact that {{ISO8601-2000}} does not actually allow `-00:00`.
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` as a "neutral" offset instead.
 
-This specification updates RFC3339, aligning it with the actual
+## Update to RFC 3339
+
+This specification updates {{Section 4.3 of RFC3339}}, aligning it with the actual
 practice of interpreting the local offset `Z`: this is no longer
 understood to "imply that UTC is the preferred reference point for the
 specified time".
+
+## Notes
 
 Note that the semantics of the local offset `+00:00` is not updated;
 this retains the implication that UTC is the preferred reference point
@@ -370,8 +376,9 @@ for the specified time.
 Note also that the fact that {{ISO8601-2000}} does not allow `-00:00` as a
 local offset reduces the level of interoperability that can be
 achieved in using this feature; the present specification however does
-not formally deprecate this syntax.  For the intents and purposes of
-the present specification, the local offset `Z` can be used in its place.
+not formally deprecate this syntax.
+With the update to RFC 3339, the local offset `Z` can be used in its
+place.
 
 # Internet Extended Date/Time format (IXDTF) {#date-time-format}
 
