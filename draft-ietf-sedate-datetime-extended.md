@@ -73,6 +73,19 @@ informative:
     seriesinfo:
       ISO: '8601:1988'
     date: 1988-06
+    ann: Also available from <⁠<https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub4-1-1991.pdf>>.
+  ISO8601-2000:
+    display: 'ISO8601:2000'
+    target: https://www.iso.org/standard/26780.html
+    title: >
+      Data elements and interchange formats — Information interchange —
+      Representation of dates and times
+    author:
+    - org: International Organization for Standardization
+      abbrev: ISO
+    seriesinfo:
+      ISO: '8601:2000'
+    date: 2000-12
   ITU-R-TF.460-6:
     title: ITU-R TF.460-6. Standard-frequency and time-signal emissions
     author:
@@ -340,7 +353,7 @@ in email headers, described in {{Section 3.3 of RFC5322}} and introduced
 earlier in {{Section 3.3 of RFC2822}}.
 This email header convention is in actual use, while its adaptation into
 {{RFC3339}} always was
-handicapped by the fact that {{ISO8601}} does not actually allow `-00:00`.
+handicapped by the fact that {{ISO8601-2000}} does not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` as a "neutral" offset instead.
@@ -354,7 +367,7 @@ Note that the semantics of the local offset `+00:00` is not updated;
 this retains the implication that UTC is the preferred reference point
 for the specified time.
 
-Note also that the fact that {{ISO8601}} does not allow `-00:00` as a
+Note also that the fact that {{ISO8601-2000}} does not allow `-00:00` as a
 local offset reduces the level of interoperability that can be
 achieved in using this feature; the present specification however does
 not formally deprecate this syntax.  For the intents and purposes of
