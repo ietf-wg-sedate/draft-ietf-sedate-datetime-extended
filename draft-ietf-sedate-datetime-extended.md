@@ -399,7 +399,7 @@ This section discusses desirable qualities of formats for the
 timestamp extension suffix and defines the IXDTF format, which extends
 {{RFC3339}} for use in Internet protocols.
 
-## Informative
+## Format of Extended Information
 
 The format allows implementations to specify additional
 important information in addition to a bare {{RFC3339}} timestamp.
@@ -416,7 +416,7 @@ Keys are lower-case only.  Values are case-sensitive unless otherwise specified.
 See {{optionally-critical}} for the handling of inconsistent information
 in a suffix.
 
-## Registered
+## Registering Keys for Extended Information Tags {#registered}
 
 Suffix tag keys are registered by supplying the information
 specified in this section.  This information is modeled after that
@@ -452,7 +452,7 @@ not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
-## Optionally Critical
+## Optional Generation, Elective vs. Critical Consumption {#optionally-critical}
 
 For the IXDTF format, suffix tags are always *optional*: They
 can be added or left out as desired by the generator of the string.
