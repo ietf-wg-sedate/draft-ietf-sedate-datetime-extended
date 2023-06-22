@@ -73,6 +73,19 @@ informative:
     seriesinfo:
       ISO: '8601:1988'
     date: 1988-06
+    ann: Also available from <⁠<https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub4-1-1991.pdf>>.
+  ISO8601-2000:
+    display: 'ISO8601:2000'
+    target: https://www.iso.org/standard/26780.html
+    title: >
+      Data elements and interchange formats — Information interchange —
+      Representation of dates and times
+    author:
+    - org: International Organization for Standardization
+      abbrev: ISO
+    seriesinfo:
+      ISO: '8601:2000'
+    date: 2000-12
   ITU-R-TF.460-6:
     title: ITU-R TF.460-6. Standard-frequency and time-signal emissions
     author:
@@ -329,6 +342,8 @@ Section 3 of {{ISO8601}}, and the appropriate ITU documents
 
 # Updating RFC 3339 {#update}
 
+## Background
+
 {{Section 4.3 of RFC3339}} states that an offset given as `Z` or
 `+00:00` implies that "UTC is the preferred reference point for the
 specified time".  The offset `-00:00` is provided as a way to express
@@ -340,25 +355,30 @@ in email headers, described in {{Section 3.3 of RFC5322}} and introduced
 earlier in {{Section 3.3 of RFC2822}}.
 This email header convention is in actual use, while its adaptation into
 {{RFC3339}} always was
-handicapped by the fact that {{ISO8601}} does not actually allow `-00:00`.
+handicapped by the fact that {{ISO8601-2000}} does not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` as a "neutral" offset instead.
 
-This specification updates RFC3339, aligning it with the actual
+## Update to RFC 3339
+
+This specification updates {{Section 4.3 of RFC3339}}, aligning it with the actual
 practice of interpreting the local offset `Z`: this is no longer
 understood to "imply that UTC is the preferred reference point for the
 specified time".
+
+## Notes
 
 Note that the semantics of the local offset `+00:00` is not updated;
 this retains the implication that UTC is the preferred reference point
 for the specified time.
 
-Note also that the fact that {{ISO8601}} does not allow `-00:00` as a
+Note also that the fact that {{ISO8601-2000}} does not allow `-00:00` as a
 local offset reduces the level of interoperability that can be
 achieved in using this feature; the present specification however does
-not formally deprecate this syntax.  For the intents and purposes of
-the present specification, the local offset `Z` can be used in its place.
+not formally deprecate this syntax.
+With the update to RFC 3339, the local offset `Z` can be used in its
+place.
 
 # Internet Extended Date/Time format (IXDTF) {#date-time-format}
 
@@ -366,7 +386,7 @@ This section discusses desirable qualities of formats for the
 timestamp extension suffix and defines the IXDTF format, which extends
 {{RFC3339}} for use in Internet protocols.
 
-## Informative
+## Format of Extended Information
 
 The format allows implementations to specify additional
 important information in addition to a bare {{RFC3339}} timestamp.
@@ -383,7 +403,7 @@ Keys are lower-case only.  Values are case-sensitive unless otherwise specified.
 See {{optionally-critical}} for the handling of inconsistent information
 in a suffix.
 
-## Registered
+## Registering Keys for Extended Information Tags {#registered}
 
 Suffix tag keys are registered by supplying the information
 specified in this section.  This information is modeled after that
@@ -419,7 +439,7 @@ not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
 leaking out to general production and why that MUST be prevented.
 
-## Optionally Critical
+## Optional Generation, Elective vs. Critical Consumption {#optionally-critical}
 
 For the IXDTF format, suffix tags are always *optional*: They
 can be added or left out as desired by the generator of the string.
