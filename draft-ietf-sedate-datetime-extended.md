@@ -591,7 +591,7 @@ RFC3339}}, `ALPHA` and `DIGIT` from {{Section B.1 of RFC5234}}.
 ~~~~ abnf
 time-zone-initial = ALPHA / "." / "_"
 time-zone-char    = time-zone-initial / DIGIT / "-" / "+"
-time-zone-part    = time-zone-initial *13(time-zone-char)
+time-zone-part    = time-zone-initial *time-zone-char
                     ; but not "." or ".."
 time-zone-name    = time-zone-part *("/" time-zone-part)
 time-zone         = "[" critical-flag
@@ -624,6 +624,16 @@ This special case is only available for time zone tags.
 As generator and recipient may be using different revisions of the
 Time Zone Database, recipients may not be aware of such an IANA Time
 Zone name and should treat such a situation as any other inconsistency.
+
+{:aside}
+>
+Note: At the time of writing, the length of each `time-zone-part` is
+limited to a maximum of 14 characters by the rules in {{TZDB-NAMING}}.
+One platform is known to enforce this limit, an entry in a timezone
+database on another platform is known to exceed this limit.
+As the `time-zone-name` will ultimately have to be looked up in the
+database, which therefore has control over the length, the
+`time-zone-part` production in {{grammar}} is deliberately permissive.
 
 ## Examples {#date-time-examples}
 
