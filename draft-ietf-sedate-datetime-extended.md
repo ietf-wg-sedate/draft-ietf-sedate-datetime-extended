@@ -375,7 +375,7 @@ A revised {{Section 4.3 of RFC3339}} with the update could read as follows:
    this can be represented with an offset of "Z".
    (The original version of this specification provided "-00:00" for
    this purpose, which is not allowed by {{ISO8601-2000}} and therefore
-   is less interoperable; {{RFC2822}} describes a related
+   is less interoperable; {{Section 3.3 of RFC5322}} describes a related
    convention for email which does not have this problem).
    This differs semantically from an offset of "+00:00", which implies
    that UTC is the preferred reference point for the specified time.
