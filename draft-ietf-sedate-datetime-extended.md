@@ -147,7 +147,8 @@ reference point for the specified time"; see {{update}}.
 [^status]
 
 [^status]:  (This "cref" paragraph will be removed by the RFC editor:)\\
-    The present version (-08) reflects comments received after IESG submission.
+    The present version (-09) addresses comments received during IETF
+    last call.
 
 
 --- middle
@@ -359,6 +360,8 @@ handicapped by the fact that {{ISO8601-2000}} does not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` instead.
+
+## Update to RFC 3339
 
 This specification updates {{Section 4.3 of RFC3339}}, aligning it with the actual
 practice of interpreting the offset `Z` to mean the same as`-00:00`:
