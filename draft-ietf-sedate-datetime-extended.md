@@ -570,8 +570,8 @@ such as Europe/London in the example below.
 {: #example-consistent title="No inconsistency in IXDTF timestamps"}
 
 Note that `-00:00` may be used instead of `Z`, because they have the
-same meaning according to {{update}}, but `-00:00` is incompatible
-with {{ISO8601-2000}} so `Z` is preferred.
+same meaning according to {{update}}, but `-00:00` is not allowed by
+{{ISO8601-2000}} so `Z` is preferred.
 
 # Syntax Extensions to RFC 3339 {#extended-format}
 
