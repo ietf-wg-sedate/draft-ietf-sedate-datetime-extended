@@ -358,14 +358,11 @@ This email header convention is in actual use, while its adaptation into
 handicapped by the fact that {{ISO8601-2000}} does not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
-therefore tended to use `Z` as a "neutral" offset instead.
-
-## Update to RFC 3339
+therefore tended to use `Z` instead.
 
 This specification updates {{Section 4.3 of RFC3339}}, aligning it with the actual
-practice of interpreting the local offset `Z`: this is no longer
-understood to "imply that UTC is the preferred reference point for the
-specified time".
+practice of interpreting the offset `Z` to mean the same as`-00:00`:
+"the time in UTC is known, but the offset to local time is unknown".
 
 A revised {{Section 4.3 of RFC3339}} with the update could read as follows:
 
@@ -537,7 +534,6 @@ i.e.,
 
 are then treated the same.
 
-
 ## Inconsistent `time-offset`/Time-Zone Information {#inconsistent}
 
 An RFC 3339 timestamp can contain a `time-offset` value that indicates
@@ -573,20 +569,22 @@ timestamps are inconsistent:
 
 As per {{Section 4.3 of RFC3339}} as updated by {{update}}, IXDTF
 timestamps may also forego indicating local time information in their
-{{RFC3339}} part.
+{{RFC3339}} part by using `Z` instead of a numeric time zone offset.
 The IXDTF timestamps in {{example-consistent}} (which represent the same
 instant in time as the strings in {{example-inconsistent}}) are not
 inconsistent because they do not assert any particular local time nor
 local offset in their {{RFC3339}} part.
-Instead, applications that receive these strings can base their
-local offset and local time calculations on the time zone suffix
-given, i.e., using the Europe/London time zone rules.
+Instead, applications that receive these strings can calculate the
+local offset and local time using the rules of the time zone suffix,
+such as Europe/London in the example below.
 
     2022-07-08T00:14:07Z[!Europe/London]
     2022-07-08T00:14:07Z[Europe/London]
-    2022-07-08T00:14:07-00:00[!Europe/London]
-    2022-07-08T00:14:07-00:00[Europe/London]
 {: #example-consistent title="No inconsistency in IXDTF timestamps"}
+
+Note that `-00:00` may be used instead of `Z`, because they have the
+same meaning according to {{update}}, but `-00:00` is not allowed by
+{{ISO8601-2000}} so `Z` is preferred.
 
 # Syntax Extensions to RFC 3339 {#extended-format}
 
