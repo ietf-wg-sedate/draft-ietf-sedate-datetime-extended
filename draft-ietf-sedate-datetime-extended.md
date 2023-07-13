@@ -628,7 +628,7 @@ critical-flag     = [ "!" ]
 alphanum          = ALPHA / DIGIT
 lcalpha           = %x61-7A
 ~~~~
-{: #grammar title="ABNF grammar of extensions to RFC 3339"}
+{: #grammar title="ABNF grammar of extensions to RFC 3339" sourcecode-name="date-time-ext.abnf"}
 
 Note that a `time-zone` is syntactically similar to a `suffix-tag`,
 but does not include an equals sign.
@@ -653,7 +653,7 @@ database, which therefore has control over the length, the
 
 Here are some examples of Internet Extended Date/Time Format (IXDTF).
 
-~~~~
+~~~~ ixdtf
 1996-12-19T16:39:57-08:00
 ~~~~
 {: #rfc3339-datetime title="RFC 3339 date-time with time zone offset"}
@@ -662,7 +662,7 @@ Here are some examples of Internet Extended Date/Time Format (IXDTF).
 December 19th, 1996 with an offset of -08:00 from UTC.
 Note that this is the same instant in time as `1996-12-20T00:39:57Z`, expressed in UTC.
 
-~~~~
+~~~~ ixdtf
 1996-12-19T16:39:57-08:00[America/Los_Angeles]
 ~~~~
 {: #datetime-tzname title="Adding a time zone name"}
@@ -672,7 +672,7 @@ additionally specifies the human time zone associated with it
 ("Pacific Time") for time-zone-aware implementations to take into
 account.
 
-~~~~
+~~~~ ixdtf
 1996-12-19T16:39:57-08:00[America/Los_Angeles][u-ca=hebrew]
 ~~~~
 {: #date-time-hebrew title="Projecting to the Hebrew calendar"}
@@ -680,7 +680,7 @@ account.
 {{date-time-hebrew}} represents the exact same instant, but it informs calendar-aware
 implementations (see {{calendar}}) that they should project it to the Hebrew calendar.
 
-~~~~
+~~~~ ixdtf
 1996-12-19T16:39:57-08:00[_foo=bar][_baz=bat]
 ~~~~
 {: #date-time-private title="Adding experimental tags"}
