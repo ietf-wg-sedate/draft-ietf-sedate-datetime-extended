@@ -86,6 +86,18 @@ informative:
     seriesinfo:
       ISO: '8601:2000'
     date: 2000-12
+  ISO8601-2019:
+    display: 'ISO8601-1:2019'
+    target: https://www.iso.org/standard/70907.html
+    title: >
+      Date and time — Representations for information interchange —
+      Part 1: Basic rules
+    author:
+    - org: International Organization for Standardization
+      abbrev: ISO
+    seriesinfo:
+      ISO: '8601-1:2019'
+    date: 2019-02
   ITU-R-TF.460-6:
     title: ITU-R TF.460-6. Standard-frequency and time-signal emissions
     author:
@@ -161,8 +173,9 @@ scheduling.
 
 Each distinct instant in time can be represented in a descriptive text
 format using a timestamp.
-{{ISO8601}} standardizes a widely-adopted
-timestamp format, which forms the basis of the Internet Date/Time Format {{RFC3339}}.
+{{ISO8601-2019}} standardizes a widely-adopted
+timestamp format, an earlier version of which {{ISO8601}} formed the
+basis of the Internet Date/Time Format {{RFC3339}}.
 However, this format allows timestamps to contain only very little
 additional relevant information.
 Beyond that, any contextual
@@ -356,7 +369,7 @@ in email headers, described in {{Section 3.3 of RFC5322}} and introduced
 earlier in {{Section 3.3 of RFC2822}}.
 This email header convention is in actual use, while its adaptation into
 {{RFC3339}} always was
-handicapped by the fact that {{ISO8601-2000}} does not actually allow `-00:00`.
+handicapped by the fact that {{ISO8601-2000}} and later versions do not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` instead.
@@ -386,7 +399,7 @@ Note that the semantics of the local offset `+00:00` is not updated;
 this retains the implication that UTC is the preferred reference point
 for the specified time.
 
-Note also that the fact that {{ISO8601-2000}} does not allow `-00:00` as a
+Note also that the fact that {{ISO8601-2000}} and later do not allow `-00:00` as a
 local offset reduces the level of interoperability that can be
 achieved in using this feature; the present specification however does
 not formally deprecate this syntax.
@@ -587,7 +600,7 @@ such as Europe/London in the example below.
 
 Note that `-00:00` may be used instead of `Z`, because they have the
 same meaning according to {{update}}, but `-00:00` is not allowed by
-{{ISO8601-2000}} so `Z` is preferred.
+{{ISO8601-2000}} and later so `Z` is preferred.
 
 # Syntax Extensions to RFC 3339 {#extended-format}
 
