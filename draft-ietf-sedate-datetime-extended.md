@@ -723,7 +723,8 @@ stable and development {{CLDR}} information about that is provided by
 [^to-be-removed]: RFC Editor: please replace RFCthis with the RFC
     number of this RFC and remove this note.
 
-IANA is requested to establish a registry called "Timestamp Suffix Tag Keys".
+IANA is requested to establish a registry called "Timestamp Suffix Tag
+Keys" in a new registry group "Internet Date/Time Format".
 Each entry in the registry shall consist of the information described in {{registered}}.
 Initial contents of the registry are specified in {{tab-registered}}.
 
