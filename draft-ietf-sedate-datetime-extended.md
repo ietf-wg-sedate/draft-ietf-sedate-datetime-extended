@@ -369,7 +369,7 @@ in email headers, described in {{Section 3.3 of RFC5322}} and introduced
 earlier in {{Section 3.3 of RFC2822}}.
 This email header convention is in actual use, while its adaptation into
 {{RFC3339}} always was
-handicapped by the fact that {{ISO8601-2000}} and later versions do not actually allow `-00:00`.
+held back by the fact that {{ISO8601-2000}} and later versions do not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` instead.
