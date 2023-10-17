@@ -262,7 +262,7 @@ UTC:
   rotation of the earth.
 
   UTC is often mistakenly referred to as GMT, an earlier timescale
-  UTC was designed to be a useful successor for.
+  for which UTC was designed to be a useful successor.
 
 ABNF:
 : Augmented Backus-Naur Form, a format used to represent permissible
@@ -368,7 +368,7 @@ This convention mirrors a similar convention for date/time information
 in email headers, described in {{Section 3.3 of RFC5322}} and introduced
 earlier in {{Section 3.3 of RFC2822}}.
 This email header convention is in actual use, while its adaptation into
-{{RFC3339}} always was
+{{RFC3339}} was always
 compromised by the fact that {{ISO8601-2000}} and later versions do not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
