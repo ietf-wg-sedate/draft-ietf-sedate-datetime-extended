@@ -141,6 +141,16 @@ informative:
       Unicode Technical Standard #35:
       Unicode Locale Data Markup Language (LDML)
     date: false
+  ICAO-PA:
+    title: >
+      Annex 10 to the Convention on International Civil Aviation:
+      Aeronautical Telecommunications;
+      Volume II Communication Procedures including those with PANS status (7th ed.)
+    author:
+      org: International Civil Aviation Organization
+    date: July 2016
+    target: https://store.icao.int/annex-10-aeronautical-telecommunications-volume-ii-communication-procedures-including-those-with-pans-status
+
 # points to https://github.com/unicode-org/cldr/blob/main/common/bcp47/calendar.xml
   DATA-MINIMIZATION: I-D.arkko-iab-data-minimization-principle
 ...
@@ -277,13 +287,16 @@ Timestamp:
 
 UTC Offset:
 : Difference between a given local time and UTC, usually given in
-  negative or positive hours and minutes. For example, local time in New
-  York in the wintertime is 5 hours behind UTC, so its UTC offset is "-05:00".
+  negative or positive hours and minutes. For example, local time in
+  the city of New York, NY, USA, in the wintertime in 2023, is 5 hours
+  behind UTC, so its UTC offset is "-05:00".
 
 Z:
 : A suffix which, when applied to a time, denotes a UTC offset of
   00:00; often spoken "Zulu" from the ICAO phonetic alphabet
-  representation of the letter "Z". (Definition from {{Section 2 of RFC3339}}.)
+  representation of the letter "Z".
+  (Definition from {{Section 2 of RFC3339}}; see {{ICAO-PA}} for the
+  phonetic alphabet.)
 
 Time Zone:
 : A set of rules representing the relationship of local time to UTC
@@ -300,7 +313,7 @@ Time Zone:
   "one day later"), a time zone also defines how to derive new
   timestamps based on differences in local time.
   For example, to calculate "one day later than this
-  timestamp in San Francisco", a time zone is required because the
+  timestamp in San Francisco, California", a time zone is required because the
   UTC offset of local time in San Francisco can change from one day
   to the next.
 
