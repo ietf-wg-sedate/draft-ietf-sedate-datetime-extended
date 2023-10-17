@@ -369,7 +369,7 @@ in email headers, described in {{Section 3.3 of RFC5322}} and introduced
 earlier in {{Section 3.3 of RFC2822}}.
 This email header convention is in actual use, while its adaptation into
 {{RFC3339}} always was
-handicapped by the fact that {{ISO8601-2000}} and later versions do not actually allow `-00:00`.
+compromised by the fact that {{ISO8601-2000}} and later versions do not actually allow `-00:00`.
 
 Implementations that needed to express the semantics of `-00:00`
 therefore tended to use `Z` instead.
@@ -380,7 +380,7 @@ This specification updates {{Section 4.3 of RFC3339}}, aligning it with the actu
 practice of interpreting the offset `Z` to mean the same as`-00:00`:
 "the time in UTC is known, but the offset to local time is unknown".
 
-A revised {{Section 4.3 of RFC3339}} with the update could read as follows:
+{{Section 4.3 of RFC3339}} is revised to read as follows:
 
 {:quote}
 >
