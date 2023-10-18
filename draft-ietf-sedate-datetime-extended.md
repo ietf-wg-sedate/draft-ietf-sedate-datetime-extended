@@ -230,7 +230,7 @@ For instance, inconsistencies might arise because of:
 * political decisions as discussed above, or
 * updates to time zone definitions being applied at different times
   by timestamp producers and receivers, or
-* errors in applications producing and consuming timestamps.
+* errors in programs producing and consuming timestamps.
 
 While the information available in an IXDTF string is not generally sufficient to resolve
 an inconsistency, it may be used to initiate some out of band
@@ -414,7 +414,7 @@ timestamp extension suffix and defines the IXDTF format, which extends
 
 ## Format of Extended Information
 
-The format allows implementations to specify additional
+The format allows applications to specify additional
 important information in addition to a bare {{RFC3339}} timestamp.
 
 This is done by defining *tags*, each with a *key* and
@@ -682,7 +682,7 @@ Note that this is the same instant in time as `1996-12-20T00:39:57Z`, expressed 
 
 {{datetime-tzname}} represents the exact same instant in time as the previous example but
 additionally specifies the human time zone associated with it
-("Pacific Time") for time-zone-aware implementations to take into
+("Pacific Time") for time-zone-aware applications to take into
 account.
 
 ~~~~ ixdtf
@@ -691,7 +691,7 @@ account.
 {: #date-time-hebrew title="Projecting to the Hebrew calendar"}
 
 {{date-time-hebrew}} represents the exact same instant in time, but it informs calendar-aware
-implementations (see {{calendar}}) that they should project it to the Hebrew calendar.
+applications (see {{calendar}}) that they should project it to the Hebrew calendar.
 
 ~~~~ ixdtf
 1996-12-19T16:39:57-08:00[_foo=bar][_baz=bat]
