@@ -647,6 +647,10 @@ Note that a `time-zone` is syntactically similar to a `suffix-tag`,
 but does not include an equals sign.
 This special case is only available for time zone tags.
 
+The ABNF definition of `time-zone-part` matches "." and "..", which
+however both are explicitly excluded (see also comment on
+`time-zone-part`).
+
 `time-zone-name` is intended to be the name of an IANA Time Zone.
 As generator and recipient may be using different revisions of the
 Time Zone Database, recipients may not be aware of such an IANA Time
