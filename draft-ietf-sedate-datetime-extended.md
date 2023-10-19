@@ -476,7 +476,7 @@ in controlled environments and cannot be registered; such keys MUST
 NOT be used for interchange and MUST be rejected by implementations
 not specifically configured to take part in such an experiment.
 See {{BCP178}} for a discussion about the danger of experimental keys
-leaking out to general production and why that MUST be prevented.
+leaking out to general production and why that must be prevented.
 
 ## Optional Generation, Elective vs. Critical Consumption {#optionally-critical}
 
@@ -590,7 +590,10 @@ and/or programmed behavior.
 For example, the IXDTF timestamps in {{example-inconsistent}} represent
 00:14:07 UTC, indicating a local time with a `time-offset` of +00:00.
 However, because Europe/London used offset +01:00 in July 2022, the
-timestamps are inconsistent:
+timestamps are inconsistent in {{example-inconsistent}}, where the first
+case is one where the application MUST act on the inconsistency (the
+time zone suffix is marked critical), and the second case is one where
+it MAY act on it (time zone suffix is elective).
 
     2022-07-08T00:14:07+00:00[!Europe/London]
     2022-07-08T00:14:07+00:00[Europe/London]
@@ -605,7 +608,11 @@ inconsistent because they do not assert any particular local time nor
 local offset in their {{RFC3339}} part.
 Instead, applications that receive these strings can calculate the
 local offset and local time using the rules of the time zone suffix,
-such as Europe/London in the example below.
+such as Europe/London in the example in {{example-consistent}}, which
+like {{example-inconsistent}} has a case with a time zone suffix marked
+critical, i.e., the intention is that the application must understand
+the time zone information, and one marked elective, which then only is
+provided as additional information.
 
     2022-07-08T00:14:07Z[!Europe/London]
     2022-07-08T00:14:07Z[Europe/London]
