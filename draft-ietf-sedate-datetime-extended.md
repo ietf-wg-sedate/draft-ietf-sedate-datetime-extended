@@ -788,7 +788,7 @@ this specification (see for instance {{inconsistent}}) and with future
 extensions still to be defined.
 Where consistent interpretation between multiple actors is required
 for security purposes (e.g., where timestamps are embedded as
-parameters in access control information), only such extensions can be
+parameters in access control information), only those extensions can be
 employed that have a well-understood and shared resolution of such
 inconsistent data.
 
