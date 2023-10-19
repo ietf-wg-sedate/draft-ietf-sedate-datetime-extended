@@ -416,7 +416,7 @@ Note also that the fact that {{ISO8601-2000}} and later do not allow `-00:00` as
 local offset reduces the level of interoperability that can be
 achieved in using this feature; the present specification however does
 not formally deprecate this syntax.
-With the update to RFC 3339, the local offset `Z` can be used in its
+With the update to RFC 3339, the local offset `Z` should now be used in its
 place.
 
 # Internet Extended Date/Time format (IXDTF) {#date-time-format}
