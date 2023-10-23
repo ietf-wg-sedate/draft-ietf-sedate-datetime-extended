@@ -761,6 +761,15 @@ permanent entries, and "Expert Review" for provisional ones.
 In the second case, the expert is instructed to ascertain that a basic
 specification does exist, even if not complete or published yet.
 
+The experts also are instructed to be frugal in the allocation of
+key identifiers that are suggestive of generally applicable semantics,
+keeping them in reserve for suffix keys that are likely to enjoy wide
+use and can make good use of the key identifier's conciseness.
+If the experts become aware of key identifiers that are deployed and
+in use, they may also initiate a registration on their own if
+they deem such a registration can avert potential future collisions.
+{: #de-instructions}
+
 # Security Considerations
 
 ## Excessive Disclosure
