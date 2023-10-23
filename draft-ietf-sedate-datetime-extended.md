@@ -169,8 +169,7 @@ reference point for the specified time"; see {{update}}.
 [^status]
 
 [^status]:  (This "cref" paragraph will be removed by the RFC editor:)\\
-    The present version (-09) addresses comments received during IETF
-    last call.
+    The present version (-11) addresses comments received during IESG review.
 
 
 --- middle
