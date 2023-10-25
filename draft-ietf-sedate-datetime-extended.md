@@ -169,8 +169,8 @@ reference point for the specified time"; see {{update}}.
 [^status]
 
 [^status]:  (This "cref" paragraph will be removed by the RFC editor:)\\
-    The present version (-09) addresses comments received during IETF
-    last call.
+    The present version (beyond -11) addresses comments received during IESG
+    review and from IANA.
 
 
 --- middle
@@ -753,7 +753,7 @@ Each entry in the registry shall consist of the information described in {{regis
 Initial contents of the registry are specified in {{tab-registered}}.
 
 | Key Identifier | Registration status | Description:                        | Change controller | Reference             |
-| u-ca           | Permanent           | Preferred Calendar for Presentation | IESG              | {{calendar}} of RFCthis |
+| u-ca           | Permanent           | Preferred Calendar for Presentation | IETF              | {{calendar}} of RFCthis |
 {: #tab-registered title="Initial Content of Timestamp Suffix Tag Keys registry"}
 
 The registration policy {{BCP26}} is "Specification Required" for
