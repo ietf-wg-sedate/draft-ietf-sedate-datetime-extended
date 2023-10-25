@@ -753,7 +753,7 @@ Each entry in the registry shall consist of the information described in {{regis
 Initial contents of the registry are specified in {{tab-registered}}.
 
 | Key Identifier | Registration status | Description:                        | Change controller | Reference             |
-| u-ca           | Permanent           | Preferred Calendar for Presentation | IESG              | {{calendar}} of RFCthis |
+| u-ca           | Permanent           | Preferred Calendar for Presentation | IETF              | {{calendar}} of RFCthis |
 {: #tab-registered title="Initial Content of Timestamp Suffix Tag Keys registry"}
 
 The registration policy {{BCP26}} is "Specification Required" for
