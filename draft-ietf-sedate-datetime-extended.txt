@@ -6,7 +6,7 @@ Serialising Extended Data About Times and Events               U. Sharma
 Internet-Draft                                              Igalia, S.L.
 Updates: 3339 (if approved)                                   C. Bormann
 Intended status: Standards Track                  Universität Bremen TZI
-Expires: 27 April 2024                                   25 October 2023
+Expires: 28 May 2024                                    25 November 2023
 
 
  Date and Time on the Internet: Timestamps with additional information
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 April 2024.
+   This Internet-Draft will expire on 28 May 2024.
 
 Copyright Notice
 
@@ -847,8 +847,17 @@ Table of Contents
 
 Acknowledgements
 
+   This specification benefits from work prepared by ECMA TC39,
+   specifically in the _Temporal_ proposal.
+
    Richard Gibson and Justin Grant provided editorial improvements.  The
-   authors would like to thank Francesca Palombini for her AD review.
+   SEDATE WG chairs Mark McFadden and Bron Gondwana, the latter also in
+   his role as CALEXT WG chair, helped set up the structures needed to
+   navigate the multi-SDO environment.  John Klensin critically
+   accompanied the development of this specification, which led to
+   significant improvements.  The authors also would like to especially
+   thank Francesca Palombini for her AD review and for her overall
+   guidance during the development process.
 
 Contributors
 
