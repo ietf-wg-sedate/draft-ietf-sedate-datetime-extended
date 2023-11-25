@@ -50,6 +50,14 @@ Status of This Memo
    This Internet-Draft is submitted in full conformance with the
    provisions of BCP 78 and BCP 79.
 
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 1]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
@@ -78,33 +86,41 @@ Copyright Notice
 
 Table of Contents
 
-   1.  Introduction
-     1.1.  Scope
-     1.2.  Definitions
-   2.  Updating RFC 3339
-     2.1.  Background
-     2.2.  Update to RFC 3339
-     2.3.  Notes
-   3.  Internet Extended Date/Time format (IXDTF)
-     3.1.  Format of Extended Information
-     3.2.  Registering Keys for Extended Information Tags
-     3.3.  Optional Generation, Elective vs. Critical Consumption
-     3.4.  Inconsistent time-offset/Time-Zone Information
-   4.  Syntax Extensions to RFC 3339
-     4.1.  ABNF
-     4.2.  Examples
-   5.  The u-ca Suffix Key: Calendar Awareness
-   6.  IANA Considerations
-   7.  Security Considerations
-     7.1.  Excessive Disclosure
-     7.2.  Data Format Implementation Vulnerabilities
-     7.3.  Operating with Inconsistent Data
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
-   Acknowledgements
-   Contributors
-   Authors' Addresses
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Scope . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.2.  Definitions . . . . . . . . . . . . . . . . . . . . . . .   4
+   2.  Updating RFC 3339 . . . . . . . . . . . . . . . . . . . . . .   7
+     2.1.  Background  . . . . . . . . . . . . . . . . . . . . . . .   7
+     2.2.  Update to RFC 3339  . . . . . . . . . . . . . . . . . . .   7
+     2.3.  Notes . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   3.  Internet Extended Date/Time format (IXDTF)  . . . . . . . . .   8
+     3.1.  Format of Extended Information  . . . . . . . . . . . . .   8
+     3.2.  Registering Keys for Extended Information Tags  . . . . .   9
+     3.3.  Optional Generation, Elective vs. Critical Consumption  .   9
+     3.4.  Inconsistent time-offset/Time-Zone Information  . . . . .  11
+   4.  Syntax Extensions to RFC 3339 . . . . . . . . . . . . . . . .  12
+     4.1.  ABNF  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
+     4.2.  Examples  . . . . . . . . . . . . . . . . . . . . . . . .  14
+   5.  The u-ca Suffix Key: Calendar Awareness . . . . . . . . . . .  14
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+     7.1.  Excessive Disclosure  . . . . . . . . . . . . . . . . . .  16
+     7.2.  Data Format Implementation Vulnerabilities  . . . . . . .  16
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 2]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
+     7.3.  Operating with Inconsistent Data  . . . . . . . . . . . .  16
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  17
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  19
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -146,6 +162,13 @@ Table of Contents
 
    We refer to this format as the Internet Extended Date/Time Format
    (IXDTF).
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 3]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
    This document does not address extensions to the format where the
    semantic result is no longer a fixed timestamp that is referenced to
@@ -195,6 +218,14 @@ Table of Contents
    capitals, as shown here.
 
    UTC:  Coordinated Universal Time, as maintained since 1988 by the
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 4]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
       Bureau International des Poids et Mesures (BIPM) in conjunction
       with leap seconds as announced by the International Earth Rotation
       and Reference Frames Service [IERS].  From 1972 through 1987, UTC
@@ -229,6 +260,28 @@ Table of Contents
       [RFC3339]; see [ICAO-PA] for the phonetic alphabet.)
 
    Time Zone:  A set of rules representing the relationship of local
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 5]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
       time to UTC for a particular place or region.  Mathematically, a
       time zone can be thought of as a function that maps timestamps to
       UTC offsets.  Time zones can deterministically convert a timestamp
@@ -277,6 +330,14 @@ Table of Contents
       location will never change, which can result in incorrect
       calculations in programs that add, subtract, or otherwise derive
       new timestamps from the one provided.  For example, 2020-01-
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 6]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
       01T00:00+01:00[Europe/Paris] will let programs add six months to
       the timestamp while adjusting for Summer Time (daylight saving
       time).  But the same calculation applied to
@@ -317,6 +378,21 @@ Table of Contents
    unknown".
 
    Section 4.3 of [RFC3339] is revised to read as follows:
+
+
+
+
+
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 7]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
    |  If the time in UTC is known, but the offset to local time is
    |  unknown, this can be represented with an offset of "Z".  (The
@@ -363,6 +439,17 @@ Table of Contents
    See Section 3.3 for the handling of inconsistent information in a
    suffix.
 
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 8]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
 3.2.  Registering Keys for Extended Information Tags
 
    Suffix tag keys are registered by supplying the information specified
@@ -406,6 +493,18 @@ Table of Contents
    string.  Reasons might include that the recipient does not implement
    (or know about) the specific suffix key, or that it does recognize
    the key but cannot act on the value provided.
+
+
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                  [Page 9]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
    A suffix tag may also indicate that it is _critical_: The recipient
    is advised that it MUST NOT act on the Internet Extended Date/Time
@@ -451,6 +550,17 @@ Table of Contents
    2022-07-08T00:14:07Z[!u-ca=chinese][u-ca=japanese]
    2022-07-08T00:14:07Z[u-ca=chinese][!u-ca=japanese]
    2022-07-08T00:14:07Z[!knort=blargel]
+
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 10]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
    each have an internal inconsistency or an unrecognized suffix key/
    value that are marked as critical, so a recipient MUST treat these
@@ -498,6 +608,15 @@ Table of Contents
    act on the inconsistency.  Acting on the inconsistency may involve
    rejecting the timestamp, or resolving the inconsistency via
    additional information such as user input and/or programmed behavior.
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 11]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
    For example, the IXDTF timestamps in Figure 1 represent 00:14:07 UTC,
    indicating a local time with a time-offset of +00:00.  However,
@@ -548,6 +667,13 @@ Table of Contents
    date-time and time-numoffset are imported from Section 5.6 of
    [RFC3339], ALPHA and DIGIT from Appendix B.1 of [RFC5234].
 
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 12]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
    time-zone-initial = ALPHA / "." / "_"
    time-zone-char    = time-zone-initial / DIGIT / "-" / "+"
    time-zone-part    = time-zone-initial *time-zone-char
@@ -597,6 +723,13 @@ Table of Contents
       |  over the length, the time-zone-part production in Figure 3 is
       |  deliberately permissive.
 
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 13]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
 4.2.  Examples
 
    Here are some examples of Internet Extended Date/Time Format (IXDTF).
@@ -645,6 +778,14 @@ Table of Contents
    A calendar is a set of rules defining how dates are counted and
    consumed by implementations.  The set of suffix values allowed for
    this suffix key is the set of values defined for the Unicode Calendar
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 14]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
    Identifier [TR35].  A resource that has been built to provide links
    into the most recent stable and development [CLDR] information about
    that is provided by [CLDR-LINKS].
@@ -686,6 +827,20 @@ Table of Contents
    such a registration can avert potential future collisions.
 
 7.  Security Considerations
+
+
+
+
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 15]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
 7.1.  Excessive Disclosure
 
@@ -735,6 +890,14 @@ Table of Contents
               DOI 10.17487/RFC6648, June 2012,
               <https://www.rfc-editor.org/rfc/rfc6648>.
 
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 16]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
    [BCP26]    Cotton, M., Leiba, B., and T. Narten, "Guidelines for
               Writing an IANA Considerations Section in RFCs", BCP 26,
               RFC 8126, DOI 10.17487/RFC8126, June 2017,
@@ -777,6 +940,19 @@ Table of Contents
               arkko-iab-data-minimization-principle-05, 10 July 2023,
               <https://datatracker.ietf.org/doc/html/draft-arkko-iab-
               data-minimization-principle-05>.
+
+
+
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 17]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
    [ICAO-PA]  International Civil Aviation Organization, "Annex 10 to
               the Convention on International Civil Aviation:
@@ -825,6 +1001,14 @@ Table of Contents
               Specification, Implementation and Analysis", RFC 1305,
               DOI 10.17487/RFC1305, March 1992,
               <https://www.rfc-editor.org/rfc/rfc1305>.
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 18]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
 
    [RFC2822]  Resnick, P., Ed., "Internet Message Format", RFC 2822,
               DOI 10.17487/RFC2822, April 2001,
@@ -875,6 +1059,13 @@ Authors' Addresses
    Email: ryzokuken@igalia.com
 
 
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 19]
+
+Internet-Draft   Internet Extended Date/Time Fmt (IXDTF)   November 2023
+
+
    Carsten Bormann
    Universität Bremen TZI
    Postfach 330440
@@ -882,3 +1073,48 @@ Authors' Addresses
    Germany
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sharma & Bormann           Expires 28 May 2024                 [Page 20]
