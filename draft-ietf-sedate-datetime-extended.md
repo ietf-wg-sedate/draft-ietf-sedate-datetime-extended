@@ -813,5 +813,9 @@ inconsistent data.
 # Acknowledgements
 {:unnumbered}
 
-Richard Gibson and Justin Grant provided editorial improvements.
-The authors would like to thank Francesca Palombini for her AD review.
+This specification benefits from work prepared by ECMA TC39, specifically in the _Temporal_ proposal.
+
+{{{Richard Gibson}}} and {{{Justin Grant}}} provided editorial improvements.
+The SEDATE WG chairs {{{Mark McFadden}}} and {{{Bron Gondwana}}}, the latter also in his role as CALEXT WG chair, helped set up the structures needed to navigate the multi-SDO environment.
+{{{John Klensin}}} critically accompanied the development of this specification, which led to significant improvements.
+The authors also would like to especially thank {{{Francesca Palombini}}} for her AD review and for her overall guidance during the development process.
